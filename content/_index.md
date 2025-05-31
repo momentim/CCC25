@@ -25,6 +25,7 @@ Our hope is that everything we do is for God’s glory, not our own, as we seek 
 Continue reading in the <a href="about">About Us</a> section.
 
 ## What's on this Week:
+
 <style>
   .calendar-table-container {
     display: flex;
@@ -47,9 +48,8 @@ Continue reading in the <a href="about">About Us</a> section.
 
   .day-heading {
     font-weight: bold;
-    text-align: left;
-    font-size: 1.1em;
-    padding-left: 20px;
+    text-align: center;
+    font-size: 1.4em;
     padding-top: 10px;
     padding-bottom: 6px;
   }
@@ -75,58 +75,14 @@ Continue reading in the <a href="about">About Us</a> section.
   }
 </style>
 
+
 <div class="calendar-table-container">
-  <div id="calendar-events"></div>
+    <div id="calendar-events">
+        <div class="loading">Loading calendar events...</div>
+    </div>
 </div>
 
-<script>
-fetch('/calendar/calendar.json')
-  .then(response => response.json())
-  .then(events => {
-    const container = document.getElementById('calendar-events');
-
-    const grouped = {};
-    events.forEach(event => {
-      const dayTimeParts = event.dayTime.split(',');
-      const dayDate = dayTimeParts[0] + ', ' + dayTimeParts[1];
-      const time = dayTimeParts.slice(2).join(',').trim();
-      if (!grouped[dayDate]) grouped[dayDate] = [];
-      grouped[dayDate].push({ ...event, timeOnly: time });
-    });
-
-    let html = '<table>';
-
-    Object.entries(grouped).forEach(([dayDate, dayEvents]) => {
-      html += `
-        <tr>
-          <td colspan="3" class="day-heading">${dayDate}</td>
-        </tr>
-      `;
-
-      dayEvents.forEach(ev => {
-        const locationDisplay = ev.locationURL
-          ? `<a href="${ev.locationURL}">${ev.location}</a>`
-          : ev.location;
-
-        html += `
-          <tr>
-            <td class="event-cell">
-              ${ev.url 
-                ? `<a href="${ev.url}" target="_blank">${ev.event}</a>`
-                : ev.event}
-            </td>
-            <td class="event-cell">${ev.timeOnly}</td>
-            <td class="event-cell">${locationDisplay}</td>
-          </tr>
-        `;
-      });
-    });
-
-    html += '</table>';
-    container.innerHTML = html;
-  });
-</script>
-
+<script src="../js/calendar.js"></script>
 
 <br>
 
