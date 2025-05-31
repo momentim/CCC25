@@ -1,7 +1,16 @@
-{{- $id := delimit (slice "gallery" (partial "functions/uid.html" .)) "-" -}}
+{{- $uid := "" -}}
+{{- if templates.Exists "partials/functions/uid.html" -}}
+  {{- $uid = partial "functions/uid.html" . -}}
+{{- else -}}
+  {{- $uid = now.Unix -}}
+{{- end -}}
+{{- $id := delimit (slice "gallery" $uid) "-" -}}
 
-<div id="{{- $id -}}" class="gallery">
+<div id="{{ $id }}" class="gallery">
   {{- $page := .Page -}}
+  {{- if not .Inner -}}
+    {{- errorf "Gallery shortcode requires content" -}}
+  {{- end -}}
 
   <!-- find all img tags -->
   {{- $imgTagRegex := `<img\s+[^>]*>` -}}
@@ -21,11 +30,7 @@
       {{- $finalSrc := $src -}}
       {{- $isExternalURL := or (hasPrefix $src "http://") (hasPrefix $src "https://") -}}
 
-      {{- if $isExternalURL -}}
-        {{- with resources.GetRemote $src -}}
-          {{- $finalSrc = .RelPermalink -}}
-        {{- end -}}
-      {{- else -}}
+      {{- if not $isExternalURL -}}
         {{- with $page.Resources.GetMatch $src -}}
           {{- $finalSrc = .RelPermalink -}}
         {{- else -}}
@@ -41,5 +46,5 @@
     {{- end -}}
   {{- end -}}
 
-  {{- $newContent | safeHTML -}}
+  {{ $newContent | safeHTML }}
 </div>

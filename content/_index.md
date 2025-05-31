@@ -90,7 +90,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 
 <br>
 
-{{< gallery >}}
+
 <img src="gallery/craft-group.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
 <img src="gallery/featureseniorsbingo.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
 <img src="gallery/book-club.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
@@ -116,7 +116,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/GoodFriday.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
 <img src="gallery/featureholidayclub2023.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
 <img src="gallery/rascals1.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-{{< /gallery >}}
+
 
 <script>
   (function() {
