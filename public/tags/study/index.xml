@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Study on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/study/</link>
+    <description>Recent content in Study on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Thu, 15 May 2025 11:14:48 -0400</lastBuildDate><atom:link href="https://charleston-church.com/tags/study/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Charleston Community Book Club</title>
+      <link>https://charleston-church.com/posts/book-club/</link>
+      <pubDate>Thu, 15 May 2025 11:14:48 -0400</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/book-club/</guid>
+      <description>We&amp;rsquo;re delighted to announce the launch of our Charleston Community Book Club, a monthly gathering open to everyone in the local area.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/book-club/featurebook-club.png" />
+    </item>
+    
+    <item>
+      <title>Charleston Community Book Club</title>
+      <link>https://charleston-church.com/whats-on/book-club/</link>
+      <pubDate>Mon, 15 May 2023 11:14:48 -0400</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/book-club/</guid>
+      <description>The Charleston Community Book Club is a monthly gathering open to everyone in the local area. Whether you&amp;rsquo;re an avid reader or just looking for a friendly space to connect with others and some new books, this book club is for you!</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/book-club/featurebook-club.png" />
+    </item>
+    
+  </channel>
+</rss>

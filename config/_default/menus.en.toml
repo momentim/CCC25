@@ -1,0 +1,149 @@
+# -- Main Menu --
+# The main menu is displayed in the header at the top of the page.
+# Acceptable parameters are name, pageRef, page, url, title, weight.
+# 
+# The simplest menu configuration is to provide:
+#   name = The name to be displayed for this menu link
+#   pageRef = The identifier of the page or section to link to
+#
+# By default the menu is ordered alphabetically. This can be
+# overridden by providing a weight value. The menu will then be
+# ordered by weight from lowest to highest.
+
+[[main]]
+  name = "News"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  name = "Daily Bible Reading"
+  parent = "News"
+  pageRef = "about/daily-bible-reading"
+  weight = 12
+
+[[main]]
+  name = "About Us"
+  weight = 20
+  pageRef = "about"
+
+[[main]]
+  name = "Meet the Team"
+  parent = "About Us"
+  pageRef = "about/our-people"
+  weight = 22
+
+[[main]]
+  name = "Support Us"
+  parent = "About Us"
+  pageRef = "about/support-us"
+  weight = 24
+
+[[main]]
+  name = "What's On"
+  weight = 30
+  pageRef = "whats-on"
+
+
+[[main]]
+  name = "Bible Studies"
+  parent = "What's On"
+  pageRef = "whats-on/bible-studies"
+  weight = 35
+
+
+  [[main]]
+  name = "Children's Activities"
+  parent = "What's On"
+  pageRef = "whats-on/childrens-activities"
+  weight = 36
+
+[[main]]
+  name = "Craft Group"
+  parent = "What's On"
+  pageRef = "whats-on/craft-and-cuppa"
+  weight = 32
+
+  
+[[main]]
+  name = "Book Club"
+  parent = "What's On"
+  pageRef = "whats-on/book-club"
+  weight = 35
+
+  [[main]]
+  name = "Our Cafés"
+  parent = "What's On"
+  pageRef = "whats-on/cafes"
+  weight = 37
+
+  [[main]]
+  name = "Seniors' Lunch"
+  parent = "What's On"
+  pageRef = "whats-on/seniors-lunch"
+  weight = 39
+
+  [[main]]
+  name = "Sunday Worship Services"
+  parent = "What's On"
+  pageRef = "whats-on/sunday-services"
+  weight = 40
+
+  [[main]]
+  name = "Celebrate Recovery"
+  parent = "What's On"
+  pageRef = "whats-on/celebrate-recovery"
+  weight = 41
+
+  [[main]]
+  name = "Sermons"
+  weight = 50
+  pageRef = "sermons"
+
+[[main]]
+  name = "Contact"
+  #  pre = "email"
+  weight = 60
+  pageRef = "contact"
+
+#  [[main]]
+#  name = "Community"
+#  parent = "Contact"
+#  pageRef = "contact/our-community"
+#  weight = 61
+
+#[[subnavigation]]
+#  name = "An interesting topic"
+#  pageRef = "tags/interesting-topic"
+#  weight = 10
+
+#[[subnavigation]]
+#  name = "My Awesome Category"
+#  pre = "github"
+#  pageRef = "categories/awesome"
+#  weight = 20
+
+#[[main]]
+#  name = "Categories"
+#  pageRef = "categories"
+#  weight = 20
+
+#[[main]]
+#  name = "Tags"
+#  pageRef = "tags"
+#  weight = 30
+
+
+# -- Footer Menu --
+# The footer menu is displayed at the bottom of the page, just before
+# the copyright notice. Configure as per the main menu above.
+
+
+# [[footer]]
+#   name = "Tags"
+#   pageRef = "tags"
+#   weight = 10
+
+# [[footer]]
+#   name = "Categories"
+#   pageRef = "categories"
+#   weight = 20

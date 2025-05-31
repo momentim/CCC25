@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Good Friday on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/good-friday/</link>
+    <description>Recent content in Good Friday on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://charleston-church.com/tags/good-friday/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Good Friday Communion Service</title>
+      <link>https://charleston-church.com/posts/good-friday-service/</link>
+      <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/good-friday-service/</guid>
+      <description>This Good Friday, we&amp;rsquo;re gathering for a communion service. But what exactly is a communion service — and why does it matter so deeply on this day?</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/good-friday-service/featurecrosses.webp" />
+    </item>
+    
+  </channel>
+</rss>

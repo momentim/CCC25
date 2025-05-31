@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>special services on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/special-services/</link>
+    <description>Recent content in special services on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Wed, 02 Oct 2024 10:28:58 +0100</lastBuildDate><atom:link href="https://charleston-church.com/tags/special-services/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Baptisms and New Members</title>
+      <link>https://charleston-church.com/posts/baptisms-and-new-members/</link>
+      <pubDate>Wed, 02 Oct 2024 10:28:58 +0100</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/baptisms-and-new-members/</guid>
+      <description>On the 22nd of September, Charleston Community Church welcomed eight new members, two of whom were also baptised (Iona and Stephanie)!</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/baptisms-and-new-members/featuremembers.jpg" />
+    </item>
+    
+    <item>
+      <title>Christmas Carol Service 2023</title>
+      <link>https://charleston-church.com/posts/carol-service-2023/</link>
+      <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/carol-service-2023/</guid>
+      <description>You&#39;re Invited to the annual Christmas Carol Service on Thursday the 14th December 2023 at the Charleston Community CentreChristmas is a time to remember the birth of Jesus Christ, God&#39;s son, who showed us God&#39;s deep affection for humanity by becoming human himself.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/carol-service-2023/featurecarolservice2.jpg" />
+    </item>
+    
+    <item>
+      <title>Good Friday and Easter Sunday Services</title>
+      <link>https://charleston-church.com/posts/easter/</link>
+      <pubDate>Sun, 12 Mar 2023 12:28:32 +0100</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/easter/</guid>
+      <description>Good Friday and Easter Sunday Services Good Friday and Easter Sunday carry deep significance for every follower of the Christian faith.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/easter/featureeaster.jpg" />
+    </item>
+    
+    <item>
+      <title>Christmas Carol Service - 2022</title>
+      <link>https://charleston-church.com/posts/carol-service-2022/</link>
+      <pubDate>Wed, 23 Nov 2022 11:14:48 -0400</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/carol-service-2022/</guid>
+      <description>You&#39;re Invited to the annual Christmas Carol Service on Thursday the 15th December 2022 at the Charleston Community CentreChristmas is a time to remember the birth of Jesus Christ, God&#39;s son, who showed us God&#39;s deep affection for humanity by becoming human himself.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/carol-service-2022/featurecarolservice2.jpg" />
+    </item>
+    
+  </channel>
+</rss>

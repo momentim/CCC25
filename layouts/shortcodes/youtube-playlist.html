@@ -1,0 +1,284 @@
+{{ $apiKey := "AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw" }}
+{{ $playlistId := .Get 0 }}
+{{ $order := .Get 1 | default "chronological" }}
+{{ $uniqueId := printf "playlist-display-%s" (substr $playlistId 0 16) }}
+
+<div class="youtube-playlist-root" 
+     id="{{ $uniqueId }}" 
+     data-api-key="{{ $apiKey }}" 
+     data-playlist-id="{{ $playlistId }}" 
+     data-order="{{ $order }}">
+    <div class="loading">
+        <p>Loading playlist...</p>
+    </div>
+</div>
+
+<style>
+    .playlist-container {
+        border-radius: 12px;
+        border: 1px solid white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 20px;
+        max-width: 1200px;
+    }
+
+    .playlist-header {
+        padding: 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        background-color: white;
+        position: relative;
+    }
+    
+    .playlist-header.collapsed {
+        background-color: white;
+    }
+    
+    .playlist-header:hover {
+        opacity: 0.9;
+    }
+
+    .playlist-thumbnail {
+        width: 320px;
+        height: 180px;
+        border-radius: 8px;
+        margin: 0 auto 20px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+        display: block;
+    }
+
+    .playlist-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .playlist-info {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #555;
+    }
+    
+    .expand-hint {
+        margin-top: 15px;
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+    }
+
+    .video-item {
+        border-bottom: 1px solid #e9ecef;
+        transition: background-color 0.3s ease;
+    }
+
+    .video-item:last-child {
+        border-bottom: none;
+    }
+
+    .video-header {
+        padding: 20px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        border-left: 4px solid transparent;
+    }
+
+    .video-header:hover {
+        background-color: #f8f9fa;
+        border-left-color: #007bff;
+    }
+
+    .video-header.active {
+        background-color: #e3f2fd;
+        border-left-color: #1976d2;
+    }
+
+    .video-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+        line-height: 1.3;
+        color: #1976d2;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .video-title::before {
+        content: "▶";
+        font-size: 0.8em;
+        color: #666;
+        transition: transform 0.2s ease;
+    }
+
+    .video-header.active .video-title::before {
+        transform: rotate(90deg);
+        color: #1976d2;
+    }
+
+    .video-preview {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #666;
+    }
+
+    .video-meta {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #888;
+    }
+
+    .video-content {
+        padding: 0 20px 20px 20px;
+        display: none;
+        background-color: #fafafa;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .video-content.visible {
+        display: block;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px;
+    }
+
+    .video-description {
+        line-height: 1.6;
+        margin: 15px 0 0 0;
+        font-size: 0.95rem;
+        color: #555;
+        padding: 15px;
+        background-color: white;
+        border-radius: 6px;
+        border: 1px solid #e9ecef;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 40px;
+        font-size: 1.1rem;
+    }
+
+    .error {
+        border: 1px solid #fcc;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+    }
+
+    .debug-info {
+        border: 1px solid #b0d4f0;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+    }
+
+    .controls {
+        padding: 20px;
+        border-bottom: 1px solid #e9ecef;
+        text-align: center;
+        display: none;
+    }
+    
+    .controls.visible {
+        display: block;
+        background-color: white;
+    }
+
+    .sort-button {
+        background: #f9a825;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .sort-button:hover {
+        background: #f57f17;
+    }
+    
+    .videos-container {
+        display: none;
+    }
+    
+    .videos-container.visible {
+        display: block;
+    }
+
+    .video-count-hint {
+        margin-top: 5px;
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    .close-footer {
+        padding: 20px;
+        text-align: center;
+        background-color: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+        transition: background-color 0.3s ease;
+        display: none;
+    }
+
+    .close-footer.visible {
+        display: block;
+    }
+
+    .close-footer:hover {
+        background-color: #e9ecef;
+        color: #333;
+    }
+
+    @media (max-width: 768px) {
+        .playlist-title {
+            font-size: 2rem;
+        }
+        
+        .video-header {
+            padding: 15px;
+        }
+
+        .playlist-thumbnail {
+            width: 280px;
+            height: 157px;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+        }
+    }
+</style>

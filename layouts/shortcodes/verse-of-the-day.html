@@ -1,0 +1,18 @@
+<div id="verse-of-the-day">
+    <p id="theme"></p>
+    <p id="reference"></p>
+    <p id="content"></p>
+  </div>
+  
+  <script>
+    async function fetchVerseOfTheDay() {
+      const response = await fetch('https://drive.google.com/uc?export=download&id=1tJSIqPqXQ2jLdBDj0RwMsnyGjbSqysme');
+      const data = await response.json();
+      
+      document.getElementById('reference').textContent = "Reference: " + data.reference;
+      document.getElementById('content').innerHTML = "Content: " + data.content;
+    }
+  
+    fetchVerseOfTheDay();
+  </script>
+  

@@ -1,0 +1,18 @@
+
+  <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true" action="../extras/submission-success">
+    <p class="hidden"><label>Don’t fill this out if you're human: <input name="bot-field" /></label></p>
+    <p><label><input type="text" name="name" placeholder="Name" style="width: 70%; padding: 10px; box-sizing: border-box; color: #333; border-radius: 5px;"></label></p>
+    <p><label><input type="email" name="email" placeholder="Email" style="width: 70%; padding: 10px; box-sizing: border-box; color: #333; border-radius: 5px;"></label></p>
+    <p><label><input type="phone" name="phone" placeholder="Phone Number" style="width: 70%; padding: 10px; box-sizing: border-box; color: #333; border-radius: 5px; border: 1px solid #666;"></label></p>
+    <p>
+        <label>Who is your email for? <br><select name="whofor[]" multiple style="width: 85%; padding: 10px; box-sizing: border-box; color: #333; border-radius: 5px; border: 1px solid #666;">
+          <option value="Andy Robertson">Andy Robertson - Minister</option>
+          <option value="Bev Allyn">Bev Allyn - Administrator and Treasurer</option>
+          <option value="Chris Mina Morrison">Chris Mina Morrison - Community and Family Support Worker</option>
+          <option value="Rachel Baker">Rachel Baker - Gospel Worker</option>
+        </select></label>
+      </p>
+    <p><label><textarea name="message" placeholder="Enter your message here" style="width: 100%; box-sizing: border-box; color: #333; border-radius: 5px;"></textarea></label></p>
+    <div data-netlify-recaptcha="true"></div>
+    <p><button type="submit" style="display: flex; justify-content: center; align-items: center; background-color: #458dbd; color: white; padding: 10px 20px; text-align: center; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Send</button></p>
+</form>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>recovery on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/recovery/</link>
+    <description>Recent content in recovery on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <atom:link href="https://charleston-church.com/tags/recovery/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Celebrate Recovery</title>
+      <link>https://charleston-church.com/whats-on/celebrate-recovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/celebrate-recovery/</guid>
+      <description>Hope and healing for those facing addiction, trauma, and personal battles. We meet every Sunday at 4:30 pm.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/celebrate-recovery/featureCR.png" />
+    </item>
+    
+  </channel>
+</rss>

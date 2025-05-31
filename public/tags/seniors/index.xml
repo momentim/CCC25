@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>seniors on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/seniors/</link>
+    <description>Recent content in seniors on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Sun, 13 Aug 2023 11:14:48 -0400</lastBuildDate><atom:link href="https://charleston-church.com/tags/seniors/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Date of next Seniors&#39; Lunch: 6th September 2023</title>
+      <link>https://charleston-church.com/posts/seniors-lunch/</link>
+      <pubDate>Sun, 13 Aug 2023 11:14:48 -0400</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/posts/seniors-lunch/</guid>
+      <description>You are warmly welcomed to the Seniors&#39; Lunch—a delightful event designed exclusively for individuals aged 60 and above!Join us for a heartwarming afternoon filled with good food, meaningful connections, and a vibrant sense of community.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/seniors-lunch/featureseniorslunchflyer.jpg" />
+    </item>
+    
+    <item>
+      <title>Seniors&#39; Lunch Club</title>
+      <link>https://charleston-church.com/whats-on/seniors-lunch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/seniors-lunch/</guid>
+      <description>Come join in if you&amp;rsquo;re over 60. We meet the first Wednesday of every month.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/seniors-lunch/featureseniorsbingo.JPG" />
+    </item>
+    
+  </channel>
+</rss>
