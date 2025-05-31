@@ -147,6 +147,13 @@
 
 
 
+    
+    <script defer src="/lib/packery/packery.pkgd.min.js" integrity=""></script>
+
+    
+    
+    <script type="text/javascript" src="/js/shortcodes/gallery.min.9b4cb28f931ed922c26fb9b2510c2debb370f6a63305050c2af81740b2919883715e24efbbdf3a081496718ec751df3a72729d4d0bc71d6071297563a97ce1ee.js" integrity="sha512-m0yyj5Me2SLCb7myUQwt67Nw9qYzBQUMKvgXQLKRmINxXiTvu986CBSWcY7HUd86cnKdTQvHHWBxKXVjqXzh7g=="></script>
+
 
 
 
@@ -1002,31 +1009,212 @@
 <br>
 <p>Read <a href="../about/daily-bible-reading">today&rsquo;s daily bible passage</a>. This collection of readings will help prepare you for Sunday&rsquo;s sermon and worship.</p>
 <br>
-<img src="gallery/craft-group.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featureseniorsbingo.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/book-club.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/image2.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featureCrossroads.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/feature.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/image0.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/ccclogopng.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/CelebrateRecovery.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/christmasdoor.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/holidayclub23.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/seniors.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/weerascals.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/ChurchBuilding.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/cafe2.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/cccherryblossoms3.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/seniorslunchflyer.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/teenscafe.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/impactclub.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/ccc@cc.webp" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featurecarolservice2.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/seniorslunch.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/GoodFriday.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featureholidayclub2023.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/rascals1.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
+
+<div class="gallery-container">
+  <div class="gallery-grid">
+    
+<img src="gallery/craft-group.png" alt="Craft Group" />
+<img src="gallery/featureseniorsbingo.JPG" alt="Seniors Bingo" />
+<img src="gallery/book-club.png" alt="Book Club" />
+<img src="gallery/image2.jpeg" alt="Community Event" />
+<img src="gallery/featureCrossroads.jpg" alt="Crossroads" />
+<img src="gallery/feature.JPG" alt="Feature Event" />
+<img src="gallery/image0.jpeg" alt="Community Gathering" />
+<img src="gallery/ccclogopng.png" alt="CCC Logo" />
+<img src="gallery/CelebrateRecovery.png" alt="Celebrate Recovery" />
+<img src="gallery/christmasdoor.JPG" alt="Christmas Door" />
+<img src="gallery/holidayclub23.JPG" alt="Holiday Club 2023" />
+<img src="gallery/seniors.jpg" alt="Seniors Group" />
+<img src="gallery/weerascals.jpg" alt="Wee Rascals" />
+<img src="gallery/ChurchBuilding.jpg" alt="Church Building" />
+<img src="gallery/cafe2.jpg" alt="Cafe" />
+<img src="gallery/cccherryblossoms3.jpg" alt="Cherry Blossoms" />
+<img src="gallery/seniorslunchflyer.jpg" alt="Seniors Lunch Flyer" />
+<img src="gallery/teenscafe.JPG" alt="Teens Cafe" />
+<img src="gallery/impactclub.jpg" alt="Impact Club" />
+<img src="gallery/ccc@cc.webp" alt="CCC at CC" />
+<img src="gallery/featurecarolservice2.jpg" alt="Carol Service" />
+<img src="gallery/seniorslunch.jpg" alt="Seniors Lunch" />
+<img src="gallery/GoodFriday.png" alt="Good Friday" />
+<img src="gallery/featureholidayclub2023.jpeg" alt="Holiday Club 2023" />
+<img src="gallery/rascals1.JPG" alt="Rascals" />
+
+  </div>
+</div>
+
+<style>
+.gallery-container {
+  margin: 2rem 0;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    display: block;
+    column-count: 3;
+    column-gap: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-grid {
+    column-count: 4;
+    column-gap: 0;
+  }
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  break-inside: avoid;
+  vertical-align: top;
+}
+
+ 
+.gallery-grid img:hover {
+  z-index: 10;
+}
+
+ 
+.gallery-grid img {
+  cursor: zoom-in;
+}
+
+.gallery-grid img.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 1000;
+  cursor: zoom-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  object-fit: contain;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+.gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-overlay.active {
+  opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryImages = document.querySelectorAll('.gallery-grid img');
+  let overlay = null;
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', function() {
+      if (this.classList.contains('expanded')) {
+        
+        this.classList.remove('expanded');
+        if (overlay) {
+          overlay.remove();
+          overlay = null;
+        }
+        document.body.style.overflow = '';
+      } else {
+        
+        const rect = this.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        
+        galleryImages.forEach(otherImg => {
+          otherImg.classList.remove('expanded');
+        });
+        
+        
+        if (overlay) {
+          overlay.remove();
+        }
+        
+        
+        overlay = document.createElement('div');
+        overlay.className = 'gallery-overlay';
+        document.body.appendChild(overlay);
+        
+        
+        this.style.position = 'fixed';
+        this.style.top = (rect.top) + 'px';
+        this.style.left = (rect.left) + 'px';
+        this.style.width = rect.width + 'px';
+        this.style.height = rect.height + 'px';
+        this.style.zIndex = '1000';
+        this.style.transition = 'all 0.3s ease';
+        
+        document.body.style.overflow = 'hidden';
+        
+        
+        setTimeout(() => {
+          overlay.classList.add('active');
+          
+          
+          this.style.top = '50%';
+          this.style.left = '50%';
+          this.style.transform = 'translate(-50%, -50%)';
+          this.style.width = 'auto';
+          this.style.height = 'auto';
+          this.style.maxWidth = '90vw';
+          this.style.maxHeight = '90vh';
+          this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+          this.style.cursor = 'zoom-out';
+          
+          this.classList.add('expanded');
+        }, 10);
+        
+        
+        overlay.addEventListener('click', () => {
+          this.classList.remove('expanded');
+          this.style.cssText = '';
+          overlay.remove();
+          overlay = null;
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  });
+  
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay) {
+      galleryImages.forEach(img => {
+        img.classList.remove('expanded');
+        img.style.cssText = '';
+      });
+      overlay.remove();
+      overlay = null;
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
 <script>
   (function() {
     const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD

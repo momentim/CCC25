@@ -1,0 +1,180 @@
+{{/* layouts/shortcodes/gallery.html */}}
+<div class="gallery-container">
+  <div class="gallery-grid">
+    {{ .Inner }}
+  </div>
+</div>
+
+<style>
+.gallery-container {
+  margin: 2rem 0;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    display: block;
+    column-count: 3;
+    column-gap: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-grid {
+    column-count: 4;
+    column-gap: 0;
+  }
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  break-inside: avoid;
+  vertical-align: top;
+}
+
+/* Lightbox functionality */
+.gallery-grid img:hover {
+  z-index: 10;
+}
+
+/* Click to expand functionality */
+.gallery-grid img {
+  cursor: zoom-in;
+}
+
+.gallery-grid img.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 1000;
+  cursor: zoom-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  object-fit: contain;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+.gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-overlay.active {
+  opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryImages = document.querySelectorAll('.gallery-grid img');
+  let overlay = null;
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', function() {
+      if (this.classList.contains('expanded')) {
+        // Close expanded image
+        this.classList.remove('expanded');
+        if (overlay) {
+          overlay.remove();
+          overlay = null;
+        }
+        document.body.style.overflow = '';
+      } else {
+        // Get the original position and size
+        const rect = this.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        // Close any other expanded images first
+        galleryImages.forEach(otherImg => {
+          otherImg.classList.remove('expanded');
+        });
+        
+        // Remove existing overlay
+        if (overlay) {
+          overlay.remove();
+        }
+        
+        // Create overlay
+        overlay = document.createElement('div');
+        overlay.className = 'gallery-overlay';
+        document.body.appendChild(overlay);
+        
+        // Set initial position to match thumbnail
+        this.style.position = 'fixed';
+        this.style.top = (rect.top) + 'px';
+        this.style.left = (rect.left) + 'px';
+        this.style.width = rect.width + 'px';
+        this.style.height = rect.height + 'px';
+        this.style.zIndex = '1000';
+        this.style.transition = 'all 0.3s ease';
+        
+        document.body.style.overflow = 'hidden';
+        
+        // Activate overlay
+        setTimeout(() => {
+          overlay.classList.add('active');
+          
+          // Animate to center and full size
+          this.style.top = '50%';
+          this.style.left = '50%';
+          this.style.transform = 'translate(-50%, -50%)';
+          this.style.width = 'auto';
+          this.style.height = 'auto';
+          this.style.maxWidth = '90vw';
+          this.style.maxHeight = '90vh';
+          this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+          this.style.cursor = 'zoom-out';
+          
+          this.classList.add('expanded');
+        }, 10);
+        
+        // Close on overlay click
+        overlay.addEventListener('click', () => {
+          this.classList.remove('expanded');
+          this.style.cssText = '';
+          overlay.remove();
+          overlay = null;
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay) {
+      galleryImages.forEach(img => {
+        img.classList.remove('expanded');
+        img.style.cssText = '';
+      });
+      overlay.remove();
+      overlay = null;
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>

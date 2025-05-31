@@ -90,33 +90,33 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 
 <br>
 
-
-<img src="gallery/craft-group.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featureseniorsbingo.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/book-club.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/image2.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featureCrossroads.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/feature.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/image0.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/ccclogopng.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/CelebrateRecovery.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/christmasdoor.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/holidayclub23.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/seniors.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/weerascals.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/ChurchBuilding.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/cafe2.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/cccherryblossoms3.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/seniorslunchflyer.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/teenscafe.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/impactclub.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/ccc@cc.webp" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featurecarolservice2.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/seniorslunch.jpg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/GoodFriday.png" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/featureholidayclub2023.jpeg" class="grid-w50 md:grid-w33 xl:grid-w25" />
-<img src="gallery/rascals1.JPG" class="grid-w50 md:grid-w33 xl:grid-w25" />
-
+{{< gallery >}}
+<img src="gallery/craft-group.png" alt="Craft Group" />
+<img src="gallery/featureseniorsbingo.JPG" alt="Seniors Bingo" />
+<img src="gallery/book-club.png" alt="Book Club" />
+<img src="gallery/image2.jpeg" alt="Community Event" />
+<img src="gallery/featureCrossroads.jpg" alt="Crossroads" />
+<img src="gallery/feature.JPG" alt="Feature Event" />
+<img src="gallery/image0.jpeg" alt="Community Gathering" />
+<img src="gallery/ccclogopng.png" alt="CCC Logo" />
+<img src="gallery/CelebrateRecovery.png" alt="Celebrate Recovery" />
+<img src="gallery/christmasdoor.JPG" alt="Christmas Door" />
+<img src="gallery/holidayclub23.JPG" alt="Holiday Club 2023" />
+<img src="gallery/seniors.jpg" alt="Seniors Group" />
+<img src="gallery/weerascals.jpg" alt="Wee Rascals" />
+<img src="gallery/ChurchBuilding.jpg" alt="Church Building" />
+<img src="gallery/cafe2.jpg" alt="Cafe" />
+<img src="gallery/cccherryblossoms3.jpg" alt="Cherry Blossoms" />
+<img src="gallery/seniorslunchflyer.jpg" alt="Seniors Lunch Flyer" />
+<img src="gallery/teenscafe.JPG" alt="Teens Cafe" />
+<img src="gallery/impactclub.jpg" alt="Impact Club" />
+<img src="gallery/ccc@cc.webp" alt="CCC at CC" />
+<img src="gallery/featurecarolservice2.jpg" alt="Carol Service" />
+<img src="gallery/seniorslunch.jpg" alt="Seniors Lunch" />
+<img src="gallery/GoodFriday.png" alt="Good Friday" />
+<img src="gallery/featureholidayclub2023.jpeg" alt="Holiday Club 2023" />
+<img src="gallery/rascals1.JPG" alt="Rascals" />
+{{< /gallery >}}
 
 <script>
   (function() {
