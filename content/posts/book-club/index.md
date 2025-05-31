@@ -18,7 +18,7 @@ We're delighted to announce the launch of our **Charleston Community Book Club**
 
 ## 📚☕ What to Expect
 
-We meet in the cosy setting of the [*Charleston Community Centre Library*](../../../contact/#charleston-community-centre) for an hour of discussion, reflection, and chat. Each month, we read a different book and gather to talk about what stood out, what made us laugh or cry, and what we learned. 
+We meet in the [*Charleston Community Centre Library*](../../../contact/#charleston-community-centre) for an hour of discussion, reflection, and chat. Each month, we read a different book and gather to talk about what stood out, what made us laugh or cry, and what we learned. 
 
 There’s no pressure to have finished the book or to speak if you’d rather listen. The group is relaxed, informal, and open to all.
 
