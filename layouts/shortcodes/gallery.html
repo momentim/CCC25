@@ -11,23 +11,22 @@
 }
 
 .gallery-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: block;
+  column-count: 2;
+  column-gap: 2px;
 }
 
 @media (min-width: 768px) {
   .gallery-grid {
-    display: block;
     column-count: 3;
-    column-gap: 0;
+    column-gap: 2px;
   }
 }
 
 @media (min-width: 1280px) {
   .gallery-grid {
     column-count: 4;
-    column-gap: 0;
+    column-gap: 2px;
   }
 }
 
@@ -35,7 +34,7 @@
   width: 100%;
   height: auto;
   display: block;
-  margin: 0;
+  margin: 1px;
   padding: 0;
   border-radius: 1px;
   cursor: pointer;
@@ -93,10 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let overlay = null;
 
   galleryImages.forEach(img => {
-    img.addEventListener('click', function() {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent event bubbling
+      
       if (this.classList.contains('expanded')) {
         // Close expanded image
         this.classList.remove('expanded');
+        this.style.cssText = '';
         if (overlay) {
           overlay.remove();
           overlay = null;
