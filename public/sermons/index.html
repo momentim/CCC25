@@ -104,7 +104,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "69"
+    "wordCount": "102"
   }]
   </script>
 
@@ -994,69 +994,154 @@
     <div id="here-is-the-latest-sermon-from-our-channel" class="anchor"></div>
     
 </h2>
-<style>
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-  }
+<p>Sermons from the book of Psalms.
+<a href="https://www.youtube.com/playlist?list=PLZ7PZ5No1npHeF43QNrLn-x4-2Nh4B1h2" target="_blank">
 
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
-<script>
-const YOUTUBE_API_KEY = 'AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw';
-const CHANNEL_ID = 'UC2SC7RXekX9eLkqmTsQy4SA';
 
-async function fetchLatestSermon() {
-  const res = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&order=date&maxResults=1&part=snippet`);
-  const data = await res.json();
-  const video = data.items[0];
 
-  const videoId = video.id.videoId || video.id; // fallback if ID is a string
-  const description = video.snippet.description;
-  const cutoffIndex = description.indexOf('https://charleston-church.com');
 
-  // Get all text before the church website
-  let introText = description;
-  if (cutoffIndex !== -1) {
-    introText = description.substring(0, cutoffIndex).trim();
-  }
 
-  // Break into clean, non-empty lines
-  const cleanLines = introText.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Psalms"
+    srcset="
+      /sermons/psalm_hu112c64139efa59845624d2cf6a66dc1d_122858_330x0_resize_q75_box.jpg 330w,
+      /sermons/psalm_hu112c64139efa59845624d2cf6a66dc1d_122858_660x0_resize_q75_box.jpg 660w,
+      /sermons/psalm_hu112c64139efa59845624d2cf6a66dc1d_122858_1280x0_resize_q75_box.jpg 1280w"
+    data-zoom-src="/sermons/psalm.jpg"
+    src="/sermons/psalm.jpg"
+  />
 
-  // Display all lines
-  const sermonText = cleanLines.map(line => `<p>${line}</p>`).join('');
+  
+</figure>
+</a></p>
+<p>Sermons from Matthew 26 - 28.
+<a href="https://youtube.com/playlist?list=PLZ7PZ5No1npFhnvj6IZ21zI9Rf8Vpc8SM" target="_blank">
 
-  // Display the video
-  document.getElementById('sermon-video').innerHTML = `
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-    </div>
-  `;
 
-  // Display the intro text
-  document.getElementById('sermon-description').innerHTML = sermonText;
-}
 
-fetchLatestSermon();
-</script>
-<div id="sermon-video"></div>
-<div id="sermon-description" style="margin-top: 1rem;"></div>
-<div class="error">
-        <p>Error: YouTube API key not found. Please set YOUTUBE_API_KEY environment variable.</p>
-    </div>
-<div class="error">
-        <p>Error: YouTube API key not found. Please set YOUTUBE_API_KEY environment variable.</p>
-    </div>
+
+
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Matthew"
+    srcset="
+      /sermons/Matthew26-28_hu6004af2a0e0690370c004d1ed500e2d0_93296_330x0_resize_q75_box.jpg 330w,
+      /sermons/Matthew26-28_hu6004af2a0e0690370c004d1ed500e2d0_93296_660x0_resize_q75_box.jpg 660w,
+      /sermons/Matthew26-28_hu6004af2a0e0690370c004d1ed500e2d0_93296_1280x0_resize_q75_box.jpg 1280w"
+    data-zoom-src="/sermons/Matthew26-28.jpg"
+    src="/sermons/Matthew26-28.jpg"
+  />
+
+  
+</figure>
+</a></p>
+<p>Sermons from the book of Romans.
+<a href="https://www.youtube.com/playlist?list=PLZ7PZ5No1npH_UcNcjYZyYcrYeeKQMIzK" target="_blank">
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Romans"
+    srcset="
+      /sermons/romans_hu447e204f4d18572619e9ad6f34ad1dde_109397_330x0_resize_q75_box.jpg 330w,
+      /sermons/romans_hu447e204f4d18572619e9ad6f34ad1dde_109397_660x0_resize_q75_box.jpg 660w,
+      /sermons/romans_hu447e204f4d18572619e9ad6f34ad1dde_109397_1280x0_resize_q75_box.jpg 1280w"
+    data-zoom-src="/sermons/romans.jpg"
+    src="/sermons/romans.jpg"
+  />
+
+  
+</figure>
+</a></p>
+<p>Sermons from the book of Ezekiel.
+<a href="https://youtube.com/playlist?list=PLZ7PZ5No1npH1kYINoIExstWl13VgVlHS" target="_blank">
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Ezekiel"
+    srcset="
+      /sermons/ezekiel_hud0c3f2953b4adad4286a3166ec0df818_178523_330x0_resize_q75_box.jpg 330w,
+      /sermons/ezekiel_hud0c3f2953b4adad4286a3166ec0df818_178523_660x0_resize_q75_box.jpg 660w,
+      /sermons/ezekiel_hud0c3f2953b4adad4286a3166ec0df818_178523_1280x0_resize_q75_box.jpg 1280w"
+    data-zoom-src="/sermons/ezekiel.jpg"
+    src="/sermons/ezekiel.jpg"
+  />
+
+  
+</figure>
+</a></p>
+<p>Sermons from the book of Proverbs.
+<a href="https://www.youtube.com/playlist?list=PLZ7PZ5No1npHiTWJwyro44LlU7nntV73U" target="_blank">
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Proverbs"
+    srcset="
+      /sermons/proverbs_hued6fffab6e06506a3c8d2b3a4a1b0456_626138_330x0_resize_q75_box.jpg 330w,
+      /sermons/proverbs_hued6fffab6e06506a3c8d2b3a4a1b0456_626138_660x0_resize_q75_box.jpg 660w,
+      /sermons/proverbs_hued6fffab6e06506a3c8d2b3a4a1b0456_626138_1280x0_resize_q75_box.jpg 1280w"
+    data-zoom-src="/sermons/proverbs.jpg"
+    src="/sermons/proverbs.jpg"
+  />
+
+  
+</figure>
+</a></p>
+<p>Sermons from the book of 1 Corinthians.
+<a href="https://www.youtube.com/playlist?list=PLZ7PZ5No1npGMp6oUXeZn1pugg4qcAiJv" target="_blank">
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="1Corinthians"
+    srcset="
+      /sermons/1corinthians_hu181214c45f25e042803803a4ec2a0f47_712406_330x0_resize_box_3.PNG 330w,
+      /sermons/1corinthians_hu181214c45f25e042803803a4ec2a0f47_712406_660x0_resize_box_3.PNG 660w,
+      /sermons/1corinthians_hu181214c45f25e042803803a4ec2a0f47_712406_1280x0_resize_box_3.PNG 1280w"
+    data-zoom-src="/sermons/1corinthians.PNG"
+    src="/sermons/1corinthians.PNG"
+  />
+
+  
+</figure>
+</a></p>
+<p>Sermons from the book of Daniel.
+<a href="https://www.youtube.com/playlist?list=PLZ7PZ5No1npGhHOvUH2ySo5DkqhDe7FO6" target="_blank">
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Daniel"
+    srcset="
+      /sermons/daniel_hu1e19838580a34cf2bda9ea647bd873f8_94572_330x0_resize_q75_box.jpeg 330w,
+      /sermons/daniel_hu1e19838580a34cf2bda9ea647bd873f8_94572_660x0_resize_q75_box.jpeg 660w,
+      /sermons/daniel_hu1e19838580a34cf2bda9ea647bd873f8_94572_1280x0_resize_q75_box.jpeg 1280w"
+    data-zoom-src="/sermons/daniel.jpeg"
+    src="/sermons/daniel.jpeg"
+  />
+
+  
+</figure>
+</a></p>
+<p>There are many other sermons and sermon series on <a href="https://www.youtube.com/channel/UC2SC7RXekX9eLkqmTsQy4SA" target="_blank">Our Youtube Channel</a>.</p>
 
           
           
