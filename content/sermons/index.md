@@ -75,9 +75,9 @@ fetchLatestSermon();
 <div id="sermon-video"></div>
 <div id="sermon-description" style="margin-top: 1rem;"></div>
 
-{{< youtubeplaylist playlistId="PLZ7PZ5No1npHeF43QNrLn-x4-2Nh4B1h2" apiKey="AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw" order="chronological" >}}
+{{< youtubeplaylist playlistId="PLZ7PZ5No1npHeF43QNrLn-x4-2Nh4B1h2" order="chronological" >}}
 
-{{< youtubeplaylist playlistId="PLZ7PZ5No1npHiTWJwyro44LlU7nntV73U" apiKey="AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw" order="chronological" >}}
+{{< youtubeplaylist playlistId="PLZ7PZ5No1npHiTWJwyro44LlU7nntV73U" order="chronological" >}}
 
 
 

@@ -18,6 +18,10 @@ enableEmoji = true
 
 # googleAnalytics = "G-XXXXXXXXX"
 
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$', '^YOUTUBE_API_KEY$']
+
 [pagination]
   pagerSize = 100
 

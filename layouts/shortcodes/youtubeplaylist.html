@@ -7,13 +7,12 @@
   Parameters:
   - playlistId (required): The ID of the YouTube playlist.
   - order (optional): The order of videos. Can be "chronological", "reverseChronological", or "alpha". Default is "chronological".
-  - apiKey (required): Your YouTube Data API Key. It's recommended to set this as an environment variable or site parameter
-                      rather than hardcoding it directly in the shortcode for security.
+
 */}}
 
 {{ $playlistId := .Get "playlistId" }}
 {{ $order := .Get "order" | default "chronological" }}
-{{ $apiKey := .Get "apiKey" }} {{/* Consider site params or env variables for security */}}
+{{ $apiKey := .Get "apiKey" | default (site.Params.youtube_api_key | default (getenv "YOUTUBE_API_KEY")) }}
 
 {{ if not $playlistId }}
     <div class="error">
@@ -25,7 +24,7 @@
         Please provide your YouTube Data API Key.
     </div>
 {{ else }}
-    {{ $uniqueId := printf "playlist-accordion-%s" (substr $playlistId 0 16) }}
+    {{ $uniqueId := printf "playlist-accordion-%s-%d" (substr $playlistId 0 16) now.UnixNano }}
 
     <div class="youtube-playlist-accordion"
          id="{{ $uniqueId }}"
@@ -38,6 +37,32 @@
     </div>
 
     <script>
+        // Global API call queue to prevent rate limiting
+        window.youtubePlaylistQueue = window.youtubePlaylistQueue || [];
+        window.youtubePlaylistProcessing = window.youtubePlaylistProcessing || false;
+
+        // Function to process API calls sequentially
+        async function processApiQueue() {
+            if (window.youtubePlaylistProcessing || window.youtubePlaylistQueue.length === 0) {
+                return;
+            }
+            
+            window.youtubePlaylistProcessing = true;
+            
+            while (window.youtubePlaylistQueue.length > 0) {
+                const apiCall = window.youtubePlaylistQueue.shift();
+                try {
+                    await apiCall();
+                    // Add delay between API calls to prevent rate limiting
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                } catch (error) {
+                    console.error('API call failed:', error);
+                }
+            }
+            
+            window.youtubePlaylistProcessing = false;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const rootElement = document.getElementById('{{ $uniqueId }}');
             if (!rootElement) return;
@@ -60,10 +85,10 @@
                         throw new Error(`YouTube API Error: ${errorData.error.message}`);
                     }
                     const data = await response.json();
-                    if (data.items.length > 0) {
+                    if (data.items && data.items.length > 0) {
                         return data.items[0].snippet;
                     }
-                    return null;
+                    throw new Error('Playlist not found');
                 } catch (error) {
                     console.error('Error fetching playlist details:', error);
                     displayError(error.message);
@@ -120,32 +145,39 @@
 
             // Function to render the playlist accordion
             async function renderPlaylist() {
-                const playlistDetails = await fetchPlaylistDetails();
-                if (!playlistDetails) {
-                    return; // Error already displayed
-                }
+                return new Promise((resolve, reject) => {
+                    const apiCall = async () => {
+                        try {
+                            const playlistDetails = await fetchPlaylistDetails();
+                            if (!playlistDetails) {
+                                reject(new Error('Failed to fetch playlist details'));
+                                return;
+                            }
 
-                let allVideos = [];
-                let pageToken = '';
-                do {
-                    const data = await fetchPlaylistItems(pageToken);
-                    if (!data) return; // Error already displayed
-                    allVideos = allVideos.concat(data.items);
-                    pageToken = data.nextPageToken;
-                } while (pageToken);
+                            let allVideos = [];
+                            let pageToken = '';
+                            do {
+                                const data = await fetchPlaylistItems(pageToken);
+                                if (!data) {
+                                    reject(new Error('Failed to fetch playlist items'));
+                                    return;
+                                }
+                                allVideos = allVideos.concat(data.items);
+                                pageToken = data.nextPageToken;
+                            } while (pageToken);
 
-                if (loadingElement) {
-                    loadingElement.remove();
-                }
+                            if (loadingElement && loadingElement.parentNode) {
+                                loadingElement.remove();
+                            }
 
-                // Sort videos based on the 'order' parameter
-                if (order === "reverseChronological") {
-                    allVideos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
-                } else if (order === "alpha") {
-                    allVideos.sort((a, b) => a.snippet.title.localeCompare(b.snippet.title));
-                } else { // default to chronological
-                    allVideos.sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt));
-                }
+                            // Sort videos based on the 'order' parameter
+                            if (order === "reverseChronological") {
+                                allVideos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
+                            } else if (order === "alpha") {
+                                allVideos.sort((a, b) => a.snippet.title.localeCompare(b.snippet.title));
+                            } else { // default to chronological
+                                allVideos.sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt));
+                            }
 
                 // Create main accordion container with styling
                 const accordionContainer = document.createElement('div');
@@ -260,12 +292,28 @@
                     }
                 });
 
-                accordionContainer.appendChild(playlistHeader);
-                accordionContainer.appendChild(videosContainer);
-                rootElement.appendChild(accordionContainer);
+                            accordionContainer.appendChild(playlistHeader);
+                            accordionContainer.appendChild(videosContainer);
+                            rootElement.appendChild(accordionContainer);
+                            
+                            resolve();
+                        } catch (error) {
+                            console.error('Error in renderPlaylist:', error);
+                            displayError(error.message);
+                            reject(error);
+                        }
+                    };
+                    
+                    // Add to queue
+                    window.youtubePlaylistQueue.push(apiCall);
+                    processApiQueue();
+                });
             }
 
-            renderPlaylist();
+            // Start the rendering process
+            renderPlaylist().catch(error => {
+                console.error('Failed to render playlist:', error);
+            });
         });
     </script>
 {{ end }}
