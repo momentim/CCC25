@@ -1055,14 +1055,13 @@ fetchLatestSermon();
 
 
 
-
  
 
 
     
 
-    <div class="youtube-playlist-root"
-         id="playlist-display-PLZ7PZ5No1npHeF4"
+    <div class="youtube-playlist-accordion"
+         id="playlist-accordion-PLZ7PZ5No1npHeF4"
          data-api-key="AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw"
          data-playlist-id="PLZ7PZ5No1npHeF43QNrLn-x4-2Nh4B1h2"
          data-order="chronological">
@@ -1071,10 +1070,9 @@ fetchLatestSermon();
         </div>
     </div>
 
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const rootElement = document.getElementById('playlist-display-PLZ7PZ5No1npHeF4');
+            const rootElement = document.getElementById('playlist-accordion-PLZ7PZ5No1npHeF4');
             if (!rootElement) return;
 
             const apiKey = rootElement.dataset.apiKey;
@@ -1140,6 +1138,20 @@ fetchLatestSermon();
             }
 
             
+            function truncateDescription(description) {
+                if (!description) return 'No description available.';
+                
+                const charlestonRegex = /https?:\/\/charlestonchurch/i;
+                const match = description.match(charlestonRegex);
+                
+                if (match) {
+                    return description.substring(0, match.index).trim();
+                }
+                
+                return description;
+            }
+
+            
             async function renderPlaylist() {
                 const playlistDetails = await fetchPlaylistDetails();
                 if (!playlistDetails) {
@@ -1168,93 +1180,103 @@ fetchLatestSermon();
                     allVideos.sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt));
                 }
 
-
-                const playlistContainer = document.createElement('div');
-                playlistContainer.className = 'playlist-container';
-                rootElement.appendChild(playlistContainer);
+                
+                const accordionContainer = document.createElement('div');
+                accordionContainer.className = 'accordion-container';
 
                 
                 const playlistHeader = document.createElement('div');
-                playlistHeader.className = 'playlist-header collapsed';
+                playlistHeader.className = 'playlist-header';
                 playlistHeader.innerHTML = `
-                    <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}" class="playlist-thumbnail">
-                    <h2 class="playlist-title">${playlistDetails.title}</h2>
-                    <p class="playlist-info">${playlistDetails.description ? playlistDetails.description.substring(0, 150) + '...' : ''}</p>
-                    <p class="expand-hint">Click to expand playlist (${allVideos.length} videos)</p>
+                    <h2>${playlistDetails.title}</h2>
+                    <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}">
+                    <button class="toggle-btn">Show Videos</button>
                 `;
-                playlistContainer.appendChild(playlistHeader);
-
-                
-                const controls = document.createElement('div');
-                controls.className = 'controls'; 
-                playlistContainer.appendChild(controls);
-
 
                 
                 const videosContainer = document.createElement('div');
-                videosContainer.className = 'videos-container'; 
-                playlistContainer.appendChild(videosContainer);
+                videosContainer.className = 'videos-container';
+                videosContainer.style.display = 'none';
 
+                
                 allVideos.forEach((video, index) => {
                     const videoItem = document.createElement('div');
-                    videoItem.className = 'video-item-display'; 
-
-                    const videoUrl = `https://www.youtube.com/playlist?list=PLBEEA1498B199049A1{video.contentDetails.videoId}`;
-                    const publishedDate = new Date(video.snippet.publishedAt).toLocaleDateString(undefined, {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                    const description = video.snippet.description || 'No description available.';
-
-                    videoItem.innerHTML = `
-                        <h3 class="video-display-title">
-                            <a href="${videoUrl}" target="_blank" rel="noopener noreferrer">${video.snippet.title}</a>
-                        </h3>
-                        <p class="video-display-date"><i>${publishedDate}</i></p>
-                        <p class="video-display-description">${description}</p>
+                    videoItem.className = 'video-item';
+                    
+                    
+                    const videoTitle = document.createElement('a');
+                    videoTitle.href = '#';
+                    videoTitle.textContent = video.snippet.title;
+                    videoTitle.className = 'video-title-link';
+                    
+                    
+                    const videoContent = document.createElement('div');
+                    videoContent.className = 'video-content';
+                    videoContent.style.display = 'none';
+                    
+                    
+                    const publishDate = new Date(video.snippet.publishedAt).toLocaleDateString();
+                    
+                    
+                    const truncatedDescription = truncateDescription(video.snippet.description);
+                    
+                    videoContent.innerHTML = `
+                        <div class="video-embed">
+                            <iframe 
+                                src="https://www.youtube.com/embed/${video.contentDetails.videoId}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="video-meta">
+                            <p><strong>Published:</strong> ${publishDate}</p>
+                            <p><strong>Description:</strong> ${truncatedDescription}</p>
+                        </div>
                     `;
-
-                    videosContainer.appendChild(videoItem);
-
+                    
+                    
+                    videoTitle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (videoContent.style.display === 'none') {
+                            videoContent.style.display = 'block';
+                        } else {
+                            videoContent.style.display = 'none';
+                        }
+                    });
+                    
+                    videoItem.appendChild(videoTitle);
+                    videoItem.appendChild(videoContent);
+                    
                     
                     if (index < allVideos.length - 1) {
-                        videosContainer.appendChild(document.createElement('hr'));
+                        const hr = document.createElement('hr');
+                        videoItem.appendChild(hr);
+                    }
+                    
+                    videosContainer.appendChild(videoItem);
+                });
+
+                
+                const toggleBtn = playlistHeader.querySelector('.toggle-btn');
+                toggleBtn.addEventListener('click', function() {
+                    if (videosContainer.style.display === 'none') {
+                        videosContainer.style.display = 'block';
+                        toggleBtn.textContent = 'Hide Videos';
+                    } else {
+                        videosContainer.style.display = 'none';
+                        toggleBtn.textContent = 'Show Videos';
+                        
+                        const allVideoContent = videosContainer.querySelectorAll('.video-content');
+                        allVideoContent.forEach(content => {
+                            content.style.display = 'none';
+                        });
                     }
                 });
 
-                
-                const closeFooter = document.createElement('div');
-                closeFooter.className = 'close-footer';
-                closeFooter.textContent = 'Click to collapse playlist';
-                playlistContainer.appendChild(closeFooter);
-
-                
-                playlistHeader.addEventListener('click', () => {
-                    const isCollapsed = playlistHeader.classList.contains('collapsed');
-                    playlistHeader.classList.toggle('collapsed', !isCollapsed);
-                    controls.classList.toggle('visible', isCollapsed);
-                    videosContainer.classList.toggle('visible', isCollapsed);
-                    closeFooter.classList.toggle('visible', isCollapsed);
-
-                    playlistHeader.querySelector('.expand-hint').style.display = isCollapsed ? 'none' : 'block';
-                    
-                    playlistHeader.querySelector('.playlist-title').style.display = isCollapsed ? 'block' : 'none';
-                    playlistHeader.querySelector('.playlist-info').style.display = isCollapsed ? 'block' : 'none';
-                    playlistHeader.querySelector('.playlist-thumbnail').style.display = isCollapsed ? 'block' : 'none';
-                });
-
-                closeFooter.addEventListener('click', () => {
-                    playlistHeader.classList.add('collapsed');
-                    controls.classList.remove('visible');
-                    videosContainer.classList.remove('visible');
-                    closeFooter.classList.remove('visible');
-                    playlistHeader.querySelector('.expand-hint').style.display = 'block';
-                    playlistHeader.querySelector('.playlist-title').style.display = 'block';
-                    playlistHeader.querySelector('.playlist-info').style.display = 'block';
-                    playlistHeader.querySelector('.playlist-thumbnail').style.display = 'block';
-                });
-
+                accordionContainer.appendChild(playlistHeader);
+                accordionContainer.appendChild(videosContainer);
+                rootElement.appendChild(accordionContainer);
             }
 
             renderPlaylist();
