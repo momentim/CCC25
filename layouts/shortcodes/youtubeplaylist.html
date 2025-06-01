@@ -147,9 +147,11 @@
                     allVideos.sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt));
                 }
 
-                // Create main accordion container
+                // Create main accordion container with styling
                 const accordionContainer = document.createElement('div');
                 accordionContainer.className = 'accordion-container';
+                accordionContainer.style.border = '1px solid yellow';
+                accordionContainer.style.padding = '10px';
 
                 // Create playlist header (always visible)
                 const playlistHeader = document.createElement('div');
@@ -157,7 +159,7 @@
                 playlistHeader.innerHTML = `
                     <h2>${playlistDetails.title}</h2>
                     <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}">
-                    <button class="toggle-btn">Show Videos</button>
+                    <button class="toggle-btn">Show ${playlistDetails.title} Videos</button>
                 `;
 
                 // Create videos container (initially hidden)
@@ -173,7 +175,7 @@
                     // Create video title link
                     const videoTitle = document.createElement('a');
                     videoTitle.href = '#';
-                    videoTitle.textContent = video.snippet.title;
+                    videoTitle.textContent = `Video Title: ${video.snippet.title}`;
                     videoTitle.className = 'video-title-link';
                     
                     // Create video content container (initially hidden)
@@ -187,37 +189,50 @@
                     // Truncate description at Charleston Church URL
                     const truncatedDescription = truncateDescription(video.snippet.description);
                     
-                    videoContent.innerHTML = `
-                        <div class="video-embed">
-                            <iframe 
-                                src="https://www.youtube.com/embed/${video.contentDetails.videoId}"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="video-meta">
-                            <p><strong>Published:</strong> ${publishDate}</p>
-                            <p><strong>Description:</strong> ${truncatedDescription}</p>
-                        </div>
+                    // Create description and date container (initially visible when video list is shown)
+                    const videoMeta = document.createElement('div');
+                    videoMeta.className = 'video-meta-info';
+                    videoMeta.innerHTML = `
+                        <p><strong>Published:</strong> ${publishDate}</p>
+                        <p><strong>Description:</strong> ${truncatedDescription}</p>
+                    `;
+                    
+                    // Create video embed container (only shown when video title is clicked)
+                    const videoEmbed = document.createElement('div');
+                    videoEmbed.className = 'video-embed';
+                    videoEmbed.style.display = 'none';
+                    videoEmbed.innerHTML = `
+                        <iframe 
+                            src="https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     `;
                     
                     // Add click event to video title
                     videoTitle.addEventListener('click', function(e) {
                         e.preventDefault();
-                        if (videoContent.style.display === 'none') {
-                            videoContent.style.display = 'block';
+                        if (videoEmbed.style.display === 'none') {
+                            // Hide description/date and show video
+                            videoMeta.style.display = 'none';
+                            videoEmbed.style.display = 'block';
                         } else {
-                            videoContent.style.display = 'none';
+                            // Show description/date and hide video
+                            videoMeta.style.display = 'block';
+                            videoEmbed.style.display = 'none';
                         }
                     });
                     
                     videoItem.appendChild(videoTitle);
-                    videoItem.appendChild(videoContent);
+                    videoItem.appendChild(videoMeta);
+                    videoItem.appendChild(videoEmbed);
                     
                     // Add horizontal line after each video (except the last one)
                     if (index < allVideos.length - 1) {
                         const hr = document.createElement('hr');
+                        hr.style.borderColor = 'yellow';
+                        hr.style.borderWidth = '1px';
                         videoItem.appendChild(hr);
                     }
                     
@@ -229,14 +244,18 @@
                 toggleBtn.addEventListener('click', function() {
                     if (videosContainer.style.display === 'none') {
                         videosContainer.style.display = 'block';
-                        toggleBtn.textContent = 'Hide Videos';
+                        toggleBtn.textContent = `Hide ${playlistDetails.title} Videos`;
                     } else {
                         videosContainer.style.display = 'none';
-                        toggleBtn.textContent = 'Show Videos';
-                        // Hide all expanded videos when hiding the list
-                        const allVideoContent = videosContainer.querySelectorAll('.video-content');
-                        allVideoContent.forEach(content => {
-                            content.style.display = 'none';
+                        toggleBtn.textContent = `Show ${playlistDetails.title} Videos`;
+                        // Hide all expanded videos and show meta info when hiding the list
+                        const allVideoEmbeds = videosContainer.querySelectorAll('.video-embed');
+                        const allVideoMeta = videosContainer.querySelectorAll('.video-meta-info');
+                        allVideoEmbeds.forEach(embed => {
+                            embed.style.display = 'none';
+                        });
+                        allVideoMeta.forEach(meta => {
+                            meta.style.display = 'block';
                         });
                     }
                 });
