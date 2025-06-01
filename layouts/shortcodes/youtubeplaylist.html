@@ -1,0 +1,236 @@
+{{/*
+  This shortcode displays a YouTube playlist.
+
+  Usage:
+  {{< youtube_playlist playlistId="PLABC123..." order="chronological" >}}
+
+  Parameters:
+  - playlistId (required): The ID of the YouTube playlist.
+  - order (optional): The order of videos. Can be "chronological", "reverseChronological", or "alpha". Default is "chronological".
+  - apiKey (required): Your YouTube Data API Key. It's recommended to set this as an environment variable or site parameter
+                      rather than hardcoding it directly in the shortcode for security.
+*/}}
+
+{{ $playlistId := .Get "playlistId" }}
+{{ $order := .Get "order" | default "chronological" }}
+{{ $apiKey := .Get "apiKey" }} {{/* Consider site params or env variables for security */}}
+
+{{ if not $playlistId }}
+    <div class="error">
+        Error: 'playlistId' parameter is required for the youtube_playlist shortcode.
+    </div>
+{{ else if not $apiKey }}
+    <div class="error">
+        Error: 'apiKey' parameter is required for the youtube_playlist shortcode.
+        Please provide your YouTube Data API Key.
+    </div>
+{{ else }}
+    {{ $uniqueId := printf "playlist-display-%s" (substr $playlistId 0 16) }}
+
+    <div class="youtube-playlist-root"
+         id="{{ $uniqueId }}"
+         data-api-key="{{ $apiKey }}"
+         data-playlist-id="{{ $playlistId }}"
+         data-order="{{ $order }}">
+        <div class="loading">
+            <p>Loading playlist...</p>
+        </div>
+    </div>
+
+    {{/* Inline JavaScript for simplicity; consider externalizing for larger projects */}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rootElement = document.getElementById('{{ $uniqueId }}');
+            if (!rootElement) return;
+
+            const apiKey = rootElement.dataset.apiKey;
+            const playlistId = rootElement.dataset.playlistId;
+            const order = rootElement.dataset.order;
+            const loadingElement = rootElement.querySelector('.loading');
+
+            const API_BASE_URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
+            const PLAYLISTS_API_URL = 'https://www.googleapis.com/youtube/v3/playlists';
+
+            // Function to fetch playlist details (title, description, thumbnail)
+            async function fetchPlaylistDetails() {
+                const url = `${PLAYLISTS_API_URL}?part=snippet,contentDetails&id=${playlistId}&key=${apiKey}`;
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`YouTube API Error: ${errorData.error.message}`);
+                    }
+                    const data = await response.json();
+                    if (data.items.length > 0) {
+                        return data.items[0].snippet;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Error fetching playlist details:', error);
+                    displayError(error.message);
+                    return null;
+                }
+            }
+
+            // Function to fetch playlist items
+            async function fetchPlaylistItems(nextPageToken = '') {
+                let url = `${API_BASE_URL}?part=snippet,contentDetails&playlistId=${playlistId}&key=${apiKey}&maxResults=50`;
+                if (nextPageToken) {
+                    url += `&pageToken=${nextPageToken}`;
+                }
+
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`YouTube API Error: ${errorData.error.message}`);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error('Error fetching playlist items:', error);
+                    displayError(error.message);
+                    return null;
+                }
+            }
+
+            // Function to display an error message
+            function displayError(message) {
+                if (loadingElement) {
+                    loadingElement.remove();
+                }
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.innerHTML = `<p>Failed to load YouTube playlist: ${message}</p>`;
+                rootElement.appendChild(errorDiv);
+            }
+
+            // Function to render the playlist
+            async function renderPlaylist() {
+                const playlistDetails = await fetchPlaylistDetails();
+                if (!playlistDetails) {
+                    return; // Error already displayed
+                }
+
+                let allVideos = [];
+                let pageToken = '';
+                do {
+                    const data = await fetchPlaylistItems(pageToken);
+                    if (!data) return; // Error already displayed
+                    allVideos = allVideos.concat(data.items);
+                    pageToken = data.nextPageToken;
+                } while (pageToken);
+
+                if (loadingElement) {
+                    loadingElement.remove();
+                }
+
+                // Sort videos based on the 'order' parameter
+                if (order === "reverseChronological") {
+                    allVideos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
+                } else if (order === "alpha") {
+                    allVideos.sort((a, b) => a.snippet.title.localeCompare(b.snippet.title));
+                } else { // default to chronological
+                    allVideos.sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt));
+                }
+
+
+                const playlistContainer = document.createElement('div');
+                playlistContainer.className = 'playlist-container';
+                rootElement.appendChild(playlistContainer);
+
+                // Render playlist header
+                const playlistHeader = document.createElement('div');
+                playlistHeader.className = 'playlist-header collapsed';
+                playlistHeader.innerHTML = `
+                    <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}" class="playlist-thumbnail">
+                    <h2 class="playlist-title">${playlistDetails.title}</h2>
+                    <p class="playlist-info">${playlistDetails.description.substring(0, 150)}...</p>
+                    <p class="expand-hint">Click to expand playlist (${allVideos.length} videos)</p>
+                `;
+                playlistContainer.appendChild(playlistHeader);
+
+                // Render controls (sort button - currently only one option)
+                const controls = document.createElement('div');
+                controls.className = 'controls'; // Will be made visible when expanded
+                // Add sorting button logic if needed
+                // const sortButton = document.createElement('button');
+                // sortButton.className = 'sort-button';
+                // sortButton.textContent = 'Sort by ...';
+                // controls.appendChild(sortButton);
+                playlistContainer.appendChild(controls);
+
+
+                // Render videos container
+                const videosContainer = document.createElement('div');
+                videosContainer.className = 'videos-container'; // Will be made visible when expanded
+                playlistContainer.appendChild(videosContainer);
+
+                allVideos.forEach(video => {
+                    const videoItem = document.createElement('div');
+                    videoItem.className = 'video-item';
+                    videoItem.innerHTML = `
+                        <div class="video-header">
+                            <h3 class="video-title">${video.snippet.title}</h3>
+                            <p class="video-preview">${video.snippet.description.substring(0, 100)}...</p>
+                            <p class="video-meta">Published: ${new Date(video.snippet.publishedAt).toLocaleDateString()}</p>
+                        </div>
+                        <div class="video-content">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/${video.contentDetails.videoId}"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <p class="video-description">${video.snippet.description || 'No description available.'}</p>
+                        </div>
+                    `;
+                    videosContainer.appendChild(videoItem);
+
+                    const videoHeader = videoItem.querySelector('.video-header');
+                    const videoContent = videoItem.querySelector('.video-content');
+
+                    videoHeader.addEventListener('click', () => {
+                        videoContent.classList.toggle('visible');
+                        videoHeader.classList.toggle('active');
+                    });
+                });
+
+                // Render close footer
+                const closeFooter = document.createElement('div');
+                closeFooter.className = 'close-footer';
+                closeFooter.textContent = 'Click to collapse playlist';
+                playlistContainer.appendChild(closeFooter);
+
+                // Toggle playlist expansion
+                playlistHeader.addEventListener('click', () => {
+                    const isCollapsed = playlistHeader.classList.contains('collapsed');
+                    playlistHeader.classList.toggle('collapsed', !isCollapsed);
+                    controls.classList.toggle('visible', isCollapsed);
+                    videosContainer.classList.toggle('visible', isCollapsed);
+                    closeFooter.classList.toggle('visible', isCollapsed);
+
+                    playlistHeader.querySelector('.expand-hint').style.display = isCollapsed ? 'none' : 'block';
+                    // Hide the header text when expanded, show when collapsed
+                    playlistHeader.querySelector('.playlist-title').style.display = isCollapsed ? 'block' : 'none';
+                    playlistHeader.querySelector('.playlist-info').style.display = isCollapsed ? 'block' : 'none';
+                    playlistHeader.querySelector('.playlist-thumbnail').style.display = isCollapsed ? 'block' : 'none';
+                });
+
+                closeFooter.addEventListener('click', () => {
+                    playlistHeader.classList.add('collapsed');
+                    controls.classList.remove('visible');
+                    videosContainer.classList.remove('visible');
+                    closeFooter.classList.remove('visible');
+                    playlistHeader.querySelector('.expand-hint').style.display = 'block';
+                    playlistHeader.querySelector('.playlist-title').style.display = 'block';
+                    playlistHeader.querySelector('.playlist-info').style.display = 'block';
+                    playlistHeader.querySelector('.playlist-thumbnail').style.display = 'block';
+                });
+
+            }
+
+            renderPlaylist();
+        });
+    </script>
+{{ end }}
