@@ -1055,6 +1055,7 @@ fetchLatestSermon();
 
 
 
+
  
 
 
@@ -1178,7 +1179,7 @@ fetchLatestSermon();
                 playlistHeader.innerHTML = `
                     <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}" class="playlist-thumbnail">
                     <h2 class="playlist-title">${playlistDetails.title}</h2>
-                    <p class="playlist-info">${playlistDetails.description.substring(0, 150)}...</p>
+                    <p class="playlist-info">${playlistDetails.description ? playlistDetails.description.substring(0, 150) + '...' : ''}</p>
                     <p class="expand-hint">Click to expand playlist (${allVideos.length} videos)</p>
                 `;
                 playlistContainer.appendChild(playlistHeader);
@@ -1186,11 +1187,6 @@ fetchLatestSermon();
                 
                 const controls = document.createElement('div');
                 controls.className = 'controls'; 
-                
-                
-                
-                
-                
                 playlistContainer.appendChild(controls);
 
 
@@ -1199,34 +1195,32 @@ fetchLatestSermon();
                 videosContainer.className = 'videos-container'; 
                 playlistContainer.appendChild(videosContainer);
 
-                allVideos.forEach(video => {
+                allVideos.forEach((video, index) => {
                     const videoItem = document.createElement('div');
-                    videoItem.className = 'video-item';
+                    videoItem.className = 'video-item-display'; 
+
+                    const videoUrl = `https://www.youtube.com/playlist?list=PLBEEA1498B199049A1{video.contentDetails.videoId}`;
+                    const publishedDate = new Date(video.snippet.publishedAt).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    const description = video.snippet.description || 'No description available.';
+
                     videoItem.innerHTML = `
-                        <div class="video-header">
-                            <h3 class="video-title">${video.snippet.title}</h3>
-                            <p class="video-preview">${video.snippet.description.substring(0, 100)}...</p>
-                            <p class="video-meta">Published: ${new Date(video.snippet.publishedAt).toLocaleDateString()}</p>
-                        </div>
-                        <div class="video-content">
-                            <div class="video-container">
-                                <iframe src="https://www.youtube.com/embed/${video.contentDetails.videoId}"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                            </div>
-                            <p class="video-description">${video.snippet.description || 'No description available.'}</p>
-                        </div>
+                        <h3 class="video-display-title">
+                            <a href="${videoUrl}" target="_blank" rel="noopener noreferrer">${video.snippet.title}</a>
+                        </h3>
+                        <p class="video-display-date"><i>${publishedDate}</i></p>
+                        <p class="video-display-description">${description}</p>
                     `;
+
                     videosContainer.appendChild(videoItem);
 
-                    const videoHeader = videoItem.querySelector('.video-header');
-                    const videoContent = videoItem.querySelector('.video-content');
-
-                    videoHeader.addEventListener('click', () => {
-                        videoContent.classList.toggle('visible');
-                        videoHeader.classList.toggle('active');
-                    });
+                    
+                    if (index < allVideos.length - 1) {
+                        videosContainer.appendChild(document.createElement('hr'));
+                    }
                 });
 
                 
