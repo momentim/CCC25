@@ -104,7 +104,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "49"
+    "wordCount": "51"
   }]
   </script>
 
@@ -1183,6 +1183,8 @@ fetchLatestSermon();
                 
                 const accordionContainer = document.createElement('div');
                 accordionContainer.className = 'accordion-container';
+                accordionContainer.style.border = '1px solid yellow';
+                accordionContainer.style.padding = '10px';
 
                 
                 const playlistHeader = document.createElement('div');
@@ -1190,7 +1192,7 @@ fetchLatestSermon();
                 playlistHeader.innerHTML = `
                     <h2>${playlistDetails.title}</h2>
                     <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}">
-                    <button class="toggle-btn">Show Videos</button>
+                    <button class="toggle-btn">Show ${playlistDetails.title} Videos</button>
                 `;
 
                 
@@ -1206,7 +1208,7 @@ fetchLatestSermon();
                     
                     const videoTitle = document.createElement('a');
                     videoTitle.href = '#';
-                    videoTitle.textContent = video.snippet.title;
+                    videoTitle.textContent = `Video Title: ${video.snippet.title}`;
                     videoTitle.className = 'video-title-link';
                     
                     
@@ -1220,37 +1222,50 @@ fetchLatestSermon();
                     
                     const truncatedDescription = truncateDescription(video.snippet.description);
                     
-                    videoContent.innerHTML = `
-                        <div class="video-embed">
-                            <iframe 
-                                src="https://www.youtube.com/embed/${video.contentDetails.videoId}"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="video-meta">
-                            <p><strong>Published:</strong> ${publishDate}</p>
-                            <p><strong>Description:</strong> ${truncatedDescription}</p>
-                        </div>
+                    
+                    const videoMeta = document.createElement('div');
+                    videoMeta.className = 'video-meta-info';
+                    videoMeta.innerHTML = `
+                        <p><strong>Published:</strong> ${publishDate}</p>
+                        <p><strong>Description:</strong> ${truncatedDescription}</p>
+                    `;
+                    
+                    
+                    const videoEmbed = document.createElement('div');
+                    videoEmbed.className = 'video-embed';
+                    videoEmbed.style.display = 'none';
+                    videoEmbed.innerHTML = `
+                        <iframe 
+                            src="https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     `;
                     
                     
                     videoTitle.addEventListener('click', function(e) {
                         e.preventDefault();
-                        if (videoContent.style.display === 'none') {
-                            videoContent.style.display = 'block';
+                        if (videoEmbed.style.display === 'none') {
+                            
+                            videoMeta.style.display = 'none';
+                            videoEmbed.style.display = 'block';
                         } else {
-                            videoContent.style.display = 'none';
+                            
+                            videoMeta.style.display = 'block';
+                            videoEmbed.style.display = 'none';
                         }
                     });
                     
                     videoItem.appendChild(videoTitle);
-                    videoItem.appendChild(videoContent);
+                    videoItem.appendChild(videoMeta);
+                    videoItem.appendChild(videoEmbed);
                     
                     
                     if (index < allVideos.length - 1) {
                         const hr = document.createElement('hr');
+                        hr.style.borderColor = 'yellow';
+                        hr.style.borderWidth = '1px';
                         videoItem.appendChild(hr);
                     }
                     
@@ -1262,14 +1277,269 @@ fetchLatestSermon();
                 toggleBtn.addEventListener('click', function() {
                     if (videosContainer.style.display === 'none') {
                         videosContainer.style.display = 'block';
-                        toggleBtn.textContent = 'Hide Videos';
+                        toggleBtn.textContent = `Hide ${playlistDetails.title} Videos`;
                     } else {
                         videosContainer.style.display = 'none';
-                        toggleBtn.textContent = 'Show Videos';
+                        toggleBtn.textContent = `Show ${playlistDetails.title} Videos`;
                         
-                        const allVideoContent = videosContainer.querySelectorAll('.video-content');
-                        allVideoContent.forEach(content => {
-                            content.style.display = 'none';
+                        const allVideoEmbeds = videosContainer.querySelectorAll('.video-embed');
+                        const allVideoMeta = videosContainer.querySelectorAll('.video-meta-info');
+                        allVideoEmbeds.forEach(embed => {
+                            embed.style.display = 'none';
+                        });
+                        allVideoMeta.forEach(meta => {
+                            meta.style.display = 'block';
+                        });
+                    }
+                });
+
+                accordionContainer.appendChild(playlistHeader);
+                accordionContainer.appendChild(videosContainer);
+                rootElement.appendChild(accordionContainer);
+            }
+
+            renderPlaylist();
+        });
+    </script>
+
+
+
+
+
+ 
+
+
+    
+
+    <div class="youtube-playlist-accordion"
+         id="playlist-accordion-PLZ7PZ5No1npHiTW"
+         data-api-key="AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw"
+         data-playlist-id="PLZ7PZ5No1npHiTWJwyro44LlU7nntV73U"
+         data-order="chronological">
+        <div class="loading">
+            <p>Loading playlist...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rootElement = document.getElementById('playlist-accordion-PLZ7PZ5No1npHiTW');
+            if (!rootElement) return;
+
+            const apiKey = rootElement.dataset.apiKey;
+            const playlistId = rootElement.dataset.playlistId;
+            const order = rootElement.dataset.order;
+            const loadingElement = rootElement.querySelector('.loading');
+
+            const API_BASE_URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
+            const PLAYLISTS_API_URL = 'https://www.googleapis.com/youtube/v3/playlists';
+
+            
+            async function fetchPlaylistDetails() {
+                const url = `${PLAYLISTS_API_URL}?part=snippet,contentDetails&id=${playlistId}&key=${apiKey}`;
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`YouTube API Error: ${errorData.error.message}`);
+                    }
+                    const data = await response.json();
+                    if (data.items.length > 0) {
+                        return data.items[0].snippet;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Error fetching playlist details:', error);
+                    displayError(error.message);
+                    return null;
+                }
+            }
+
+            
+            async function fetchPlaylistItems(nextPageToken = '') {
+                let url = `${API_BASE_URL}?part=snippet,contentDetails&playlistId=${playlistId}&key=${apiKey}&maxResults=50`;
+                if (nextPageToken) {
+                    url += `&pageToken=${nextPageToken}`;
+                }
+
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`YouTube API Error: ${errorData.error.message}`);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error('Error fetching playlist items:', error);
+                    displayError(error.message);
+                    return null;
+                }
+            }
+
+            
+            function displayError(message) {
+                if (loadingElement) {
+                    loadingElement.remove();
+                }
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.innerHTML = `<p>Failed to load YouTube playlist: ${message}</p>`;
+                rootElement.appendChild(errorDiv);
+            }
+
+            
+            function truncateDescription(description) {
+                if (!description) return 'No description available.';
+                
+                const charlestonRegex = /https?:\/\/charlestonchurch/i;
+                const match = description.match(charlestonRegex);
+                
+                if (match) {
+                    return description.substring(0, match.index).trim();
+                }
+                
+                return description;
+            }
+
+            
+            async function renderPlaylist() {
+                const playlistDetails = await fetchPlaylistDetails();
+                if (!playlistDetails) {
+                    return; 
+                }
+
+                let allVideos = [];
+                let pageToken = '';
+                do {
+                    const data = await fetchPlaylistItems(pageToken);
+                    if (!data) return; 
+                    allVideos = allVideos.concat(data.items);
+                    pageToken = data.nextPageToken;
+                } while (pageToken);
+
+                if (loadingElement) {
+                    loadingElement.remove();
+                }
+
+                
+                if (order === "reverseChronological") {
+                    allVideos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
+                } else if (order === "alpha") {
+                    allVideos.sort((a, b) => a.snippet.title.localeCompare(b.snippet.title));
+                } else { 
+                    allVideos.sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt));
+                }
+
+                
+                const accordionContainer = document.createElement('div');
+                accordionContainer.className = 'accordion-container';
+                accordionContainer.style.border = '1px solid yellow';
+                accordionContainer.style.padding = '10px';
+
+                
+                const playlistHeader = document.createElement('div');
+                playlistHeader.className = 'playlist-header';
+                playlistHeader.innerHTML = `
+                    <h2>${playlistDetails.title}</h2>
+                    <img src="${playlistDetails.thumbnails.medium.url}" alt="${playlistDetails.title}">
+                    <button class="toggle-btn">Show ${playlistDetails.title} Videos</button>
+                `;
+
+                
+                const videosContainer = document.createElement('div');
+                videosContainer.className = 'videos-container';
+                videosContainer.style.display = 'none';
+
+                
+                allVideos.forEach((video, index) => {
+                    const videoItem = document.createElement('div');
+                    videoItem.className = 'video-item';
+                    
+                    
+                    const videoTitle = document.createElement('a');
+                    videoTitle.href = '#';
+                    videoTitle.textContent = `Video Title: ${video.snippet.title}`;
+                    videoTitle.className = 'video-title-link';
+                    
+                    
+                    const videoContent = document.createElement('div');
+                    videoContent.className = 'video-content';
+                    videoContent.style.display = 'none';
+                    
+                    
+                    const publishDate = new Date(video.snippet.publishedAt).toLocaleDateString();
+                    
+                    
+                    const truncatedDescription = truncateDescription(video.snippet.description);
+                    
+                    
+                    const videoMeta = document.createElement('div');
+                    videoMeta.className = 'video-meta-info';
+                    videoMeta.innerHTML = `
+                        <p><strong>Published:</strong> ${publishDate}</p>
+                        <p><strong>Description:</strong> ${truncatedDescription}</p>
+                    `;
+                    
+                    
+                    const videoEmbed = document.createElement('div');
+                    videoEmbed.className = 'video-embed';
+                    videoEmbed.style.display = 'none';
+                    videoEmbed.innerHTML = `
+                        <iframe 
+                            src="https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    `;
+                    
+                    
+                    videoTitle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (videoEmbed.style.display === 'none') {
+                            
+                            videoMeta.style.display = 'none';
+                            videoEmbed.style.display = 'block';
+                        } else {
+                            
+                            videoMeta.style.display = 'block';
+                            videoEmbed.style.display = 'none';
+                        }
+                    });
+                    
+                    videoItem.appendChild(videoTitle);
+                    videoItem.appendChild(videoMeta);
+                    videoItem.appendChild(videoEmbed);
+                    
+                    
+                    if (index < allVideos.length - 1) {
+                        const hr = document.createElement('hr');
+                        hr.style.borderColor = 'yellow';
+                        hr.style.borderWidth = '1px';
+                        videoItem.appendChild(hr);
+                    }
+                    
+                    videosContainer.appendChild(videoItem);
+                });
+
+                
+                const toggleBtn = playlistHeader.querySelector('.toggle-btn');
+                toggleBtn.addEventListener('click', function() {
+                    if (videosContainer.style.display === 'none') {
+                        videosContainer.style.display = 'block';
+                        toggleBtn.textContent = `Hide ${playlistDetails.title} Videos`;
+                    } else {
+                        videosContainer.style.display = 'none';
+                        toggleBtn.textContent = `Show ${playlistDetails.title} Videos`;
+                        
+                        const allVideoEmbeds = videosContainer.querySelectorAll('.video-embed');
+                        const allVideoMeta = videosContainer.querySelectorAll('.video-meta-info');
+                        allVideoEmbeds.forEach(embed => {
+                            embed.style.display = 'none';
+                        });
+                        allVideoMeta.forEach(meta => {
+                            meta.style.display = 'block';
                         });
                     }
                 });
