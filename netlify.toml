@@ -15,7 +15,3 @@
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.104.1"
-
-[security]
-  [security.funcs]
-    getenv = ['^HUGO_', '^CI$', '^YOUTUBE_API_KEY$']
