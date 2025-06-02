@@ -1079,7 +1079,7 @@
         }
 
         .playlist-videos.active {
-            max-height: 15000px;
+            max-height: 20000px;
         }
 
         .video-item {
@@ -1178,7 +1178,7 @@
         }
 
         .playlist-close-button:hover {
-            border-color: #dbbb03;
+            border-color: #e6c403;
         }
 
         .hidden-image {
@@ -1219,7 +1219,7 @@
             }
             
             .video-player {
-                height: 185px;
+                height: 178px;
             }
         }
     </style>
@@ -1448,6 +1448,11 @@
                 currentPlayer.querySelector('iframe').src = '';
                 currentPlayer = null;
             }
+            
+            
+            setTimeout(() => {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 200);
         }
 
         function toggleVideo(videoId, title, videoKey) {

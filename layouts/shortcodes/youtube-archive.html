@@ -182,7 +182,7 @@
         }
 
         .playlist-close-button:hover {
-            border-color: #dbbb03;
+            border-color: #e6c403;
         }
 
         .hidden-image {
@@ -452,6 +452,11 @@
                 currentPlayer.querySelector('iframe').src = '';
                 currentPlayer = null;
             }
+            
+            // Scroll back to the playlist header after a brief delay to allow the collapse animation
+            setTimeout(() => {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 200);
         }
 
         function toggleVideo(videoId, title, videoKey) {
