@@ -1079,7 +1079,7 @@
         }
 
         .playlist-videos.active {
-            max-height: 3000px;
+            max-height: 15000px;
         }
 
         .video-item {
@@ -1088,6 +1088,11 @@
             padding: 12px 15px;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            border-bottom: 1px solid #eee;
+        }
+
+        .video-item:last-of-type {
+            border-bottom: none;
         }
 
         .video-item:hover {
@@ -1162,18 +1167,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 12px 20px;
+            margin: 15px;
             cursor: pointer;
-            border-top: 1px solid #eee;
-            background-color: #f8f8f8;
+            border: 2px solid #ddd;
+            border-radius: 7px;
+            background-color: transparent;
             font-size: 0.9em;
-            color: #666;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: border-color 0.2s ease, color 0.2s ease;
         }
 
         .playlist-close-button:hover {
-            background-color: #f0f0f0;
-            color: #333;
+            border-color: #dbbb03;
         }
 
         .hidden-image {
@@ -1214,7 +1219,7 @@
             }
             
             .video-player {
-                height: 235px;
+                height: 185px;
             }
         }
     </style>
