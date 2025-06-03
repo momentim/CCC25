@@ -7,7 +7,7 @@ disable_share: false
 showDate: false
 ---
 
-**This Good Friday, we're gathering for a communion service. But what exactly is a communion service — and why does it matter so deeply on this day?**
+<p>This Good Friday, we're gathering for a communion service. But what exactly is a communion service — and why does it matter so deeply on this day?</p>
 
 ### A Table Set Long Ago
 

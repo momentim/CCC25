@@ -6,7 +6,7 @@ title: "Charleston Community Book Club"
 showAuthor: false
 ---
 
-We're delighted to announce the launch of our **Charleston Community Book Club**, a monthly gathering open to everyone in the local area. Whether you're an avid reader or just looking for a friendly space to connect with others, this book club is for you!
+<p>We're delighted to announce the launch of our <strong>Charleston Community Book Club</strong>, a monthly gathering open to everyone in the local area. Whether you're an avid reader or just looking for a friendly space to connect with others, this book club is for you!</p>
 
 ## When & Where?
 
