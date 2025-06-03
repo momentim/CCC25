@@ -5,21 +5,22 @@ description: "Treasure Cove Holiday Club for Primary Age Youths - Monday 30th Ju
 tags: ["youth", "Holiday Club", "Treasure Cove"]
 disable_share: false
 showDate: false
+showAuthor: false
 ---
-
-![Treasure Cove Holiday Club](../holiday-club-2025/tcholidayclub.jpg)
 
 ## 🏴‍☠️ Ahoy Mateys!
 
 <p>Come and <strong>discover real riches</strong> at our swashbuckling...</p>
 
-# 💎 TREASURE COVE HOLIDAY CLUB 💎
+## 💎 TREASURE COVE HOLIDAY CLUB 💎
 
 ---
 
 ### 🗺️ A Week of Adventure Awaits...
 
 Set sail with **Captain Zack** and his trusty crew as we journey through the high seas in search of the greatest treasure of all — **God’s truth and love**! Each day brings a new island to explore, filled with exciting games, dramatic tales, crafty creations, and tasty treats.
+
+![Treasure Cove Holiday Club](../holiday-club-2025/tcholidayclub.jpg)
 
 Will you solve the riddles? Find the clues? And learn what real treasure looks like?
 
