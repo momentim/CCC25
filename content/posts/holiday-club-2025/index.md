@@ -16,7 +16,7 @@ showAuthor: false
 
 ---
 
-### 🗺️ A Week of Adventure Awaits...
+### 🗺️ A Week of Adventure Awaits
 
 Set sail with **Captain Zack** and his trusty crew as we journey through the high seas in search of the greatest treasure of all — **God’s truth and love**! Each day brings a new island to explore, filled with exciting games, dramatic tales, crafty creations, and tasty treats.
 
