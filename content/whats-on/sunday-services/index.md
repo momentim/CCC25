@@ -56,65 +56,9 @@ We believe the Bible is as relevant today as ever with the best news the world h
 We would love for you to join us this Sunday. Come along, bring a friend, and experience what God is doing in our community at Charleston Community Church.
 
 ## Here is the latest sermon from our channel
-<style>
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-  }
 
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
 
-<script>
-const YOUTUBE_API_KEY = 'AIzaSyBW-apJdxy7gSPuDaOUdhy6MmboIxhmBHw';
-const CHANNEL_ID = 'UC2SC7RXekX9eLkqmTsQy4SA';
-
-async function fetchLatestSermon() {
-  const res = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&order=date&maxResults=1&part=snippet`);
-  const data = await res.json();
-  const video = data.items[0];
-
-  const videoId = video.id.videoId || video.id; // fallback if ID is a string
-  const description = video.snippet.description;
-  const cutoffIndex = description.indexOf('https://charleston-church.com');
-
-  // Get all text before the church website
-  let introText = description;
-  if (cutoffIndex !== -1) {
-    introText = description.substring(0, cutoffIndex).trim();
-  }
-
-  // Break into clean, non-empty lines
-  const cleanLines = introText.split(/\r?\n/).map(l => l.trim()).filter(l => l);
-
-  // Display all lines
-  const sermonText = cleanLines.map(line => `<p>${line}</p>`).join('');
-
-  // Display the video
-  document.getElementById('sermon-video').innerHTML = `
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-    </div>
-  `;
-
-  // Display the intro text
-  document.getElementById('sermon-description').innerHTML = sermonText;
-}
-
-fetchLatestSermon();
-</script>
-
-<div id="sermon-video"></div>
-<div id="sermon-description" style="margin-top: 1rem;"></div>
+<script src="../../../js/yt.js"></script>
 
 Check out our [Sermon Archive](../../sermons/#sermon-archive-ordered-by-book-of-the-bible).
 
