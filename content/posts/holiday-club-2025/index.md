@@ -53,7 +53,7 @@ Climb aboard for a week of fun, friendship, and faith — it's going to be a voy
 
 ---
 
-### 📧 Register your child:
-**Email:** [office@charleston-church.com](mailto:office@charleston-church.com)
+### 📧 Register your child for free at [this link](https://forms.gle/BerLJNvLiLLnQZpr7):
+
 
 ---
