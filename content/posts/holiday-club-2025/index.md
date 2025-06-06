@@ -18,7 +18,7 @@ showAuthor: false
 
 ### 🗺️ A Week of Adventure Awaits
 
-Set sail with **Captain Zack** and his trusty crew as we journey through the high seas in search of the greatest treasure of all — **God’s truth and love**! Each day brings a new island to explore, filled with exciting games, dramatic tales, crafty creations, and tasty treats.
+Set sail with **Zack Smallfry** and his crew as we journey through the high seas in search of the greatest treasure of all — **God’s truth and love**! Each day brings a new island to explore, filled with exciting games, dramatic tales, crafty creations, and tasty treats.
 
 ![Treasure Cove Holiday Club](../holiday-club-2025/tcholidayclub.jpg)
 
@@ -53,7 +53,8 @@ Climb aboard for a week of fun, friendship, and faith — it's going to be a voy
 
 ---
 
-### 📧 Register your child for free at [this link](https://forms.gle/BerLJNvLiLLnQZpr7):
+### 📧 Register today:
+Sign your child(ren) up for free using the [form here](https://forms.gle/BerLJNvLiLLnQZpr7).
 
 
 ---
