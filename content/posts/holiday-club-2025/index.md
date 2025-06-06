@@ -14,17 +14,19 @@ showAuthor: false
 
 ## 💎 TREASURE COVE HOLIDAY CLUB 💎
 
----
-
 ### 🗺️ A Week of Adventure Awaits
 
-Set sail with **Zack Smallfry** and his crew as we journey through the high seas in search of the greatest treasure of all — **God’s truth and love**! Each day brings a new island to explore, filled with exciting games, dramatic tales, crafty creations, and tasty treats.
+Set sail with **Zack Smallfry**, a young sailor ready for the adventure of a lifetime! When he joins up with a band of pirates, it seems like all fun and treasure hunts... but not everything is as it seems on the high seas.
+
+Whispers are spreading across the ocean — of a **great King of the Seven Seas** who has returned. Some say he's come for justice. Others say he's full of kindness and mercy. Zack's curiosity is stirred, and he begins to wonder: could this mysterious King be the answer to something deeper?
+
+One thing’s for sure — this voyage will change everything.
 
 ![Treasure Cove Holiday Club](../holiday-club-2025/tcholidayclub.jpg)
 
-Will you solve the riddles? Find the clues? And learn what real treasure looks like?
+Will you help solve the riddles? Follow the clues? Discover what real treasure truly is?
 
-Climb aboard for a week of fun, friendship, and faith — it's going to be a voyage you won’t forget!
+Climb aboard for a week of fun, friendship, and faith. The journey is just beginning — and you won’t want to miss what’s waiting at the next port!
 
 ---
 
