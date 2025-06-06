@@ -19,10 +19,10 @@ const CONFIG = {
     YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
     YOUTUBE_CHANNEL_ID: process.env.YOUTUBE_CHANNEL_ID,
     GITHUB_TOKEN: process.env.GITHUB_TOKEN,
-    GITHUB_OWNER: process.env.MOMENTIM, // Your GitHub username
-    GITHUB_REPO: process.env.CCC25,   // Your repository name
-    DATA_FILE_PATH: 'data/videos.json',     // Path in your repo where data will be stored
-    CSV_FILE_PATH: 'data/videos.csv'        // Alternative CSV format
+    GITHUB_OWNER: process.env.GITHUB_OWNER || process.env.MOMENTIM, // Fixed this line
+    GITHUB_REPO: process.env.GITHUB_REPO || process.env.CCC25,     // Fixed this line
+    DATA_FILE_PATH: 'data/videos.json',
+    CSV_FILE_PATH: 'data/videos.csv'
 };
 
 // Initialize GitHub client
@@ -316,8 +316,20 @@ function mergeVideoData(existingVideos, newVideos) {
     );
 }
 
-// API Routes
-app.get('/api/recent-videos', async (req, res) => {
+// Convert videos to format expected by shortcode
+function convertVideoFormat(videos) {
+    return videos.map(video => ({
+        title: video.title,
+        url: video.fullUrl,
+        thumbnailUrl: video.imageUrl,
+        publishedAt: video.datePublished,
+        category: video.category,
+        playlistTitle: video.playlist
+    }));
+}
+
+// FIXED ROUTES - These match what your shortcode expects
+app.get('/recent-videos', async (req, res) => {
     try {
         // Get recent videos (last month)
         const oneMonthAgo = new Date();
@@ -368,9 +380,11 @@ app.get('/api/recent-videos', async (req, res) => {
         
         console.log(`Updated GitHub repo with ${mergedVideos.length} total videos, ${recentVideos.length} recent`);
         
-        // Return only recent videos to the client
+        // Convert to format expected by shortcode and return only recent videos
+        const convertedVideos = convertVideoFormat(recentVideos);
+        
         res.json({
-            videos: recentVideos,
+            videos: convertedVideos,
             totalVideos: mergedVideos.length,
             lastUpdated: new Date().toISOString()
         });
@@ -382,6 +396,13 @@ app.get('/api/recent-videos', async (req, res) => {
             message: error.message 
         });
     }
+});
+
+// Keep the old API routes for compatibility
+app.get('/api/recent-videos', async (req, res) => {
+    // Redirect to the new route
+    req.url = '/recent-videos';
+    return app._router.handle(req, res);
 });
 
 // Get all videos from GitHub (for debugging/testing)
@@ -415,10 +436,10 @@ app.get('/health', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`YouTube proxy server running on port ${PORT}`);
-    console.log(`Health check: http://localhost:${PORT}/health`);
-    console.log(`Recent videos: http://localhost:${PORT}/api/recent-videos`);
-});
-
+// For Netlify Functions, export the handler
 module.exports = app;
+module.exports.handler = async (event, context) => {
+    const serverless = require('serverless-http');
+    const handler = serverless(app);
+    return await handler(event, context);
+};
