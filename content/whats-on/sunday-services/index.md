@@ -57,8 +57,7 @@ We would love for you to join us this Sunday. Come along, bring a friend, and ex
 
 ## Here is the latest sermon from our channel
 
-
-{{< recent-videos >}}
+{{< youtube-archive >}}
 
 Check out our [Sermon Archive](../../sermons/#sermon-archive-ordered-by-book-of-the-bible).
 

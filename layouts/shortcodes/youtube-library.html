@@ -14,88 +14,143 @@
             text-decoration: none;
         }
 
-        .playlist-accordion {
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
+        /* Testament Level (Level 1) */
+        .testament-accordion {
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
             border-radius: 12px;
+            overflow: hidden;
         }
 
-        .playlist-header {
+        .testament-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
+            padding: 25px;
             cursor: pointer;
+            background-color: #f8f9fa;
             border-bottom: 1px solid transparent;
-            transition: border-color 0.2s ease;
+            transition: all 0.3s ease;
         }
 
-        .playlist-header:hover {
-            border-bottom-color: #ccc;
+        .testament-header.active {
+            border-bottom-color: #666;
+            background-color: #e9ecef;
         }
 
-        .playlist-header.active {
-            border-bottom-color: #999;
+        .testament-title {
+            font-size: 1.4em;
             font-weight: bold;
+            color: #333;
         }
 
-        .playlist-image {
-            width: 360px;
-            height: 202px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            display: block;
-        }
-
-        .playlist-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex: 1;
-        }
-
-        .playlist-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .playlist-count {
+        .testament-count {
             font-size: 0.9em;
             opacity: 0.7;
+            margin-left: 10px;
         }
 
-        .expand-icon {
-            font-size: 0.9em;
+        .testament-expand-icon {
+            font-size: 1.1em;
             transition: transform 0.3s ease;
-            margin-left: 15px;
         }
 
-        .playlist-header.active .expand-icon {
+        .testament-header.active .testament-expand-icon {
             transform: rotate(180deg);
         }
 
-        .playlist-videos {
+        .testament-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease;
         }
 
-        .playlist-videos.active {
-            max-height: 3000px;
+        .testament-content.active {
+            max-height: 50000px;
         }
 
+        /* Book Level (Level 2) */
+        .book-accordion {
+            margin: 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .book-accordion:last-child {
+            border-bottom: none;
+        }
+
+        .book-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .book-header:hover {
+            background-color: #f8f9fa;
+        }
+
+        .book-header.active {
+            border-bottom-color: #999;
+            background-color: #f0f0f0;
+        }
+
+        .book-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .book-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .book-count {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        .book-expand-icon {
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+        }
+
+        .book-header.active .book-expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .book-videos {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .book-videos.active {
+            max-height: 20000px;
+        }
+
+        /* Video Level (Level 3) */
         .video-item {
             display: flex;
             align-items: flex-start;
-            padding: 12px 15px;
+            padding: 15px 20px;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .video-item:last-of-type {
+            border-bottom: none;
         }
 
         .video-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         .video-thumbnail {
@@ -116,7 +171,6 @@
         .video-title {
             font-size: 1em;
             font-weight: 600;
-            margin-top: 8px;
             margin-bottom: 5px;
             line-height: 1.3;
         }
@@ -133,8 +187,9 @@
             opacity: 0.6;
         }
 
+        /* Video Player */
         .video-player-container {
-            margin: 10px 15px 15px 15px;
+            margin: 0px 20px 15px 20px;
             border-radius: 5px;
             overflow: hidden;
             border: 1px solid #ddd;
@@ -151,6 +206,7 @@
             border: none;
         }
 
+        /* Utility Classes */
         .loading, .error {
             text-align: center;
             padding: 20px;
@@ -160,53 +216,42 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 10px 0;
+            background-color: #f8f9fa;
         }
 
-        .playlist-close-button {
+        .close-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 12px 20px;
+            margin: 15px;
             cursor: pointer;
-            border-top: 1px solid #eee;
-            background-color: #f8f8f8;
+            border: 2px solid #ddd;
+            border-radius: 7px;
+            background-color: transparent;
             font-size: 0.9em;
-            color: #666;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: border-color 0.2s ease, color 0.2s ease;
         }
 
-        .playlist-close-button:hover {
-            background-color: #f0f0f0;
-            color: #333;
+        .close-button:hover {
+            border-color: #007bff;
+            color: #007bff;
         }
 
-        .hidden-image {
-            display: none;
-        }
-
+        /* Mobile Responsive */
         @media (max-width: 600px) {
-            .playlist-header {
+            .testament-header, .book-header {
                 flex-direction: column;
                 text-align: center;
             }
             
-            .playlist-image {
-                width: 240px;
-                height: 135px;
-                margin-top: 10px;
-            }
-            
-            .playlist-info {
-                align-items: center;
-            }
-            
-            .expand-icon {
-                margin-left: 0;
+            .testament-expand-icon, .book-expand-icon {
                 margin-top: 10px;
             }
             
             .video-item {
                 flex-direction: column;
+                text-align: center;
             }
             
             .video-thumbnail {
@@ -218,7 +263,7 @@
             }
             
             .video-player {
-                height: 235px;
+                height: 200px;
             }
         }
     </style>
@@ -235,13 +280,13 @@
             Go to your sheet → Share → Change to "Anyone with the link can view"</p>
         </div>
         
-        <div id="playlist-container"></div>
+        <div id="testament-container"></div>
     </div>
 
     <script>
-        // Configuration
-        const SHEET_ID = '1Onynd1msqdNoCGpBEWPJ9L5eJnR7wMOS4avBBGkx8DA';
-        const SHEET_GID = '1585594767';
+        // Configuration - Update these IDs based on your sheet
+        const SHEET_ID = '1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag';
+        const SHEET_GID = '1692177726'; // Sermon Archive sheet
         const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}`;
 
         let currentPlayer = null;
@@ -270,8 +315,8 @@
             const headers = parseCSVLine(headerLine);
             
             const headerMap = {
-                playlist1: findHeaderIndex(headers, ['Playlist1']),
-                playlist2: findHeaderIndex(headers, ['Playlist2']),
+                playlist: findHeaderIndex(headers, ['Playlist']),
+                category: findHeaderIndex(headers, ['Category']),
                 title: findHeaderIndex(headers, ['Title']),
                 datePublished: findHeaderIndex(headers, ['Date Published']),
                 description: findHeaderIndex(headers, ['Description (Cleaned)', 'Description']),
@@ -290,12 +335,9 @@
                     const values = parseCSVLine(line);
                     if (values.every(val => !val || val.trim() === '')) continue;
                     
-                    const playlist1 = getValueByIndex(values, headerMap.playlist1);
-                    const playlist2 = getValueByIndex(values, headerMap.playlist2);
-                    const playlist = playlist1 || playlist2 || 'Uncategorized';
-                    
                     const videoData = {
-                        playlist: playlist.trim(),
+                        playlist: getValueByIndex(values, headerMap.playlist) || 'Other',
+                        category: getValueByIndex(values, headerMap.category) || 'Other Testament',
                         title: getValueByIndex(values, headerMap.title) || 'Untitled',
                         date: getValueByIndex(values, headerMap.datePublished) || '',
                         description: getValueByIndex(values, headerMap.description) || '',
@@ -358,20 +400,25 @@
             return values[index] ? values[index].trim() : '';
         }
 
-        function groupByPlaylist(data) {
-            const playlists = {};
+        function organizeByTestamentAndBook(data) {
+            const organized = {};
+            
             data.forEach(video => {
-                // Skip videos without a proper playlist (Uncategorized or empty)
-                if (!video.playlist || video.playlist === 'Uncategorized' || video.playlist.trim() === '') {
-                    return;
+                const testament = video.category || 'Other Testament';
+                const book = video.playlist || 'Other';
+                
+                if (!organized[testament]) {
+                    organized[testament] = {};
                 }
                 
-                if (!playlists[video.playlist]) {
-                    playlists[video.playlist] = [];
+                if (!organized[testament][book]) {
+                    organized[testament][book] = [];
                 }
-                playlists[video.playlist].push(video);
+                
+                organized[testament][book].push(video);
             });
-            return playlists;
+            
+            return organized;
         }
 
         function getValidImage(video) {
@@ -381,34 +428,48 @@
             return `https://i.ytimg.com/vi/${video.videoId}/maxresdefault.jpg`;
         }
 
-        function createPlaylistAccordion(playlistName, videos) {
-            const firstVideo = videos[0];
-            const imageUrl = getValidImage(firstVideo);
+        function createTestamentAccordion(testamentName, books) {
+            const totalVideos = Object.values(books).reduce((sum, videos) => sum + videos.length, 0);
+            const testamentId = testamentName.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
             
             return `
-                <div class="playlist-accordion">
-                    <div class="playlist-header" onclick="togglePlaylist('${playlistName.replace(/'/g, "\\'")}')">
-                        <div class="playlist-info">
-                            <div class="playlist-title">${playlistName}</div>
-                            <div class="playlist-count">${videos.length} video${videos.length !== 1 ? 's' : ''}</div>
+                <div class="testament-accordion">
+                    <div class="testament-header" onclick="toggleTestament('${testamentId}')">
+                        <div>
+                            <span class="testament-title">${testamentName}</span>
+                            <span class="testament-count">${totalVideos} video${totalVideos !== 1 ? 's' : ''}</span>
                         </div>
-                        <img src="${imageUrl}" alt="${playlistName}" class="playlist-image" 
-                             onerror="this.style.display='none'">
-                        <div class="expand-icon">▼</div>
+                        <div class="testament-expand-icon">▼</div>
                     </div>
-                    <div class="playlist-videos" id="videos-${playlistName.replace(/\s+/g, '-').replace(/'/g, '')}">
-                        ${videos.map((video, index) => createVideoItem(video, playlistName, index)).join('')}
-                        <div class="playlist-close-button" onclick="closePlaylist('${playlistName.replace(/'/g, "\\'")}')">
-                            Close ${playlistName} Playlist
-                        </div>
+                    <div class="testament-content" id="testament-${testamentId}">
+                        ${Object.keys(books).map(bookName => createBookAccordion(bookName, books[bookName], testamentId)).join('')}
                     </div>
                 </div>
             `;
         }
 
-        function createVideoItem(video, playlistName, index) {
+        function createBookAccordion(bookName, videos, testamentId) {
+            const bookId = `${testamentId}-${bookName.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')}`;
+            
+            return `
+                <div class="book-accordion">
+                    <div class="book-header" onclick="toggleBook('${bookId}')">
+                        <div class="book-info">
+                            <div class="book-title">${bookName}</div>
+                            <div class="book-count">${videos.length} video${videos.length !== 1 ? 's' : ''}</div>
+                        </div>
+                        <div class="book-expand-icon">▼</div>
+                    </div>
+                    <div class="book-videos" id="book-${bookId}">
+                        ${videos.map((video, index) => createVideoItem(video, bookId, index)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createVideoItem(video, bookId, index) {
             const imageUrl = getValidImage(video);
-            const videoKey = `${playlistName}-${index}`;
+            const videoKey = `${bookId}-${index}`;
             
             return `
                 <div class="video-item" onclick="toggleVideo('${video.videoId}', '${video.title.replace(/'/g, "\\'")}', '${videoKey}')">
@@ -426,27 +487,20 @@
             `;
         }
 
-        function togglePlaylist(playlistName) {
+        function toggleTestament(testamentId) {
             const header = event.currentTarget;
-            const videosContainer = document.getElementById(`videos-${playlistName.replace(/\s+/g, '-').replace(/'/g, '')}`);
+            const content = document.getElementById(`testament-${testamentId}`);
             
             header.classList.toggle('active');
-            videosContainer.classList.toggle('active');
+            content.classList.toggle('active');
         }
 
-        function closePlaylist(playlistName) {
-            const header = document.querySelector(`[onclick*="togglePlaylist('${playlistName.replace(/'/g, "\\'")}')"]`);
-            const videosContainer = document.getElementById(`videos-${playlistName.replace(/\s+/g, '-').replace(/'/g, '')}`);
+        function toggleBook(bookId) {
+            const header = event.currentTarget;
+            const content = document.getElementById(`book-${bookId}`);
             
-            header.classList.remove('active');
-            videosContainer.classList.remove('active');
-            
-            // Close any currently playing video in this playlist
-            if (currentPlayer && currentPlayer.closest('.playlist-videos') === videosContainer) {
-                currentPlayer.classList.remove('active');
-                currentPlayer.querySelector('iframe').src = '';
-                currentPlayer = null;
-            }
+            header.classList.toggle('active');
+            content.classList.toggle('active');
         }
 
         function toggleVideo(videoId, title, videoKey) {
@@ -478,15 +532,10 @@
             }, 100);
         }
 
-        function playVideo(videoId, title, videoKey) {
-            // This function is kept for backward compatibility but now calls toggleVideo
-            toggleVideo(videoId, title, videoKey);
-        }
-
         async function init() {
             const loadingDiv = document.getElementById('loading');
             const errorDiv = document.getElementById('error');
-            const container = document.getElementById('playlist-container');
+            const container = document.getElementById('testament-container');
             
             try {
                 const sermons = await loadSermons();
@@ -494,35 +543,12 @@
                     throw new Error('No valid sermon data loaded');
                 }
                 
-                const playlists = groupByPlaylist(sermons);
+                const organized = organizeByTestamentAndBook(sermons);
                 let html = '';
                 
-                // Sort playlists by the newest video date in each playlist (reverse chronological)
-                const sortedPlaylists = Object.keys(playlists).sort((a, b) => {
-                    const getNewestDate = (playlistVideos) => {
-                        return Math.max(...playlistVideos.map(video => {
-                            const dateParts = video.date.split('/');
-                            if (dateParts.length === 3) {
-                                // Assuming format is DD/MM/YYYY
-                                return new Date(dateParts[2], dateParts[1] - 1, dateParts[0]).getTime();
-                            }
-                            return 0;
-                        }));
-                    };
-                    
-                    const newestDateA = getNewestDate(playlists[a]);
-                    const newestDateB = getNewestDate(playlists[b]);
-                    
-                    return newestDateB - newestDateA; // Reverse chronological (newest first)
-                });
-                
-                sortedPlaylists.forEach(playlistName => {
-                    const sortedVideos = playlists[playlistName].sort((a, b) => {
-                        const dateA = new Date(a.date.split('/').reverse().join('-'));
-                        const dateB = new Date(b.date.split('/').reverse().join('-'));
-                        return dateB - dateA;
-                    });
-                    html += createPlaylistAccordion(playlistName, sortedVideos);
+                // Create accordions for each testament
+                Object.keys(organized).forEach(testamentName => {
+                    html += createTestamentAccordion(testamentName, organized[testamentName]);
                 });
                 
                 container.innerHTML = html;
@@ -535,6 +561,7 @@
             }
         }
 
+        // Initialize when page loads
         init();
     </script>
 </body>
