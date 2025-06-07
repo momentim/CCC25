@@ -1101,6 +1101,9 @@
             font-family: inherit;
         }
 
+        
+        init();
+
         .sermon-library * {
             text-decoration: none;
         }
@@ -1115,30 +1118,32 @@
 
         .testament-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             padding: 25px;
             cursor: pointer;
-            background-color: #f8f9fa;
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
         }
 
         .testament-header.active {
             border-bottom-color: #666;
-            background-color: #e9ecef;
+        }
+
+        .testament-info {
+            flex: 1;
         }
 
         .testament-title {
             font-size: 1.4em;
             font-weight: bold;
-            color: #333;
+            margin-bottom: 8px;
         }
 
-        .testament-count {
+        .testament-playlists {
             font-size: 0.9em;
-            opacity: 0.7;
-            margin-left: 10px;
+            opacity: 0.8;
+            line-height: 1.4;
         }
 
         .testament-expand-icon {
@@ -1176,18 +1181,16 @@
             justify-content: space-between;
             padding: 20px;
             cursor: pointer;
-            background-color: #fff;
             border-bottom: 1px solid transparent;
             transition: all 0.2s ease;
         }
 
         .book-header:hover {
-            background-color: #f8f9fa;
+            background-color: rgba(0, 0, 0, 0.03);
         }
 
         .book-header.active {
             border-bottom-color: #999;
-            background-color: #f0f0f0;
         }
 
         .book-info {
@@ -1307,7 +1310,6 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 10px 0;
-            background-color: #f8f9fa;
         }
 
         .close-button {
@@ -1331,7 +1333,13 @@
 
          
         @media (max-width: 600px) {
-            .testament-header, .book-header {
+            .testament-header {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .book-header {
                 flex-direction: column;
                 text-align: center;
             }
@@ -1522,18 +1530,22 @@
         function createTestamentAccordion(testamentName, books) {
             const totalVideos = Object.values(books).reduce((sum, videos) => sum + videos.length, 0);
             const testamentId = testamentName.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+            const playlistNames = Object.keys(books).join(', ');
             
             return `
                 <div class="testament-accordion">
                     <div class="testament-header" onclick="toggleTestament('${testamentId}')">
-                        <div>
-                            <span class="testament-title">${testamentName}</span>
-                            <span class="testament-count">${totalVideos} video${totalVideos !== 1 ? 's' : ''}</span>
+                        <div class="testament-info">
+                            <div class="testament-title">${testamentName}</div>
+                            <div class="testament-playlists">Playlists include: ${playlistNames}</div>
                         </div>
                         <div class="testament-expand-icon">▼</div>
                     </div>
                     <div class="testament-content" id="testament-${testamentId}">
                         ${Object.keys(books).map(bookName => createBookAccordion(bookName, books[bookName], testamentId)).join('')}
+                        <div class="close-button" onclick="closeTestament('${testamentId}')">
+                            Close ${testamentName}
+                        </div>
                     </div>
                 </div>
             `;
@@ -1553,6 +1565,9 @@
                     </div>
                     <div class="book-videos" id="book-${bookId}">
                         ${videos.map((video, index) => createVideoItem(video, bookId, index)).join('')}
+                        <div class="close-button" onclick="closeBook('${bookId}')">
+                            Close ${bookName}
+                        </div>
                     </div>
                 </div>
             `;
@@ -1652,8 +1667,45 @@
             }
         }
 
-        
-        init();
+        function closeTestament(testamentId) {
+            const header = document.querySelector(`[onclick*="toggleTestament('${testamentId}')"]`);
+            const content = document.getElementById(`testament-${testamentId}`);
+            
+            header.classList.remove('active');
+            content.classList.remove('active');
+            
+            
+            if (currentPlayer && content.contains(currentPlayer)) {
+                currentPlayer.classList.remove('active');
+                currentPlayer.querySelector('iframe').src = '';
+                currentPlayer = null;
+            }
+            
+            
+            setTimeout(() => {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 200);
+        }
+
+        function closeBook(bookId) {
+            const header = document.querySelector(`[onclick*="toggleBook('${bookId}')"]`);
+            const content = document.getElementById(`book-${bookId}`);
+            
+            header.classList.remove('active');
+            content.classList.remove('active');
+            
+            
+            if (currentPlayer && content.contains(currentPlayer)) {
+                currentPlayer.classList.remove('active');
+                currentPlayer.querySelector('iframe').src = '';
+                currentPlayer = null;
+            }
+            
+            
+            setTimeout(() => {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 200);
+        }
     </script>
 </body>
 </html>
