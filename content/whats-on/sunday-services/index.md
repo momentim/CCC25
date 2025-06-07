@@ -59,5 +59,10 @@ We would love for you to join us this Sunday. Come along, bring a friend, and ex
 
 {{< youtube-recents >}}
 
-You can also check out our entire [Sermon Library](../../../sermons/#here-is-our-entire-sermon library-from-our-youtube-channel).
+<p>
+  You can also check out our entire 
+  <a href="../../../sermons/#here-is-our-entire-sermon-library-from-our-youtube-channel">
+    Sermon Library
+  </a>
+</p>
 
