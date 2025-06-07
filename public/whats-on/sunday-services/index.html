@@ -104,7 +104,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "498"
+    "wordCount": "514"
   }]
   </script>
 
@@ -1085,8 +1085,8 @@
 <hr>
 <p>We would love for you to join us this Sunday. Come along, bring a friend, and experience what God is doing in our community at Charleston Community Church.</p>
 
-<h2 class="relative group">Here is the latest sermon from our channel 
-    <div id="here-is-the-latest-sermon-from-our-channel" class="anchor"></div>
+<h2 class="relative group">Here are the latest sermons from our channel 
+    <div id="here-are-the-latest-sermons-from-our-channel" class="anchor"></div>
     
 </h2>
 <!DOCTYPE html>
@@ -1094,162 +1094,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sermon Video Library</title>
+    <title>Recent Sermons</title>
     <style>
-        .sermon-library {
+        .recent-sermons {
             max-width: 100%;
             font-family: inherit;
+            padding: 20px;
         }
 
-        .sermon-library * {
-            text-decoration: none;
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
         }
 
-         
-        .testament-accordion {
-            margin-bottom: 20px;
+        .controls label {
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .video-count-selector {
+            padding: 8px 12px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+
+        .video-count-selector:hover {
+            border-color: #007bff;
+        }
+
+        .video-count-selector:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        .video-container {
+            margin-bottom: 25px;
             border: 2px solid #ddd;
             border-radius: 12px;
             overflow: hidden;
-        }
-
-        .testament-header:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .testament-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 25px;
-            cursor: pointer;
-            border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
         }
 
-        .testament-header.active {
-            border-bottom-color: #666;
-        }
-
-        .testament-info {
-            flex: 1;
-        }
-
-        .testament-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .testament-playlists {
-            font-size: 0.9em;
-            opacity: 0.8;
-            line-height: 1.4;
-        }
-
-        .testament-expand-icon {
-            font-size: 1.1em;
-            transition: transform 0.3s ease;
-        }
-
-        .testament-header.active .testament-expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .testament-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .testament-content.active {
-            max-height: 50000px;
-        }
-
-         
-        .book-accordion {
-            margin: 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .book-accordion:last-child {
-            border-bottom: none;
-        }
-
-        .book-header:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .book-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            cursor: pointer;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        .book-header:hover {
-            background-color: rgba(0, 0, 0, 0.03);
-        }
-
-        .book-header.active {
-            border-bottom-color: #999;
-        }
-
-        .book-info {
-            display: flex;
-            align-items: center;
-            flex: 1;
-        }
-
-        .book-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-
-        .book-count {
-            font-size: 0.9em;
-            opacity: 0.7;
-        }
-
-        .book-expand-icon {
-            font-size: 0.9em;
-            transition: transform 0.3s ease;
-        }
-
-        .book-header.active .book-expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .book-videos {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .book-videos.active {
-            max-height: 20000px;
-        }
-
-         
-        .video-container {
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .video-container:last-of-type {
-            border-bottom: none;
+        .video-container:hover {
+            border-color: #007bff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .video-item {
             display: flex;
             align-items: flex-start;
-            padding: 15px 20px;
+            padding: 20px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .video-item:hover {
@@ -1257,11 +1161,11 @@
         }
 
         .video-thumbnail {
-            width: 160px;
-            height: 90px;
+            width: 200px;
+            height: 112px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-right: 15px;
+            border-radius: 8px;
+            margin-right: 20px;
             border: 1px solid #ddd;
             flex-shrink: 0;
         }
@@ -1272,28 +1176,29 @@
         }
 
         .video-title {
-            font-size: 1em;
-            font-weight: 600;
-            margin-bottom: 5px;
-            line-height: 1.3;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: #333;
         }
 
         .video-description {
-            font-size: 0.85em;
+            font-size: 1em;
             opacity: 0.8;
-            margin-bottom: 3px;
-            line-height: 1.3;
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
 
         .video-date {
-            font-size: 0.8em;
-            opacity: 0.6;
+            font-size: 0.9em;
+            opacity: 0.7;
+            font-weight: 500;
         }
 
-         
         .video-player-container {
             margin: 0px 20px 20px 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid #ddd;
             display: none;
@@ -1305,96 +1210,118 @@
 
         .video-player {
             width: 100%;
-            height: 339px;
+            height: 400px;
             border: none;
         }
 
-         
         .loading, .error {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            margin: 20px 0;
         }
 
         .error {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 10px 0;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            background-color: #f8d7da;
+            color: #721c24;
         }
 
-        .close-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
-            margin: 15px;
-            cursor: pointer;
-            border: 2px solid #ddd;
-            border-radius: 7px;
-            background-color: transparent;
-            font-size: 0.9em;
-            transition: border-color 0.2s ease, color 0.2s ease;
+        .loading {
+            font-size: 1.1em;
+            color: #666;
         }
 
-        .close-button:hover {
-            border-color: #fad501;
-            color: #fad501;
-            background-color: rgba(255, 255, 255, 0.1);
+        .no-videos {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.1em;
         }
 
          
-        @media (max-width: 600px) {
-            .testament-header {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
+        @media (max-width: 768px) {
+            .recent-sermons {
+                padding: 15px;
             }
             
-            .book-header {
+            .controls {
                 flex-direction: column;
-                text-align: center;
-            }
-            
-            .testament-expand-icon, .book-expand-icon {
-                margin-top: 10px;
+                gap: 10px;
             }
             
             .video-item {
                 flex-direction: column;
                 text-align: center;
+                padding: 15px;
             }
             
             .video-thumbnail {
-                width: 120px;
-                height: 68px;
+                width: 160px;
+                height: 90px;
                 margin-right: 0;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
                 align-self: center;
             }
             
+            .video-title {
+                font-size: 1.2em;
+            }
+            
             .video-player {
-                height: 158px;
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-thumbnail {
+                width: 140px;
+                height: 79px;
+            }
+            
+            .video-player {
+                height: 178px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="sermon-library">
+    <div class="recent-sermons">
+        <div class="controls">
+            <label for="videoCount">Show recent videos:</label>
+            <select id="videoCount" class="video-count-selector" onchange="updateVideoCount()">
+                <option value="1">1 video</option>
+                <option value="2">2 videos</option>
+                <option value="3" selected>3 videos</option>
+                <option value="4">4 videos</option>
+                <option value="5">5 videos</option>
+                <option value="6">6 videos</option>
+                <option value="7">7 videos</option>
+                <option value="8">8 videos</option>
+                <option value="9">9 videos</option>
+                <option value="10">10 videos</option>
+            </select>
+        </div>
+
         <div id="loading" class="loading">
-            <p>Loading sermon library...</p>
+            <p>Loading recent sermons...</p>
         </div>
         
         <div id="error" class="error" style="display: none;">
             <p><strong>Unable to load videos</strong></p>
             <p>Please check the following:</p>
             <ul style="text-align: left; display: inline-block;">
-                <li>Google Sheet is publicly accessible (Share → "Anyone with the link can view")</li>
-                <li>Sheet ID and GID are correct</li>
+                <li>Google Sheet is publicly accessible</li>
                 <li>Internet connection is working</li>
-                <li>Check browser console for detailed error messages</li>
+                <li>Check browser console for error messages</li>
             </ul>
         </div>
         
-        <div id="testament-container"></div>
+        <div id="videos-container"></div>
+        
+        <div id="no-videos" class="no-videos" style="display: none;">
+            <p>No recent videos found.</p>
+        </div>
     </div>
 
     <script>
@@ -1404,7 +1331,8 @@
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/export?format=csv&gid=' + SHEET_GID;
 
         let currentPlayer = null;
-        let sermonsData = [];
+        let allSermons = [];
+        let currentVideoCount = 3;
 
         
         document.addEventListener('DOMContentLoaded', function() {
@@ -1413,25 +1341,22 @@
 
         function loadSermons() {
             return new Promise(function(resolve, reject) {
-                console.log('Attempting to load from:', SHEET_URL);
+                console.log('Loading sermons from:', SHEET_URL);
                 
                 fetch(SHEET_URL)
                     .then(function(response) {
-                        console.log('Response status:', response.status);
                         if (!response.ok) {
                             throw new Error('HTTP error! status: ' + response.status);
                         }
                         return response.text();
                     })
                     .then(function(csvText) {
-                        console.log('CSV loaded, length:', csvText.length);
-                        console.log('First 200 characters:', csvText.substring(0, 200));
                         const data = parseCSV(csvText);
                         resolve(data);
                     })
                     .catch(function(error) {
-                        console.error('Error loading from Google Sheets:', error);
-                        reject(new Error('Failed to load sermon data: ' + error.message));
+                        console.error('Error loading sermons:', error);
+                        reject(error);
                     });
             });
         }
@@ -1442,25 +1367,19 @@
             });
             
             if (lines.length < 2) {
-                throw new Error('Invalid CSV data - not enough rows');
+                throw new Error('Invalid CSV data');
             }
             
-            const headerLine = lines[0];
-            const headers = parseCSVLine(headerLine);
-            console.log('Headers found:', headers);
+            const headers = parseCSVLine(lines[0]);
+            console.log('Headers:', headers);
             
             const headerMap = {
-                playlist: findHeaderIndex(headers, ['Playlist']),
-                category: findHeaderIndex(headers, ['Category']),
                 title: findHeaderIndex(headers, ['Title']),
                 datePublished: findHeaderIndex(headers, ['Date Published']),
                 description: findHeaderIndex(headers, ['Description (Cleaned)', 'Description']),
                 videoId: findHeaderIndex(headers, ['Video ID']),
-                fullUrl: findHeaderIndex(headers, ['Full URL']),
                 imageUrl: findHeaderIndex(headers, ['Image URL'])
             };
-            
-            console.log('Header mapping:', headerMap);
             
             const data = [];
             
@@ -1470,16 +1389,12 @@
                 
                 try {
                     const values = parseCSVLine(line);
-                    if (values.every(function(val) { return !val || val.trim() === ''; })) continue;
                     
                     const videoData = {
-                        playlist: getValueByIndex(values, headerMap.playlist) || 'Other',
-                        category: getValueByIndex(values, headerMap.category) || 'Other Testament',
                         title: getValueByIndex(values, headerMap.title) || 'Untitled',
                         date: getValueByIndex(values, headerMap.datePublished) || '',
                         description: getValueByIndex(values, headerMap.description) || '',
                         videoId: getValueByIndex(values, headerMap.videoId) || '',
-                        url: getValueByIndex(values, headerMap.fullUrl) || '',
                         image: getValueByIndex(values, headerMap.imageUrl) || ''
                     };
                     
@@ -1487,12 +1402,11 @@
                         data.push(videoData);
                     }
                 } catch (error) {
-                    console.warn('Error parsing row ' + i + ':', error);
+                    console.warn('Error parsing row:', error);
                     continue;
                 }
             }
             
-            console.log('Parsed data count:', data.length);
             return data;
         }
 
@@ -1540,25 +1454,12 @@
             return values[index] ? values[index].trim() : '';
         }
 
-        function organizeByTestamentAndBook(data) {
-            const organized = {};
-            
-            data.forEach(function(video) {
-                const testament = video.category || 'Other Testament';
-                const book = video.playlist || 'Other';
-                
-                if (!organized[testament]) {
-                    organized[testament] = {};
-                }
-                
-                if (!organized[testament][book]) {
-                    organized[testament][book] = [];
-                }
-                
-                organized[testament][book].push(video);
+        function sortByDateDescending(sermons) {
+            return sermons.sort(function(a, b) {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateB - dateA; 
             });
-            
-            return organized;
         }
 
         function getValidImage(video) {
@@ -1568,57 +1469,9 @@
             return 'https://i.ytimg.com/vi/' + video.videoId + '/maxresdefault.jpg';
         }
 
-        function createTestamentAccordion(testamentName, books) {
-            const totalVideos = Object.values(books).reduce(function(sum, videos) {
-                return sum + videos.length;
-            }, 0);
-            const testamentId = testamentName.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
-            const playlistNames = Object.keys(books).join(', ');
-            
-            return '<div class="testament-accordion">' +
-                '<div class="testament-header" onclick="toggleTestament(\'' + testamentId + '\')">' +
-                    '<div class="testament-info">' +
-                        '<div class="testament-title">' + testamentName + '</div>' +
-                        '<div class="testament-playlists">Playlists include: ' + playlistNames + '</div>' +
-                    '</div>' +
-                    '<div class="testament-expand-icon">▼</div>' +
-                '</div>' +
-                '<div class="testament-content" id="testament-' + testamentId + '">' +
-                    Object.keys(books).map(function(bookName) {
-                        return createBookAccordion(bookName, books[bookName], testamentId);
-                    }).join('') +
-                    '<div class="close-button" onclick="closeTestament(\'' + testamentId + '\')">' +
-                        'Close ' + testamentName +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-        }
-
-        function createBookAccordion(bookName, videos, testamentId) {
-            const bookId = testamentId + '-' + bookName.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
-            
-            return '<div class="book-accordion">' +
-                '<div class="book-header" onclick="toggleBook(\'' + bookId + '\')">' +
-                    '<div class="book-info">' +
-                        '<div class="book-title">' + bookName + '</div>' +
-                        '<div class="book-count">' + videos.length + ' video' + (videos.length !== 1 ? 's' : '') + '</div>' +
-                    '</div>' +
-                    '<div class="book-expand-icon">▼</div>' +
-                '</div>' +
-                '<div class="book-videos" id="book-' + bookId + '">' +
-                    videos.map(function(video, index) {
-                        return createVideoItem(video, bookId, index);
-                    }).join('') +
-                    '<div class="close-button" onclick="closeBook(\'' + bookId + '\')">' +
-                        'Close ' + bookName +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-        }
-
-        function createVideoItem(video, bookId, index) {
+        function createVideoItem(video, index) {
             const imageUrl = getValidImage(video);
-            const videoKey = bookId + '-' + index;
+            const videoKey = 'recent-' + index;
             
             return '<div class="video-container">' +
                 '<div class="video-item" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
@@ -1633,22 +1486,6 @@
                     '<iframe class="video-player" allowfullscreen></iframe>' +
                 '</div>' +
             '</div>';
-        }
-
-        function toggleTestament(testamentId) {
-            const header = document.querySelector('[onclick*="toggleTestament(\'' + testamentId + '\')"]');
-            const content = document.getElementById('testament-' + testamentId);
-            
-            header.classList.toggle('active');
-            content.classList.toggle('active');
-        }
-
-        function toggleBook(bookId) {
-            const header = document.querySelector('[onclick*="toggleBook(\'' + bookId + '\')"]');
-            const content = document.getElementById('book-' + bookId);
-            
-            header.classList.toggle('active');
-            content.classList.toggle('active');
         }
 
         function toggleVideo(videoId, title, videoKey) {
@@ -1680,81 +1517,70 @@
             }, 100);
         }
 
+        function displayVideos() {
+            const container = document.getElementById('videos-container');
+            const noVideosDiv = document.getElementById('no-videos');
+            
+            if (allSermons.length === 0) {
+                container.innerHTML = '';
+                noVideosDiv.style.display = 'block';
+                return;
+            }
+            
+            noVideosDiv.style.display = 'none';
+            
+            const recentSermons = allSermons.slice(0, currentVideoCount);
+            let html = '';
+            
+            recentSermons.forEach(function(sermon, index) {
+                html += createVideoItem(sermon, index);
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateVideoCount() {
+            const selector = document.getElementById('videoCount');
+            currentVideoCount = parseInt(selector.value);
+            
+            
+            if (currentPlayer) {
+                currentPlayer.classList.remove('active');
+                currentPlayer.querySelector('iframe').src = '';
+                currentPlayer = null;
+            }
+            
+            displayVideos();
+        }
+
         function init() {
             const loadingDiv = document.getElementById('loading');
             const errorDiv = document.getElementById('error');
-            const container = document.getElementById('testament-container');
             
             loadSermons()
                 .then(function(sermons) {
-                    console.log('Successfully loaded sermons:', sermons.length);
+                    console.log('Loaded sermons:', sermons.length);
                     
                     if (sermons.length === 0) {
-                        throw new Error('No valid sermon data loaded');
+                        throw new Error('No sermons found');
                     }
                     
-                    sermonsData = sermons;
-                    const organized = organizeByTestamentAndBook(sermons);
-                    let html = '';
+                    allSermons = sortByDateDescending(sermons);
+                    console.log('Most recent sermon date:', allSermons[0].date);
                     
-                    
-                    Object.keys(organized).forEach(function(testamentName) {
-                        html += createTestamentAccordion(testamentName, organized[testamentName]);
-                    });
-                    
-                    container.innerHTML = html;
                     loadingDiv.style.display = 'none';
+                    displayVideos();
                 })
                 .catch(function(error) {
-                    console.error('Error loading sermons:', error);
+                    console.error('Error:', error);
                     loadingDiv.style.display = 'none';
                     errorDiv.style.display = 'block';
                 });
         }
-
-        function closeTestament(testamentId) {
-            const header = document.querySelector('[onclick*="toggleTestament(\'' + testamentId + '\')"]');
-            const content = document.getElementById('testament-' + testamentId);
-            
-            header.classList.remove('active');
-            content.classList.remove('active');
-            
-            
-            if (currentPlayer && content.contains(currentPlayer)) {
-                currentPlayer.classList.remove('active');
-                currentPlayer.querySelector('iframe').src = '';
-                currentPlayer = null;
-            }
-            
-            
-            setTimeout(function() {
-                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 200);
-        }
-
-        function closeBook(bookId) {
-            const header = document.querySelector('[onclick*="toggleBook(\'' + bookId + '\')"]');
-            const content = document.getElementById('book-' + bookId);
-            
-            header.classList.remove('active');
-            content.classList.remove('active');
-            
-            
-            if (currentPlayer && content.contains(currentPlayer)) {
-                currentPlayer.classList.remove('active');
-                currentPlayer.querySelector('iframe').src = '';
-                currentPlayer = null;
-            }
-            
-            
-            setTimeout(function() {
-                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 200);
-        }
     </script>
 </body>
 </html>
-<p>Check out our <a href="../../sermons/#sermon-archive-ordered-by-book-of-the-bible">Sermon Archive</a>.</p>
+<p>You can also check out our entire [Sermon Library](../../../sermons/#here-is-our-entire-sermon library-from-our-youtube-channel).</p>
 
           
           

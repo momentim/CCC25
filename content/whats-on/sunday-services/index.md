@@ -55,9 +55,9 @@ We believe the Bible is as relevant today as ever with the best news the world h
 
 We would love for you to join us this Sunday. Come along, bring a friend, and experience what God is doing in our community at Charleston Community Church.
 
-## Here is the latest sermon from our channel
+## Here are the latest sermons from our channel
 
-{{< youtube-library >}}
+{{< youtube-recents >}}
 
-Check out our [Sermon Archive](../../sermons/#sermon-archive-ordered-by-book-of-the-bible).
+You can also check out our entire [Sermon Library](../../../sermons/#here-is-our-entire-sermon library-from-our-youtube-channel).
 
