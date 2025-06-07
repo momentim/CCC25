@@ -1227,17 +1227,20 @@
         }
 
          
+        .video-container {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .video-container:last-of-type {
+            border-bottom: none;
+        }
+
         .video-item {
             display: flex;
             align-items: flex-start;
             padding: 15px 20px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .video-item:last-of-type {
-            border-bottom: none;
         }
 
         .video-item:hover {
@@ -1280,7 +1283,7 @@
 
          
         .video-player-container {
-            margin: 0px 20px 15px 20px;
+            margin: 0px 20px 20px 20px;
             border-radius: 5px;
             overflow: hidden;
             border: 1px solid #ddd;
@@ -1607,16 +1610,18 @@
             const imageUrl = getValidImage(video);
             const videoKey = bookId + '-' + index;
             
-            return '<div class="video-item" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
-                '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'">' +
-                '<div class="video-details">' +
-                    '<div class="video-title">' + video.title + '</div>' +
-                    '<div class="video-description">' + video.description + '</div>' +
-                    '<div class="video-date">' + video.date + '</div>' +
+            return '<div class="video-container">' +
+                '<div class="video-item" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
+                    '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'">' +
+                    '<div class="video-details">' +
+                        '<div class="video-title">' + video.title + '</div>' +
+                        '<div class="video-description">' + video.description + '</div>' +
+                        '<div class="video-date">' + video.date + '</div>' +
+                    '</div>' +
                 '</div>' +
-            '</div>' +
-            '<div id="player-' + videoKey + '" class="video-player-container">' +
-                '<iframe class="video-player" allowfullscreen></iframe>' +
+                '<div id="player-' + videoKey + '" class="video-player-container">' +
+                    '<iframe class="video-player" allowfullscreen></iframe>' +
+                '</div>' +
             '</div>';
         }
 
