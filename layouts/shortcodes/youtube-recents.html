@@ -16,6 +16,7 @@
             justify-content: center;
             margin-bottom: 30px;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .controls label {
@@ -23,23 +24,35 @@
             font-weight: 600;
         }
 
-        .video-count-selector {
+        .number-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .number-button {
             padding: 8px 12px;
             font-size: 1em;
             border: 2px solid #ddd;
             border-radius: 6px;
+            background: white;
             cursor: pointer;
-            transition: border-color 0.2s ease;
+            transition: all 0.2s ease;
+            min-width: 35px;
+            text-align: center;
+            font-weight: 600;
         }
 
-        .video-count-selector:hover {
+        .number-button:hover {
             border-color: #f3cf00;
+            background-color: #fffbf0;
         }
 
-        .video-count-selector:focus {
-            outline: none;
+        .number-button.active {
             border-color: #f3cf00;
-            box-shadow: 0 0 0 2px rgba(255, 184, 77, 0.25);
+            background-color: #f3cf00;
+            color: #333;
+            box-shadow: 0 0 0 2px rgba(243, 207, 0, 0.25);
         }
 
         .video-container {
@@ -156,6 +169,11 @@
                 gap: 10px;
             }
             
+            .number-selector {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
             .video-item {
                 flex-direction: column;
                 text-align: center;
@@ -188,25 +206,31 @@
             .video-player {
                 height: 145px;
             }
+            
+            .number-button {
+                padding: 6px 10px;
+                min-width: 30px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="recent-sermons">
         <div class="controls">
-            <label for="videoCount">Show recent videos:</label>
-            <select id="videoCount" class="video-count-selector" onchange="updateVideoCount()">
-                <option value="1">1 video</option>
-                <option value="2">2 videos</option>
-                <option value="3" selected>3 videos</option>
-                <option value="4">4 videos</option>
-                <option value="5">5 videos</option>
-                <option value="6">6 videos</option>
-                <option value="7">7 videos</option>
-                <option value="8">8 videos</option>
-                <option value="9">9 videos</option>
-                <option value="10">10 videos</option>
-            </select>
+            <label>Show recent videos:</label>
+            <div class="number-selector">
+                <button class="number-button" onclick="updateVideoCount(1)">1</button>
+                <button class="number-button" onclick="updateVideoCount(2)">2</button>
+                <button class="number-button active" onclick="updateVideoCount(3)">3</button>
+                <button class="number-button" onclick="updateVideoCount(4)">4</button>
+                <button class="number-button" onclick="updateVideoCount(5)">5</button>
+                <button class="number-button" onclick="updateVideoCount(6)">6</button>
+                <button class="number-button" onclick="updateVideoCount(7)">7</button>
+                <button class="number-button" onclick="updateVideoCount(8)">8</button>
+                <button class="number-button" onclick="updateVideoCount(9)">9</button>
+                <button class="number-button" onclick="updateVideoCount(10)">10</button>
+            </div>
         </div>
 
         <div id="loading" class="loading">
@@ -465,9 +489,21 @@
             container.innerHTML = html;
         }
 
-        function updateVideoCount() {
-            const selector = document.getElementById('videoCount');
-            currentVideoCount = parseInt(selector.value);
+        function updateVideoCount(count) {
+            currentVideoCount = count;
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.number-button');
+            buttons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+            
+            // Find and activate the clicked button
+            buttons.forEach(function(button) {
+                if (parseInt(button.textContent) === count) {
+                    button.classList.add('active');
+                }
+            });
             
             // Close any currently playing video
             if (currentPlayer) {
