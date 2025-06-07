@@ -29,19 +29,18 @@
             font-size: 1em;
             border: 2px solid #ddd;
             border-radius: 6px;
-            background-color: white;
             cursor: pointer;
             transition: border-color 0.2s ease;
         }
 
         .video-count-selector:hover {
-            border-color: #007bff;
+            border-color: #ffb84d;
         }
 
         .video-count-selector:focus {
             outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+            border-color: #ffb84d;
+            box-shadow: 0 0 0 2px rgba(255, 184, 77, 0.25);
         }
 
         .video-container {
@@ -53,7 +52,7 @@
         }
 
         .video-container:hover {
-            border-color: #007bff;
+            border-color: #ffb84d;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
@@ -89,7 +88,6 @@
             font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.4;
-            color: #333;
         }
 
         .video-description {
@@ -119,7 +117,7 @@
 
         .video-player {
             width: 100%;
-            height: 400px;
+            height: 335px;
             border: none;
         }
 
@@ -178,7 +176,7 @@
             }
             
             .video-player {
-                height: 220px;
+                height: 139px;
             }
         }
 
@@ -189,7 +187,7 @@
             }
             
             .video-player {
-                height: 178px;
+                height: 139px;
             }
         }
     </style>
@@ -201,14 +199,14 @@
             <select id="videoCount" class="video-count-selector" onchange="updateVideoCount()">
                 <option value="1">1 video</option>
                 <option value="2">2 videos</option>
-                <option value="3" selected>3 videos</option>
+                <option value="3">3 videos</option>
                 <option value="4">4 videos</option>
                 <option value="5">5 videos</option>
                 <option value="6">6 videos</option>
                 <option value="7">7 videos</option>
                 <option value="8">8 videos</option>
                 <option value="9">9 videos</option>
-                <option value="10">10 videos</option>
+                <option value="10" selected>10 videos</option>
             </select>
         </div>
 
@@ -363,10 +361,30 @@
             return values[index] ? values[index].trim() : '';
         }
 
+        function parseDate(dateString) {
+            // Handle DD/MM/YYYY format
+            if (dateString.includes('/')) {
+                const parts = dateString.split('/');
+                if (parts.length === 3) {
+                    const day = parseInt(parts[0]);
+                    const month = parseInt(parts[1]) - 1; // Month is 0-indexed in JavaScript
+                    const year = parseInt(parts[2]);
+                    return new Date(year, month, day);
+                }
+            }
+            // Fallback to default parsing
+            return new Date(dateString);
+        }
+
         function sortByDateDescending(sermons) {
             return sermons.sort(function(a, b) {
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
+                const dateA = parseDate(a.date);
+                const dateB = parseDate(b.date);
+                
+                // Debug logging
+                console.log('Comparing dates:', a.date, 'vs', b.date);
+                console.log('Parsed dates:', dateA, 'vs', dateB);
+                
                 return dateB - dateA; // Most recent first
             });
         }
