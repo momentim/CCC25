@@ -71,6 +71,7 @@
             display: flex;
             align-items: flex-start;
             padding: 20px;
+            cursor: pointer;
             transition: background-color 0.2s ease;
         }
 
@@ -86,7 +87,6 @@
             margin-right: 20px;
             border: 1px solid #ddd;
             flex-shrink: 0;
-            cursor: pointer;
         }
 
         .video-details {
@@ -99,17 +99,9 @@
             font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.4;
+            color: #D29E1E;
         }
         
-        .video-title a {
-            color: inherit;
-            text-decoration: underline;
-            text-decoration-color: currentColor;
-            text-underline-offset: 0.2em;
-            cursor: pointer;
-            transition: opacity 0.2s ease;
-        }
-
         .video-title a:hover {
             opacity: 0.8;
             text-decoration: underline;
@@ -204,7 +196,7 @@
             .video-title {
                 font-size: 1.2em;
             }
-
+            
             .video-player {
                 height: 139px;
             }
@@ -437,12 +429,10 @@
             const videoKey = 'recent-' + index;
             
             return '<div class="video-container">' +
-                '<div class="video-item">' +
-                    '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
+                '<div class="video-item" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
+                    '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'">' +
                     '<div class="video-details">' +
-                        '<div class="video-title">' +
-                            '<a href="javascript:void(0);" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' + video.title + '</a>' +
-                        '</div>' +
+                        '<div class="video-title">' + video.title + '</div>' +
                         '<div class="video-description">' + video.description + '</div>' +
                         '<div class="video-date">' + video.date + '</div>' +
                     '</div>' +
