@@ -1162,7 +1162,6 @@
             display: flex;
             align-items: flex-start;
             padding: 20px;
-            cursor: pointer;
             transition: background-color 0.2s ease;
         }
 
@@ -1178,6 +1177,7 @@
             margin-right: 20px;
             border: 1px solid #ddd;
             flex-shrink: 0;
+            cursor: pointer;
         }
 
         .video-details {
@@ -1205,6 +1205,7 @@
             opacity: 0.8;
             text-decoration: underline;
         }
+        
         .video-description {
             font-size: 1em;
             opacity: 0.8;
@@ -1527,10 +1528,12 @@
             const videoKey = 'recent-' + index;
             
             return '<div class="video-container">' +
-                '<div class="video-item" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
-                    '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'">' +
+                '<div class="video-item">' +
+                    '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
                     '<div class="video-details">' +
-                        '<div class="video-title">' + video.title + '</div>' +
+                        '<div class="video-title">' +
+                            '<a href="javascript:void(0);" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' + video.title + '</a>' +
+                        '</div>' +
                         '<div class="video-description">' + video.description + '</div>' +
                         '<div class="video-date">' + video.date + '</div>' +
                     '</div>' +
