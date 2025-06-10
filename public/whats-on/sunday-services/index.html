@@ -1146,62 +1146,49 @@
         }
 
         .video-container {
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             border: 2px solid #ddd;
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
+            background: transparent;
         }
 
         .video-container:hover {
             border-color: #f3a600;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .video-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 20px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .video-item:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .video-thumbnail {
-            width: 200px;
-            height: 112px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 20px;
-            border: 1px solid #ddd;
-            flex-shrink: 0;
+        .video-player-container {
+            width: 100%;
+            position: relative;
+            background: #000;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 366px;
+            border: none;
+            display: block;
         }
 
         .video-details {
-            flex: 1;
-            min-width: 0;
+            padding: 20px;
         }
 
         .video-title {
-            font-size: 1.3em;
+            font-size: 1.4em;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             line-height: 1.4;
             color: #D29E1E;
-        }
-        
-        .video-title a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
         }
         
         .video-description {
             font-size: 1em;
             opacity: 0.8;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.5;
         }
 
@@ -1209,24 +1196,6 @@
             font-size: 0.9em;
             opacity: 0.7;
             font-weight: 500;
-        }
-
-        .video-player-container {
-            margin: 0px 20px 20px 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #ddd;
-            display: none;
-        }
-
-        .video-player-container.active {
-            display: block;
-        }
-
-        .video-player {
-            width: 100%;
-            height: 340px;
-            border: none;
         }
 
         .loading, .error {
@@ -1270,43 +1239,32 @@
                 justify-content: center;
             }
             
-            .video-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
+            .video-player {
+                height: 250px;
             }
             
-            .video-thumbnail {
-                width: 160px;
-                height: 90px;
-                margin-right: 0;
-                margin-bottom: 15px;
-                align-self: center;
+            .video-details {
+                padding: 15px;
             }
             
             .video-title {
                 font-size: 1.2em;
             }
-            
-            .video-player {
-                height: 139px;
-            }
         }
 
         @media (max-width: 480px) {
-            .video-thumbnail {
-                width: 140px;
-                height: 79px;
-            }
-            
             .video-player {
-                height: 145px;
+                height: 200px;
             }
             
             .number-button {
                 padding: 6px 10px;
                 min-width: 30px;
                 font-size: 0.9em;
+            }
+            
+            .video-title {
+                font-size: 1.1em;
             }
         }
     </style>
@@ -1356,7 +1314,6 @@
         const SHEET_GID = '1692177726'; 
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/export?format=csv&gid=' + SHEET_GID;
 
-        let currentPlayer = null;
         let allSermons = [];
         let currentVideoCount = 3;
 
@@ -1508,59 +1465,17 @@
             });
         }
 
-        function getValidImage(video) {
-            if (video.image && video.image.includes('ytimg.com')) {
-                return video.image;
-            }
-            return 'https://i.ytimg.com/vi/' + video.videoId + '/maxresdefault.jpg';
-        }
-
         function createVideoItem(video, index) {
-            const imageUrl = getValidImage(video);
-            const videoKey = 'recent-' + index;
-            
             return '<div class="video-container">' +
-                '<div class="video-item" onclick="toggleVideo(\'' + video.videoId + '\', \'' + video.title.replace(/'/g, "\\'") + '\', \'' + videoKey + '\')">' +
-                    '<img src="' + imageUrl + '" alt="' + video.title + '" class="video-thumbnail" onerror="this.style.display=\'none\'">' +
-                    '<div class="video-details">' +
-                        '<div class="video-title">' + video.title + '</div>' +
-                        '<div class="video-description">' + video.description + '</div>' +
-                        '<div class="video-date">' + video.date + '</div>' +
-                    '</div>' +
+                '<div class="video-player-container">' +
+                    '<iframe class="video-player" src="https://www.youtube.com/embed/' + video.videoId + '" allowfullscreen></iframe>' +
                 '</div>' +
-                '<div id="player-' + videoKey + '" class="video-player-container">' +
-                    '<iframe class="video-player" allowfullscreen></iframe>' +
+                '<div class="video-details">' +
+                    '<div class="video-title">' + video.title + '</div>' +
+                    '<div class="video-description">' + video.description + '</div>' +
+                    '<div class="video-date">' + video.date + '</div>' +
                 '</div>' +
             '</div>';
-        }
-
-        function toggleVideo(videoId, title, videoKey) {
-            const playerContainer = document.getElementById('player-' + videoKey);
-            
-            
-            if (currentPlayer === playerContainer && playerContainer.classList.contains('active')) {
-                playerContainer.classList.remove('active');
-                playerContainer.querySelector('iframe').src = '';
-                currentPlayer = null;
-                return;
-            }
-            
-            
-            if (currentPlayer) {
-                currentPlayer.classList.remove('active');
-                currentPlayer.querySelector('iframe').src = '';
-            }
-            
-            
-            const iframe = playerContainer.querySelector('iframe');
-            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
-            playerContainer.classList.add('active');
-            currentPlayer = playerContainer;
-            
-            
-            setTimeout(function() {
-                playerContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
         }
 
         function displayVideos() {
@@ -1600,13 +1515,6 @@
                     button.classList.add('active');
                 }
             });
-            
-            
-            if (currentPlayer) {
-                currentPlayer.classList.remove('active');
-                currentPlayer.querySelector('iframe').src = '';
-                currentPlayer = null;
-            }
             
             displayVideos();
         }
