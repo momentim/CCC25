@@ -30,10 +30,7 @@ The book list varies, but we aim to include titles that are engaging, thought-pr
 
 Book selections will be announced ahead of each meeting, and we’ll make sure they’re easy to find — whether from the library, online, or borrowed from a friend. If you ever need help getting a copy, just let us know.
 
-The first book that we'll be reading together will be The Book Thief by Markus Zusak. Here is a preview of the book:
-<iframe frameborder="0" scrolling="no" style="border:0px" src="https://books.google.co.uk/books?id=ASn3DAAAQBAJ&newbks=0&lpg=PA4&pg=PP1&output=embed" width=500 height=500></iframe>
-
-Or [click here for a better preview.](https://www.google.co.uk/books/edition/The_Book_Thief/ASn3DAAAQBAJ?hl=en&gbpv=1)
+{{< books-for-bookclub >}}
 
 ## 👥 Who Can Come?
 
