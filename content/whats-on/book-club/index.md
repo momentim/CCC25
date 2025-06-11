@@ -28,7 +28,7 @@ And yes — **free tea and coffee** are provided!
 
 The book list varies, but we aim to include titles that are engaging, thought-provoking, and accessible. Some may explore life, faith, or human experience more deeply, while others might just be a good story that gets us talking.
 
-Book selections will be announced ahead of each meeting, and we’ll make sure they’re easy to find — whether from the library, online, or borrowed from a friend. If you ever need help getting a copy, just let us know.
+Book selections will be announced ahead of each meeting below, and we’ll make sure they’re easy to find — whether from the library, online, or borrowed from a friend. If you ever need help getting a copy, just let us know.
 
 {{< books-for-bookclub >}}
 
