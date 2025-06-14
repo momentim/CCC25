@@ -1,10 +1,11 @@
 {{/* Book Club Shortcode - Place this in layouts/shortcodes/bookclub.html */}}
 {{/* This shortcode fetches data from Google Sheets CSV export */}}
 
-{{/* Google Sheets CSV URL - replace the spreadsheet ID with yours */}}
+{{/* Google Sheets CSV URL - Make sure this points to the correct sheet */}}
+{{/* If your sheet is called 'Books', you might need to specify the gid parameter */}}
 {{ $csvUrl := "https://docs.google.com/spreadsheets/d/15xLM5dHD07uvelUW6pMVIOF80-YgiLhI6GdeYrf1om0/export?format=csv&gid=0" }}
 
-{{/* Fetch and parse CSV data */}}
+{{/* Fetch and parse CSV data with cache busting */}}
 {{ $csvData := getCSV "," $csvUrl }}
 
 {{/* Get current date for comparison */}}
@@ -13,6 +14,9 @@
 {{/* Initialize arrays for upcoming and previous books */}}
 {{ $upcomingBooks := slice }}
 {{ $previousBooks := slice }}
+
+{{/* Month names array for date formatting */}}
+{{ $monthNames := slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" }}
 
 {{/* Process CSV data (skip header row) */}}
 {{ range $index, $row := $csvData }}
@@ -33,8 +37,33 @@
         {{ $year := index $dateParts 2 }}
         {{ $bookDate := printf "%s-%s-%s" $year $month $day | time }}
         
+        {{/* Format the display date nicely - inline for Hugo 0.104.1 compatibility */}}
+        {{ $niceDate := $dateStr }}
+        {{ $dateParts := split $dateStr "-" }}
+        {{ if eq (len $dateParts) 3 }}
+          {{ $day := index $dateParts 0 | int }}
+          {{ $month := index $dateParts 1 | int }}
+          {{ $year := index $dateParts 2 }}
+          
+          {{/* Add ordinal suffix to day */}}
+          {{ $daySuffix := "th" }}
+          {{ if or (eq $day 1) (eq $day 21) (eq $day 31) }}
+            {{ $daySuffix = "st" }}
+          {{ else if or (eq $day 2) (eq $day 22) }}
+            {{ $daySuffix = "nd" }}
+          {{ else if or (eq $day 3) (eq $day 23) }}
+            {{ $daySuffix = "rd" }}
+          {{ end }}
+          
+          {{/* Get month name */}}
+          {{ $monthName := index $monthNames (sub $month 1) }}
+          
+          {{/* Create formatted date */}}
+          {{ $niceDate = printf "%d%s %s %s" $day $daySuffix $monthName $year }}
+        {{ end }}
+        
         {{/* Create book object */}}
-        {{ $book := dict "date" $dateStr "title" $title "author" $author "link" $link "sortDate" $bookDate }}
+        {{ $book := dict "date" $dateStr "niceDate" $niceDate "title" $title "author" $author "link" $link "sortDate" $bookDate }}
         
         {{/* Categorize by date */}}
         {{ if ge $bookDate $currentDate }}
@@ -52,6 +81,11 @@
 {{ $previousBooks = sort $previousBooks "sortDate" "desc" }}
 
 <div class="book-club-schedule">
+  {{/* Debug info - remove this section once working */}}
+  <div style="font-size: 0.8em; color: #666; margin-bottom: 1rem;">
+    <strong>Debug:</strong> Found {{ len $csvData }} total rows, {{ len $upcomingBooks }} upcoming, {{ len $previousBooks }} previous books. Last fetch: {{ now.Format "15:04:05" }}
+  </div>
+
   {{/* Upcoming Books Section */}}
   {{ if $upcomingBooks }}
   <section class="upcoming-books">
@@ -59,7 +93,7 @@
     <div class="books-list">
       {{ range $upcomingBooks }}
       <div class="book-item upcoming">
-        <div class="book-date">{{ .date }}</div>
+        <div class="book-date">{{ .niceDate }}</div>
         <div class="book-details">
           <h4>
             {{ if .link }}
@@ -171,12 +205,12 @@
 }
 
 .upcoming-books .book-date {
-  min-width: 120px;
+  min-width: 140px;
   font-size: 1rem;
 }
 
 .previous-books .book-date {
-  min-width: 100px;
+  min-width: 120px;
   font-size: 0.85rem;
 }
 
@@ -271,5 +305,4 @@
   .previous-books .book-details h4 {
     font-size: 0.9rem;
   }
-}
-</style>
+}</style>
