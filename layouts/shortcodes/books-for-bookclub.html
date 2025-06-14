@@ -1,9 +1,10 @@
 {{/* Book Club Shortcode - Place this in layouts/shortcodes/bookclub.html */}}
 {{/* This shortcode fetches data from Google Sheets CSV export */}}
 
-{{/* Google Sheets CSV URL - Make sure this points to the correct sheet */}}
+{{/* Google Sheets CSV URL with cache busting parameter */}}
 {{/* If your sheet is called 'Books', you might need to specify the gid parameter */}}
-{{ $csvUrl := "https://docs.google.com/spreadsheets/d/15xLM5dHD07uvelUW6pMVIOF80-YgiLhI6GdeYrf1om0/export?format=csv&gid=0" }}
+{{ $timestamp := now.Unix }}
+{{ $csvUrl := printf "https://docs.google.com/spreadsheets/d/15xLM5dHD07uvelUW6pMVIOF80-YgiLhI6GdeYrf1om0/export?format=csv&gid=0&t=%d" $timestamp }}
 
 {{/* Fetch and parse CSV data with cache busting */}}
 {{ $csvData := getCSV "," $csvUrl }}
@@ -79,12 +80,6 @@
 {{/* Sort books by date */}}
 {{ $upcomingBooks = sort $upcomingBooks "sortDate" }}
 {{ $previousBooks = sort $previousBooks "sortDate" "desc" }}
-
-<div class="book-club-schedule">
-  {{/* Debug info - remove this section once working */}}
-  <div style="font-size: 0.8em; color: #666; margin-bottom: 1rem;">
-    <strong>Debug:</strong> Found {{ len $csvData }} total rows, {{ len $upcomingBooks }} upcoming, {{ len $previousBooks }} previous books. Last fetch: {{ now.Format "15:04:05" }}
-  </div>
 
   {{/* Upcoming Books Section */}}
   {{ if $upcomingBooks }}
@@ -305,4 +300,5 @@
   .previous-books .book-details h4 {
     font-size: 0.9rem;
   }
-}</style>
+}
+</style>
