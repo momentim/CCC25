@@ -4,6 +4,9 @@ description: "A welcoming monthly book club for all, with free tea and coffee, d
 tags: ["Study"]
 title: "Charleston Community Book Club"
 showAuthor: false
+sharingLinks: false
+showScrollToTop: false
+scrollToTop: false
 ---
 
 <p>We're delighted to announce the launch of our <strong>Charleston Community Book Club</strong>, a monthly gathering open to everyone in the local area. Whether you're an avid reader or just looking for a friendly space to connect with others, this book club is for you!</p>
