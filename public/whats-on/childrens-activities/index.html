@@ -127,6 +127,13 @@
 
 
 
+    
+    <script defer src="/lib/packery/packery.pkgd.min.js" integrity=""></script>
+
+    
+    
+    <script type="text/javascript" src="/js/shortcodes/gallery.min.9b4cb28f931ed922c26fb9b2510c2debb370f6a63305050c2af81740b2919883715e24efbbdf3a081496718ec751df3a72729d4d0bc71d6071297563a97ce1ee.js" integrity="sha512-m0yyj5Me2SLCb7myUQwt67Nw9qYzBQUMKvgXQLKRmINxXiTvu986CBSWcY7HUd86cnKdTQvHHWBxKXVjqXzh7g=="></script>
+
 
 
 
@@ -948,6 +955,191 @@
   
   </figure>
 <p>This year&rsquo;s <strong>Treasure Cove Holiday Club</strong> is 30th June to 3rd July 2025. Check out all <a href="../../../posts/holiday-club-2025/">the details here</a>.</p>
+
+<div class="gallery-container">
+  <div class="gallery-grid">
+    
+<img src="../../posts/holiday-club-2025/gallery/pirates.jpg" alt="Holiday Club Pirates" />
+<img src="../../posts/holiday-club-2025/gallery/pirates3.jpg" alt="Holiday Club Pirates" />
+<img src="../../posts/holiday-club-2025/gallery/pirates4.jpg" alt="Holiday Club Pirates" />
+<img src="../../posts/holiday-club-2025/gallery/pirates5.jpg" alt="Holiday Club Pirates" />
+<img src="../../posts/holiday-club-2025/gallery/tcholidayclub.jpg" alt="Holiday Club Poster" />
+
+  </div>
+</div>
+
+<style>
+.gallery-container {
+  margin: 2rem 0;
+}
+
+.gallery-grid {
+  display: block;
+  column-count: 2;
+  column-gap: 2px;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    column-count: 3;
+    column-gap: 2px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-grid {
+    column-count: 4;
+    column-gap: 2px;
+  }
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1px;
+  padding: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  break-inside: avoid;
+  vertical-align: top;
+}
+
+ 
+.gallery-grid img:hover {
+  z-index: 10;
+}
+
+ 
+.gallery-grid img {
+  cursor: zoom-in;
+}
+
+.gallery-grid img.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 1000;
+  cursor: zoom-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  object-fit: contain;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+.gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.gallery-overlay.active {
+  opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryImages = document.querySelectorAll('.gallery-grid img');
+  let overlay = null;
+  let expandedImg = null;
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation();
+      
+      if (expandedImg) {
+        
+        closeExpandedImage();
+        return;
+      }
+      
+      
+      overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+      document.body.appendChild(overlay);
+      
+      
+      expandedImg = document.createElement('img');
+      expandedImg.style.cssText = `
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        max-height: 90vh !important;
+        z-index: 1000 !important;
+        cursor: zoom-out !important;
+        opacity: 0 !important;
+        transition: opacity 1s ease !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+        object-fit: contain !important;
+        display: block !important;
+      `;
+      
+      document.body.appendChild(expandedImg);
+      document.body.style.overflow = 'hidden';
+      
+      
+      expandedImg.onload = () => {
+        setTimeout(() => {
+          overlay.classList.add('active');
+          expandedImg.style.setProperty('opacity', '1', 'important');
+        }, 50);
+      };
+      
+      
+      expandedImg.src = this.src;
+      expandedImg.alt = this.alt;
+      
+      
+      expandedImg.addEventListener('click', closeExpandedImage);
+      
+      
+      overlay.addEventListener('click', closeExpandedImage);
+    });
+  });
+  
+  function closeExpandedImage() {
+    if (expandedImg && overlay) {
+      expandedImg.style.setProperty('opacity', '0', 'important');
+      overlay.classList.remove('active');
+      
+      setTimeout(() => {
+        if (expandedImg) {
+          expandedImg.remove();
+          expandedImg = null;
+        }
+        if (overlay) {
+          overlay.remove();
+          overlay = null;
+        }
+        document.body.style.overflow = '';
+      }, 1000);
+    }
+  }
+  
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && expandedImg) {
+      closeExpandedImage();
+    }
+  });
+});
+</script>
 <p>There are numerous activities for the kids from the regular groups like <a href="/whats-on/childrens-activities/impact-youth-club">Impact Youth Club</a>, <a href="/whats-on/childrens-activities/teens-cafe">Teens Cafe</a> and <a href="/whats-on/childrens-activities/toddlers">Wee Rascals Parent and Toddler group</a> to the <a href="../../posts/holiday-club">Holiday Clubs</a> in the summer and Kid&rsquo;s Church each Sunday.</p>
 <p><a href="/whats-on/childrens-activities/toddlers">Wee Rascals</a>, <a href="/whats-on/childrens-activities/teens-cafe">Teens Cafe</a> and <a href="/whats-on/childrens-activities/impact-youth-club">Impact Youth Club</a> are places where friendships flourish, laughter lingers, and unforgettable memories are made.
 <a href="/whats-on/childrens-activities/toddlers"><strong>Wee Rascals is on Thursday&rsquo;s 9:00 - 11:30 during term times</strong></a> 

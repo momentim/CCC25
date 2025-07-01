@@ -78,7 +78,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease;
 }
 
 .gallery-overlay.active {
@@ -90,92 +90,89 @@
 document.addEventListener('DOMContentLoaded', function() {
   const galleryImages = document.querySelectorAll('.gallery-grid img');
   let overlay = null;
+  let expandedImg = null;
 
   galleryImages.forEach(img => {
     img.addEventListener('click', function(e) {
-      e.stopPropagation(); // Prevent event bubbling
+      e.stopPropagation();
       
-      if (this.classList.contains('expanded')) {
-        // Close expanded image
-        this.classList.remove('expanded');
-        this.style.cssText = '';
+      if (expandedImg) {
+        // Close any existing expanded image
+        closeExpandedImage();
+        return;
+      }
+      
+      // Create overlay
+      overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+      document.body.appendChild(overlay);
+      
+      // Create expanded image
+      expandedImg = document.createElement('img');
+      expandedImg.style.cssText = `
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        max-height: 90vh !important;
+        z-index: 1000 !important;
+        cursor: zoom-out !important;
+        opacity: 0 !important;
+        transition: opacity 1s ease !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+        object-fit: contain !important;
+        display: block !important;
+      `;
+      
+      document.body.appendChild(expandedImg);
+      document.body.style.overflow = 'hidden';
+      
+      // Wait for image to load, then fade in
+      expandedImg.onload = () => {
+        setTimeout(() => {
+          overlay.classList.add('active');
+          expandedImg.style.setProperty('opacity', '1', 'important');
+        }, 50);
+      };
+      
+      // Set src after setting up the onload handler
+      expandedImg.src = this.src;
+      expandedImg.alt = this.alt;
+      
+      // Close on expanded image click
+      expandedImg.addEventListener('click', closeExpandedImage);
+      
+      // Close on overlay click
+      overlay.addEventListener('click', closeExpandedImage);
+    });
+  });
+  
+  function closeExpandedImage() {
+    if (expandedImg && overlay) {
+      expandedImg.style.setProperty('opacity', '0', 'important');
+      overlay.classList.remove('active');
+      
+      setTimeout(() => {
+        if (expandedImg) {
+          expandedImg.remove();
+          expandedImg = null;
+        }
         if (overlay) {
           overlay.remove();
           overlay = null;
         }
         document.body.style.overflow = '';
-      } else {
-        // Get the original position and size
-        const rect = this.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        
-        // Close any other expanded images first
-        galleryImages.forEach(otherImg => {
-          otherImg.classList.remove('expanded');
-        });
-        
-        // Remove existing overlay
-        if (overlay) {
-          overlay.remove();
-        }
-        
-        // Create overlay
-        overlay = document.createElement('div');
-        overlay.className = 'gallery-overlay';
-        document.body.appendChild(overlay);
-        
-        // Set initial position to match thumbnail
-        this.style.position = 'fixed';
-        this.style.top = (rect.top) + 'px';
-        this.style.left = (rect.left) + 'px';
-        this.style.width = rect.width + 'px';
-        this.style.height = rect.height + 'px';
-        this.style.zIndex = '1000';
-        this.style.transition = 'all 0.3s ease';
-        
-        document.body.style.overflow = 'hidden';
-        
-        // Activate overlay
-        setTimeout(() => {
-          overlay.classList.add('active');
-          
-          // Animate to center and full size
-          this.style.top = '50%';
-          this.style.left = '50%';
-          this.style.transform = 'translate(-50%, -50%)';
-          this.style.width = 'auto';
-          this.style.height = 'auto';
-          this.style.maxWidth = '90vw';
-          this.style.maxHeight = '90vh';
-          this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
-          this.style.cursor = 'zoom-out';
-          
-          this.classList.add('expanded');
-        }, 10);
-        
-        // Close on overlay click
-        overlay.addEventListener('click', () => {
-          this.classList.remove('expanded');
-          this.style.cssText = '';
-          overlay.remove();
-          overlay = null;
-          document.body.style.overflow = '';
-        });
-      }
-    });
-  });
+      }, 1000);
+    }
+  }
   
   // Close on escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && overlay) {
-      galleryImages.forEach(img => {
-        img.classList.remove('expanded');
-        img.style.cssText = '';
-      });
-      overlay.remove();
-      overlay = null;
-      document.body.style.overflow = '';
+    if (e.key === 'Escape' && expandedImg) {
+      closeExpandedImage();
     }
   });
 });

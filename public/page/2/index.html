@@ -1021,6 +1021,7 @@
 <img src="gallery/feature.JPG" alt="Feature Event" />
 <img src="gallery/image0.jpeg" alt="Community Gathering" />
 <img src="gallery/ccclogopng.png" alt="CCC Logo" />
+<img src="gallery/pirates.jpg" alt="Holiday Club Pirates" />
 <img src="gallery/CelebrateRecovery.png" alt="Celebrate Recovery" />
 <img src="gallery/christmasdoor.JPG" alt="Christmas Door" />
 <img src="gallery/holidayclub23.JPG" alt="Holiday Club 2023" />
@@ -1116,7 +1117,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease;
 }
 
 .gallery-overlay.active {
@@ -1128,92 +1129,89 @@
 document.addEventListener('DOMContentLoaded', function() {
   const galleryImages = document.querySelectorAll('.gallery-grid img');
   let overlay = null;
+  let expandedImg = null;
 
   galleryImages.forEach(img => {
     img.addEventListener('click', function(e) {
-      e.stopPropagation(); 
+      e.stopPropagation();
       
-      if (this.classList.contains('expanded')) {
+      if (expandedImg) {
         
-        this.classList.remove('expanded');
-        this.style.cssText = '';
+        closeExpandedImage();
+        return;
+      }
+      
+      
+      overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+      document.body.appendChild(overlay);
+      
+      
+      expandedImg = document.createElement('img');
+      expandedImg.style.cssText = `
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        max-height: 90vh !important;
+        z-index: 1000 !important;
+        cursor: zoom-out !important;
+        opacity: 0 !important;
+        transition: opacity 1s ease !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+        object-fit: contain !important;
+        display: block !important;
+      `;
+      
+      document.body.appendChild(expandedImg);
+      document.body.style.overflow = 'hidden';
+      
+      
+      expandedImg.onload = () => {
+        setTimeout(() => {
+          overlay.classList.add('active');
+          expandedImg.style.setProperty('opacity', '1', 'important');
+        }, 50);
+      };
+      
+      
+      expandedImg.src = this.src;
+      expandedImg.alt = this.alt;
+      
+      
+      expandedImg.addEventListener('click', closeExpandedImage);
+      
+      
+      overlay.addEventListener('click', closeExpandedImage);
+    });
+  });
+  
+  function closeExpandedImage() {
+    if (expandedImg && overlay) {
+      expandedImg.style.setProperty('opacity', '0', 'important');
+      overlay.classList.remove('active');
+      
+      setTimeout(() => {
+        if (expandedImg) {
+          expandedImg.remove();
+          expandedImg = null;
+        }
         if (overlay) {
           overlay.remove();
           overlay = null;
         }
         document.body.style.overflow = '';
-      } else {
-        
-        const rect = this.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        
-        
-        galleryImages.forEach(otherImg => {
-          otherImg.classList.remove('expanded');
-        });
-        
-        
-        if (overlay) {
-          overlay.remove();
-        }
-        
-        
-        overlay = document.createElement('div');
-        overlay.className = 'gallery-overlay';
-        document.body.appendChild(overlay);
-        
-        
-        this.style.position = 'fixed';
-        this.style.top = (rect.top) + 'px';
-        this.style.left = (rect.left) + 'px';
-        this.style.width = rect.width + 'px';
-        this.style.height = rect.height + 'px';
-        this.style.zIndex = '1000';
-        this.style.transition = 'all 0.3s ease';
-        
-        document.body.style.overflow = 'hidden';
-        
-        
-        setTimeout(() => {
-          overlay.classList.add('active');
-          
-          
-          this.style.top = '50%';
-          this.style.left = '50%';
-          this.style.transform = 'translate(-50%, -50%)';
-          this.style.width = 'auto';
-          this.style.height = 'auto';
-          this.style.maxWidth = '90vw';
-          this.style.maxHeight = '90vh';
-          this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
-          this.style.cursor = 'zoom-out';
-          
-          this.classList.add('expanded');
-        }, 10);
-        
-        
-        overlay.addEventListener('click', () => {
-          this.classList.remove('expanded');
-          this.style.cssText = '';
-          overlay.remove();
-          overlay = null;
-          document.body.style.overflow = '';
-        });
-      }
-    });
-  });
+      }, 1000);
+    }
+  }
   
   
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && overlay) {
-      galleryImages.forEach(img => {
-        img.classList.remove('expanded');
-        img.style.cssText = '';
-      });
-      overlay.remove();
-      overlay = null;
-      document.body.style.overflow = '';
+    if (e.key === 'Escape' && expandedImg) {
+      closeExpandedImage();
     }
   });
 });

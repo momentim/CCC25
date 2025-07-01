@@ -99,6 +99,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/feature.JPG" alt="Feature Event" />
 <img src="gallery/image0.jpeg" alt="Community Gathering" />
 <img src="gallery/ccclogopng.png" alt="CCC Logo" />
+<img src="gallery/pirates.jpg" alt="Holiday Club Pirates" />
 <img src="gallery/CelebrateRecovery.png" alt="Celebrate Recovery" />
 <img src="gallery/christmasdoor.JPG" alt="Christmas Door" />
 <img src="gallery/holidayclub23.JPG" alt="Holiday Club 2023" />

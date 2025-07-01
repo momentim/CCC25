@@ -27,7 +27,7 @@ One thing’s for sure — this voyage will change everything.
 <img src="gallery/pirates3.jpg" alt="Holiday Club Pirates" />
 <img src="gallery/pirates4.jpg" alt="Holiday Club Pirates" />
 <img src="gallery/pirates5.jpg" alt="Holiday Club Pirates" />
-<img src="gallery/tcholidayclub.jpg" alt="Holiday Club Pirates" />
+<img src="gallery/tcholidayclub.jpg" alt="Holiday Club Poster" />
 {{< /gallery >}}
 
 Will you help solve the riddles? Follow the clues? Discover what real treasure truly is?
