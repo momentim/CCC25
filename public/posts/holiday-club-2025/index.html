@@ -154,6 +154,13 @@
 
 
 
+    
+    <script defer src="/lib/packery/packery.pkgd.min.js" integrity=""></script>
+
+    
+    
+    <script type="text/javascript" src="/js/shortcodes/gallery.min.9b4cb28f931ed922c26fb9b2510c2debb370f6a63305050c2af81740b2919883715e24efbbdf3a081496718ec751df3a72729d4d0bc71d6071297563a97ce1ee.js" integrity="sha512-m0yyj5Me2SLCb7myUQwt67Nw9qYzBQUMKvgXQLKRmINxXiTvu986CBSWcY7HUd86cnKdTQvHHWBxKXVjqXzh7g=="></script>
+
 
 
 
@@ -1024,18 +1031,194 @@
 <p>Set sail with <strong>Zack Smallfry</strong>, a young sailor ready for the adventure of a lifetime! When he joins up with a band of pirates, it seems like all fun and treasure hunts&hellip; but not everything is as it seems on the high seas.</p>
 <p>Whispers are spreading across the ocean — of a <strong>great King of the Seven Seas</strong> who has returned. Some say he&rsquo;s come for justice. Others say he&rsquo;s full of kindness and mercy. Zack&rsquo;s curiosity is stirred, and he begins to wonder: could this mysterious King be the answer to something deeper?</p>
 <p>One thing’s for sure — this voyage will change everything.</p>
-<p>
 
+<div class="gallery-container">
+  <div class="gallery-grid">
+    
+<img src="gallery/pirates.jpg" alt="Holiday Club Pirates" />
+<img src="gallery/pirates3.jpg" alt="Holiday Club Pirates" />
+<img src="gallery/pirates4.jpg" alt="Holiday Club Pirates" />
+<img src="gallery/pirates5.jpg" alt="Holiday Club Pirates" />
+<img src="gallery/tcholidayclub.jpg" alt="Holiday Club Pirates" />
 
+  </div>
+</div>
 
+<style>
+.gallery-container {
+  margin: 2rem 0;
+}
 
+.gallery-grid {
+  display: block;
+  column-count: 2;
+  column-gap: 2px;
+}
 
-<figure>
-    <img class="my-0 rounded-md" loading="lazy" alt="Treasure Cove Holiday Club" src="../holiday-club-2025/tcholidayclub.jpg" />
+@media (min-width: 768px) {
+  .gallery-grid {
+    column-count: 3;
+    column-gap: 2px;
+  }
+}
 
+@media (min-width: 1280px) {
+  .gallery-grid {
+    column-count: 4;
+    column-gap: 2px;
+  }
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1px;
+  padding: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  break-inside: avoid;
+  vertical-align: top;
+}
+
+ 
+.gallery-grid img:hover {
+  z-index: 10;
+}
+
+ 
+.gallery-grid img {
+  cursor: zoom-in;
+}
+
+.gallery-grid img.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 1000;
+  cursor: zoom-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  object-fit: contain;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+.gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-overlay.active {
+  opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryImages = document.querySelectorAll('.gallery-grid img');
+  let overlay = null;
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); 
+      
+      if (this.classList.contains('expanded')) {
+        
+        this.classList.remove('expanded');
+        this.style.cssText = '';
+        if (overlay) {
+          overlay.remove();
+          overlay = null;
+        }
+        document.body.style.overflow = '';
+      } else {
+        
+        const rect = this.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        
+        galleryImages.forEach(otherImg => {
+          otherImg.classList.remove('expanded');
+        });
+        
+        
+        if (overlay) {
+          overlay.remove();
+        }
+        
+        
+        overlay = document.createElement('div');
+        overlay.className = 'gallery-overlay';
+        document.body.appendChild(overlay);
+        
+        
+        this.style.position = 'fixed';
+        this.style.top = (rect.top) + 'px';
+        this.style.left = (rect.left) + 'px';
+        this.style.width = rect.width + 'px';
+        this.style.height = rect.height + 'px';
+        this.style.zIndex = '1000';
+        this.style.transition = 'all 0.3s ease';
+        
+        document.body.style.overflow = 'hidden';
+        
+        
+        setTimeout(() => {
+          overlay.classList.add('active');
+          
+          
+          this.style.top = '50%';
+          this.style.left = '50%';
+          this.style.transform = 'translate(-50%, -50%)';
+          this.style.width = 'auto';
+          this.style.height = 'auto';
+          this.style.maxWidth = '90vw';
+          this.style.maxHeight = '90vh';
+          this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+          this.style.cursor = 'zoom-out';
+          
+          this.classList.add('expanded');
+        }, 10);
+        
+        
+        overlay.addEventListener('click', () => {
+          this.classList.remove('expanded');
+          this.style.cssText = '';
+          overlay.remove();
+          overlay = null;
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  });
   
-</figure>
-</p>
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay) {
+      galleryImages.forEach(img => {
+        img.classList.remove('expanded');
+        img.style.cssText = '';
+      });
+      overlay.remove();
+      overlay = null;
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
 <p>Will you help solve the riddles? Follow the clues? Discover what real treasure truly is?</p>
 <p>Climb aboard for a week of fun, friendship, and faith. The journey is just beginning — and you won’t want to miss what’s waiting at the next port!</p>
 <hr>
