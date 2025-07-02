@@ -11,7 +11,7 @@ cascade:
 ---
 
 ### The good news of Jesus knows no bounds, a message of love and redemption reaching out to all people regardless of their background or circumstances. 
-We gather for worship every **Sunday at 10:30** in the [Charleston Community Centre](contact/#charleston-community-centre).  You are very welcome to join us and see how the message of the Bible brings hope and life to those who trust in Jesus.
+We gather for [worship services](/whats-on/sunday-services/) every **Sunday at 10:30** in the [Charleston Community Centre](contact/#charleston-community-centre).  You are very welcome to join us and see how the message of the Bible brings hope and life to those who trust in Jesus.
 {{< youtube RbPMl5X5Bks >}}
 
 ## Charleston Community Church Vision
