@@ -39,12 +39,12 @@ th, td {
 | **[Book Club](/whats-on/book-club)** | **1st Mon of month @ 5:30** | **[Community Centre](../../../contact/#charleston-community-centre)** | 
 | [Drop In Café](/whats-on/cafes/cafe) | Tu: 10-1 / Fr: 12-2 | [Church](../../../contact/#charleston-community-church) | 
 | **[Ladies' Bible Study](/whats-on/bible-studies/ladies-bible-study)** | **Tues 1-2pm** | **[Church](../../../contact/#charleston-community-church)** | 
-| [Teen's Café](/whats-on/childrens-activities/teens-cafe) | Tues 7-8pm | [Church](../../../contact/#charleston-community-church) | 
+| [Impact Club](/whats-on/childrens-activities/impact-youth-club) | Tues 6-7pm | [Community Centre](../../../contact/#charleston-community-centre) | 
 | **[Senior's Lunch Club](/whats-on/seniors-lunch)** | **1st Wed of month @ 12:00** | **[Church](../../../contact/#charleston-community-church)** |
 | [Home Bible Study](/whats-on/bible-studies/home-group-bible-study) | 2nd & 4th Wed 7-8pm | [Email to Register](../../../contact/#contact-form) | 
 | **7 a-side football** | **Wed 9-10pm** | **[Change Centre](https://streetsoccerscotland.org/change-is-almost-here/)** | 
 | [Wee Rascals](/whats-on/childrens-activities/toddlers) | Thurs 9-12 | [Church](../../../contact/#charleston-community-church) | 
-| **[Impact Club](/whats-on/childrens-activities/impact-youth-club)** | **Thurs 7-8pm** | **[Community Centre](../../../contact/#charleston-community-centre)** | 
+| **[Teen's Café](/whats-on/childrens-activities/teens-cafe)** | **Thurs 7-8pm** | **[Church](../../../contact/#charleston-community-church)** | 
 | Men's Prayer Breakfast | Last Sat of month 9-10:30 | [Church](../../../contact/#charleston-community-church) | 
 
 

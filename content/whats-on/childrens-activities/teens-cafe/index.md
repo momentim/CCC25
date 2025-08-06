@@ -1,6 +1,6 @@
 ---
 title: "Teens Cafe"
-description: "Teens Cafe is on every Tuesday Night for S1 - S3 students"
+description: "Teens Cafe is on every Thursday Night for S1 - S3 students"
 tags: ["youth"]
 type: article
 date: 2024-08-19
@@ -17,7 +17,7 @@ Looking for a place to hang out, have fun, and connect with friends after school
 - **Bible Talk:** After all the games and snacks, we’ll gather for a short, engaging Bible talk. It's a time to pause, reflect, and learn from God’s word, something you can take with you into the rest of your week.
 
 ## When and Where:
-- **Day:** Tuesdays
+- **Day:** Thursdays
 - **Time:** 7pm – 8pm
 - **Location:** Charleston Community Church, 29 Craigowan Road, DD2 4NN
 
