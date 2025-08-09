@@ -8,9 +8,7 @@ showAuthor: false
 showDate: false
 ---
 
-*A Women's Conference with the theme 'Discovering who we are in Christ'*
-
-![Adopted Flyer](adopted.jpg)
+<p>A Women's Conference with the theme 'Discovering who we are in Christ'</p>
 
 ## Event Details
 
@@ -18,6 +16,8 @@ showDate: false
 **Time:** 9:30 AM - 2:00 PM  
 **Location:** Charleston Community Church  
 **Address:** 29 Craigowan Road, Dundee DD2 4NN
+
+![Adopted Flyer](adopted.jpg)
 
 ## About the Conference
 

@@ -97,6 +97,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/image2.jpeg" alt="Community Event" />
 <img src="gallery/featureCrossroads.jpg" alt="Crossroads" />
 <img src="gallery/feature.JPG" alt="Feature Event" />
+<img src="gallery/adopted.jpg" alt="Women's Conference" />
 <img src="gallery/image0.jpeg" alt="Community Gathering" />
 <img src="gallery/ccclogopng.png" alt="CCC Logo" />
 <img src="gallery/pirates.jpg" alt="Holiday Club Pirates" />
