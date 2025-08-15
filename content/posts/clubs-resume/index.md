@@ -10,10 +10,12 @@ featured_image: "/images/impactclubsnack.JPG"
 Attention all young people, we hope you've had a great summer! But it's back to school and during term times we welcome you back to [Wee Rascals](/whats-on/childrens-activities/toddlers), [Impact Youth Club](/whats-on/childrens-activities/impact-youth-club) and [Teens Café](/whats-on/childrens-activities/teens-cafe). These child and youth events are places where friendships flourish, laughter lingers, and unforgettable memories are made.
 
 ![Wee Rascals Flyer](weerascals.jpg)
-**Wee Rascals will begin back the 17th of August 9:00 - 11:30** in the morning at the church and **Impact Youth Club will start back on TUESDAY the 24th August 6 - 7pm at the Community Centre. Please note the new day and time** You can [Pre-register your children to come on our Impact Club page here](/whats-on/childrens-activities/impact-youth-club) here or fill in the form at the door.  And **Teens Café will resume on THURSDAY the 26th August at 7pm. Please note the new day.**
-
+**Wee Rascals will begin back the 17th of August 9:00 - 11:30** in the morning at the church and **Impact Youth Club will start back on TUESDAY the 24th August 6 - 7pm at the Community Centre. Please note the new day and time** You can [Pre-register your children to come on our Impact Club page here](/whats-on/childrens-activities/impact-youth-club) here or fill in the form at the door. 
 
 ![Impact Club Flyer](../../gallery/impactclub.jpeg)
+
+**Teens Café will resume on THURSDAY the 26th August at 7pm. Please note the new day.**
+
 ![Teens Cafe](../../gallery/teenscafe.jpeg)
 Please visit our respective pages for more details on [Wee Rascals](/whats-on/childrens-activities/toddlers),  [Impact Youth Club](/whats-on/childrens-activities/impact-youth-club) and [Teens Café](/whats-on/childrens-activities/teens-cafe)
 
