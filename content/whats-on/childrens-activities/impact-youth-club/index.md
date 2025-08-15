@@ -14,7 +14,7 @@ Calling all primary school kids from P1 to P7! Join us on Tuesday nights during 
 ![Impact Club Pic](featureimpactclub.jpg)
 
 At Impact Club, kids experience the joy of building friendships, expressing creativity through crafts, active play and get complementary snacks ensuring a fun time for everyone. Our dedicated team of caring volunteers help every child feel welcomed and valued.  Parents/guardians must complete the registration form at the bottom of this page or on the door, and from then on, the kids can come and be part of Impact Club.  Our aim is to bless every young person by giving them a loving community and sharing the joy of knowing the God of the bible.
-![Impact Club Flyer](impactclub.jpg)
+![Impact Club Flyer](../../../gallery/impactclub.jpeg)
 
 Details:  
 📅 When: **Tuesday nights during term time**  
