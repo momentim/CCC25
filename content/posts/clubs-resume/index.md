@@ -5,7 +5,7 @@ tags: ["youth"]
 title: "Youth Clubs Resume"
 featured_image: "/images/impactclubsnack.JPG"
 ---
-### Wee Rascals for Parents and Toddlers and Impact Club for Primary Age Youths and Teens Café Starts Back after the Summer Break.  NEW DAYS AND TIME apply to Impact Club (now on Tuesdays from 6 - 7pm) and Teens Café (now Thursdays at the usual time of 7 - 8pm).
+## New Start days and times: Impact Club is now from 6 to 7pm on Tuesday Nights and Teens Cafe is Thursday nights at the same time of 7 to 8pm.
 
 Attention all young people, we hope you've had a great summer! But it's back to school and during term times we welcome you back to [Wee Rascals](/whats-on/childrens-activities/toddlers), [Impact Youth Club](/whats-on/childrens-activities/impact-youth-club) and [Teens Café](/whats-on/childrens-activities/teens-cafe). These child and youth events are places where friendships flourish, laughter lingers, and unforgettable memories are made.
 
