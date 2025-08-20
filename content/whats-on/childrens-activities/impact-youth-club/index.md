@@ -25,7 +25,7 @@ For more information, contact us through our [Contact Page](../../../../contact)
 
 Note: Parents or guardians are kindly requested to drop off and pick up their children at the designated times.
 
-You can pre-register your child(ren) using the [Online Registration Form](https://docs.google.com/forms/d/e/1FAIpQLSf79gdV1t6oYG1GmD6KaLgDZl-pfIZzb72iWPB0MreqaTqTcQ/viewform). Fill in once for each child.
+You can pre-register your child(ren) using the [Online Registration Form](https://docs.google.com/forms/d/e/1FAIpQLSdCaJtP05e4s5knwUdEV7cnLOloy82bMNs0UndHfxM96AvKSQ/viewform). Fill in once for each child.
 
 
 
