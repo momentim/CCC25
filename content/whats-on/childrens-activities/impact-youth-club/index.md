@@ -9,7 +9,7 @@ type: article
 ### Impact club is for all primary school students P1 - P7 during term time
 🌟 Join Impact Youth Club: Fun, Friendship, and Faith! 🌟
 
-Calling all primary school kids from P1 to P7! Join us on Tuesday nights during term time **from 6 to 7 pm at the [Charleston Community Centre](../../../contact/#charleston-community-centre)** for games, engaging bible lessons, crafts, and tasty snacks.
+Calling all primary school kids from P1 to P7! Join us on **Tuesday nights** during term time **from 6 to 7 pm at the [Charleston Community Centre](../../../contact/#charleston-community-centre)** for games, engaging bible lessons, crafts, and tasty snacks.
 
 ![Impact Club Pic](featureimpactclub.jpg)
 
