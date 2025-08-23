@@ -20,10 +20,19 @@ Looking for a place to hang out, have fun, and connect with friends after school
 - **Day:** Thursdays
 - **Time:** 7pm – 8pm
 - **Location:** Charleston Community Church, 29 Craigowan Road, DD2 4NN
+- **Registration:** Parents/carers please register your child [here](https://forms.gle/x4gruV8bH5stsaQA8).
 
 ![Teens Café Flyer](../../../gallery/teenscafe.jpeg)
 
 Whether you're looking to unwind after a long day of school, make new friends, or explore what the Bible has to say about life, the Teens Café is the place for you. Come as you are, bring a friend, and let's have a blast together!
+
+**Please Register** - this allows for:
+
+- Leaders to have all the necessary medical and emergency information to keep your child safe.  
+- There’s a clear plan for supervision, first aid, and getting home safely.  
+- Your child won’t miss out on the limited spaces for a fun, positive, and character-building weekly group with friends.
+
+**Parents/carers** [register your child](https://forms.gle/x4gruV8bH5stsaQA8) for free so that we can care well for your teen.
 
 See you there!
 
