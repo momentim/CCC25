@@ -22,12 +22,6 @@ The elders exercise leadership in the church in a number of different ways. They
            <strong>Andy Robertson</strong> - Minister
         </figcaption>
     </figure>
-    <figure class="flex flex-col items-center m-4 p-2 max-w-[90%]" style="margin-right: 8px;">
-        <img src="phil.jpeg" alt="Phil Dickson - Elder" class="rounded-full w-32 h-32 object-cover mb-4">
-        <figcaption class="text-center">
-            <strong>Phil Dickson</strong> - Elder
-        </figcaption>
-    </figure>
     <figure class="flex flex-col items-center m-4 p-2 max-w-[90%]" style="margin-left: 5px;">
         <img src="tim.jpeg" alt="Tim Allyn - Elder" class="rounded-full w-32 h-32 object-cover mb-4">
         <figcaption class="text-center">
