@@ -2,43 +2,68 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Children&#39;s Clubs and Activities on Charleston Community Church</title>
-    <link>https://charleston-church.com/whats-on/childrens-activities/</link>
+    <link>http://localhost:1313/whats-on/childrens-activities/</link>
     <description>Recent content in Children&#39;s Clubs and Activities on Charleston Community Church</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
     <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
     <copyright>© 2025 Charleston Community Church</copyright>
-    <lastBuildDate>Mon, 19 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://charleston-church.com/whats-on/childrens-activities/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/whats-on/childrens-activities/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Teens Café</title>
-      <link>https://charleston-church.com/whats-on/childrens-activities/teens-cafe/</link>
+      <link>http://localhost:1313/whats-on/childrens-activities/teens-cafe/</link>
       <pubDate>Mon, 19 Aug 2024 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/whats-on/childrens-activities/teens-cafe/</guid>
-      <description>All S1 - S3&#39;s Welcome to the Teens Café!Looking for a place to hang out, have fun, and connect with friends after school?</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/childrens-activities/teens-cafe/featureteenscafe.JPG" />
+      <guid>http://localhost:1313/whats-on/childrens-activities/teens-cafe/</guid>
+      <description>&lt;h3&gt;All S1 - S3&#39;s Welcome to the Teens Café!&lt;/h3&gt;
+&lt;p&gt;Looking for a place to hang out, have fun, and connect with friends after school? The &lt;strong&gt;Teens Café&lt;/strong&gt; is the perfect spot for secondary school students from S1 – S3. It&amp;rsquo;s an hour of non-stop fun and food with friends—an awesome way to kick off your week!&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/whats-on/childrens-activities/teens-cafe/featureteenscafe.JPG" />
     </item>
     
     <item>
       <title>Impact Youth Club</title>
-      <link>https://charleston-church.com/whats-on/childrens-activities/impact-youth-club/</link>
+      <link>http://localhost:1313/whats-on/childrens-activities/impact-youth-club/</link>
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/whats-on/childrens-activities/impact-youth-club/</guid>
-      <description>Impact club is for all primary school students P1 - P7 during term time 🌟 Join Impact Youth Club: Fun, Friendship, and Faith!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/childrens-activities/impact-youth-club/featureimpactclub.jpg" />
+      <guid>http://localhost:1313/whats-on/childrens-activities/impact-youth-club/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Impact club is for all primary school students P1 - P7 during term time 
+    &lt;div id=&#34;impact-club-is-for-all-primary-school-students-p1---p7-during-term-time&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;🌟 Join Impact Youth Club: Fun, Friendship, and Faith! 🌟&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/whats-on/childrens-activities/impact-youth-club/featureimpactclub.jpg" />
     </item>
     
     <item>
       <title>Wee Rascals Toddler Group</title>
-      <link>https://charleston-church.com/whats-on/childrens-activities/toddlers/</link>
+      <link>http://localhost:1313/whats-on/childrens-activities/toddlers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/whats-on/childrens-activities/toddlers/</guid>
-      <description>We are thrilled to extend a warm invitation to all parents/guardians and their adorable toddlers to join the Wee Rascals Baby and Toddler Group at Charleston Community Church.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/childrens-activities/toddlers/featurerascals2.JPG" />
+      <guid>http://localhost:1313/whats-on/childrens-activities/toddlers/</guid>
+      <description>&lt;p&gt;We are thrilled to extend a warm invitation to all parents/guardians and their adorable toddlers to join the Wee Rascals Baby and Toddler Group at Charleston Community Church. This playgroup takes place &lt;strong&gt;every Thursday morning 9:00 to 11:30&lt;/strong&gt; during term time, providing a nurturing and engaging space for both children and parents alike. We welcome you to come and be a part of this wonderful community, where laughter, learning, and friendship abound.
+
+
+
+
+
+
+&lt;figure&gt;
+      &lt;img
+    class=&#34;my-0 rounded-md&#34; loading=&#34;lazy&#34; decoding=&#34;async&#34; fetchpriority=&#34;low&#34; alt=&#34;Wee Rascals Flyer&#34;
+    srcset=&#34;
+      /whats-on/childrens-activities/toddlers/weerascals_hu_fbb32116215d213e.jpg 330w,
+      /whats-on/childrens-activities/toddlers/weerascals_hu_11b49aed4c4a31a6.jpg 660w,
+      /whats-on/childrens-activities/toddlers/weerascals_hu_e520fc8df718b3e5.jpg 1280w&#34;
+    data-zoom-src=&#34;http://localhost:1313/whats-on/childrens-activities/toddlers/weerascals.jpg&#34;
+    src=&#34;http://localhost:1313/whats-on/childrens-activities/toddlers/weerascals.jpg&#34;
+  /&gt;
+
+  
+&lt;/figure&gt;
+&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/whats-on/childrens-activities/toddlers/featurerascals2.JPG" />
     </item>
     
   </channel>

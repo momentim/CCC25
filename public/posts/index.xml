@@ -2,290 +2,430 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Charleston Community Church News on Charleston Community Church</title>
-    <link>https://charleston-church.com/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Charleston Community Church News on Charleston Community Church</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
     <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
     <copyright>© 2025 Charleston Community Church</copyright>
-    <lastBuildDate>Fri, 08 Aug 2025 11:25:05 -0400</lastBuildDate><atom:link href="https://charleston-church.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Aug 2025 11:25:05 -0400</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Youth Clubs Resume</title>
-      <link>https://charleston-church.com/posts/clubs-resume/</link>
+      <link>http://localhost:1313/posts/clubs-resume/</link>
       <pubDate>Fri, 08 Aug 2025 11:25:05 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/clubs-resume/</guid>
-      <description>New Start days and times: Impact Club is now from 6 to 7pm on Tuesday Nights and Teens Cafe is Thursday nights at the same time of 7 to 8pm.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/clubs-resume/feature.JPG" />
+      <guid>http://localhost:1313/posts/clubs-resume/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;New Start days and times: Impact Club is now from 6 to 7pm on Tuesday Nights and Teens Cafe is Thursday nights at the same time of 7 to 8pm. 
+    &lt;div id=&#34;new-start-days-and-times-impact-club-is-now-from-6-to-7pm-on-tuesday-nights-and-teens-cafe-is-thursday-nights-at-the-same-time-of-7-to-8pm&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h2&gt;
+&lt;p&gt;Attention all young people, we hope you&amp;rsquo;ve had a great summer! But it&amp;rsquo;s back to school and during term times we welcome you back to &lt;a href=&#34;http://localhost:1313/whats-on/childrens-activities/toddlers&#34;&gt;Wee Rascals&lt;/a&gt;, &lt;a href=&#34;http://localhost:1313/whats-on/childrens-activities/impact-youth-club&#34;&gt;Impact Youth Club&lt;/a&gt; and &lt;a href=&#34;http://localhost:1313/whats-on/childrens-activities/teens-cafe&#34;&gt;Teens Café&lt;/a&gt;. These child and youth events are places where friendships flourish, laughter lingers, and unforgettable memories are made.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/clubs-resume/feature.JPG" />
     </item>
     
     <item>
       <title>ADOPTED Women&#39;s Conference</title>
-      <link>https://charleston-church.com/posts/adopted-womens-conference/</link>
+      <link>http://localhost:1313/posts/adopted-womens-conference/</link>
       <pubDate>Fri, 08 Aug 2025 10:28:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/adopted-womens-conference/</guid>
-      <description>A Women&#39;s Conference with the theme &#39;Discovering who we are in Christ&#39;
-Event Details Date: Saturday, 27th September
-Time: 9:30 AM - 2:00 PM</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/adopted-womens-conference/featureadopted.jpg" />
+      <guid>http://localhost:1313/posts/adopted-womens-conference/</guid>
+      <description>&lt;p&gt;A Women&#39;s Conference with the theme &#39;Discovering who we are in Christ&#39;&lt;/p&gt;
+
+&lt;h2 class=&#34;relative group&#34;&gt;Event Details 
+    &lt;div id=&#34;event-details&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; Saturday, 27th September&lt;br&gt;
+&lt;strong&gt;Time:&lt;/strong&gt; 9:30 AM - 2:00 PM&lt;br&gt;
+&lt;strong&gt;Location:&lt;/strong&gt; Charleston Community Church&lt;br&gt;
+&lt;strong&gt;Address:&lt;/strong&gt; 29 Craigowan Road, Dundee DD2 4NN&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/adopted-womens-conference/featureadopted.jpg" />
     </item>
     
     <item>
       <title>Treasure Cove Holiday Club</title>
-      <link>https://charleston-church.com/posts/holiday-club-2025/</link>
+      <link>http://localhost:1313/posts/holiday-club-2025/</link>
       <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/holiday-club-2025/</guid>
-      <description>🏴‍☠️ Ahoy Mateys! Come and discover real riches at our swashbuckling...
-💎 TREASURE COVE HOLIDAY CLUB 💎 🗺️ A Week of Adventure Awaits Set sail with Zack Smallfry, a young sailor ready for the adventure of a lifetime!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/holiday-club-2025/featuretcholidayclub.jpg" />
+      <guid>http://localhost:1313/posts/holiday-club-2025/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;🏴‍☠️ Ahoy Mateys! 
+    &lt;div id=&#34;-ahoy-mateys&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h2&gt;
+&lt;p&gt;Come and &lt;strong&gt;discover real riches&lt;/strong&gt; at our swashbuckling...&lt;/p&gt;
+
+&lt;h2 class=&#34;relative group&#34;&gt;💎 TREASURE COVE HOLIDAY CLUB 💎 
+    &lt;div id=&#34;-treasure-cove-holiday-club-&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h2&gt;
+
+&lt;h3 class=&#34;relative group&#34;&gt;🗺️ A Week of Adventure Awaits 
+    &lt;div id=&#34;-a-week-of-adventure-awaits&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;Set sail with &lt;strong&gt;Zack Smallfry&lt;/strong&gt;, a young sailor ready for the adventure of a lifetime! When he joins up with a band of pirates, it seems like all fun and treasure hunts&amp;hellip; but not everything is as it seems on the high seas.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/holiday-club-2025/featuretcholidayclub.jpg" />
     </item>
     
     <item>
       <title>Charleston Community Book Club</title>
-      <link>https://charleston-church.com/posts/book-club/</link>
+      <link>http://localhost:1313/posts/book-club/</link>
       <pubDate>Thu, 15 May 2025 11:14:48 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/book-club/</guid>
-      <description>We&#39;re delighted to announce the launch of our Charleston Community Book Club, a monthly gathering open to everyone in the local area.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/book-club/featurebook-club.png" />
+      <guid>http://localhost:1313/posts/book-club/</guid>
+      <description>&lt;p&gt;We&#39;re delighted to announce the launch of our &lt;strong&gt;Charleston Community Book Club&lt;/strong&gt;, a monthly gathering open to everyone in the local area. Whether you&#39;re an avid reader or just looking for a friendly space to connect with others, this book club is for you!&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/book-club/featurebook-club.png" />
     </item>
     
     <item>
       <title>Good Friday Communion Service</title>
-      <link>https://charleston-church.com/posts/good-friday-service/</link>
+      <link>http://localhost:1313/posts/good-friday-service/</link>
       <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/good-friday-service/</guid>
-      <description>This Good Friday, we&#39;re gathering for a communion service. But what exactly is a communion service — and why does it matter so deeply on this day?</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/good-friday-service/featurecrosses.webp" />
+      <guid>http://localhost:1313/posts/good-friday-service/</guid>
+      <description>&lt;p&gt;This Good Friday, we&#39;re gathering for a communion service. But what exactly is a communion service — and why does it matter so deeply on this day?&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/good-friday-service/featurecrosses.webp" />
     </item>
     
     <item>
       <title>Curry and Quiz Night</title>
-      <link>https://charleston-church.com/posts/curry-quiz-night-2025/</link>
+      <link>http://localhost:1313/posts/curry-quiz-night-2025/</link>
       <pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/curry-quiz-night-2025/</guid>
-      <description>🎉 3rd Annual Curry and Quiz Night! 🎉 It&#39;s back! Our 3rd Annual Curry and Quiz Night is happening soon, and you&#39;re invited!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/curry-quiz-night-2025/featurecurry.jpg" />
+      <guid>http://localhost:1313/posts/curry-quiz-night-2025/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;🎉 3rd Annual Curry and Quiz Night! 🎉 
+    &lt;div id=&#34;-3rd-annual-curry-and-quiz-night-&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h2&gt;
+&lt;p&gt;It&#39;s back! Our &lt;strong&gt;3rd Annual Curry and Quiz Night&lt;/strong&gt; is happening soon, and you&#39;re invited! 🍛🧠&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/curry-quiz-night-2025/featurecurry.jpg" />
     </item>
     
     <item>
       <title>Baptisms and New Members</title>
-      <link>https://charleston-church.com/posts/baptisms-and-new-members/</link>
+      <link>http://localhost:1313/posts/baptisms-and-new-members/</link>
       <pubDate>Wed, 02 Oct 2024 10:28:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/baptisms-and-new-members/</guid>
-      <description>On the 22nd of September, Charleston Community Church welcomed eight new members, two of whom were also baptised (Iona and Stephanie)!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/baptisms-and-new-members/featuremembers.jpg" />
+      <guid>http://localhost:1313/posts/baptisms-and-new-members/</guid>
+      <description>&lt;p&gt;On the 22nd of September, Charleston Community Church welcomed eight new members, two of whom were also baptised (Iona and Stephanie)! The service was especially poignant for one of the newest members, Tammy, who had recently professed faith in Christ after being connected to the church since its launch in 2017.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/baptisms-and-new-members/featuremembers.jpg" />
     </item>
     
     <item>
       <title>Teens Cafe</title>
-      <link>https://charleston-church.com/posts/teens-cafe/</link>
+      <link>http://localhost:1313/posts/teens-cafe/</link>
       <pubDate>Mon, 19 Aug 2024 11:14:48 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/teens-cafe/</guid>
-      <description>All S1 - S3&#39;s Welcome to the Teens Cafe!Looking for a place to hang out, have fun, and connect with friends after school?</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/teens-cafe/featureteenscafe.JPG" />
+      <guid>http://localhost:1313/posts/teens-cafe/</guid>
+      <description>&lt;h3&gt;All S1 - S3&#39;s Welcome to the Teens Cafe!&lt;/h3&gt;
+&lt;p&gt;Looking for a place to hang out, have fun, and connect with friends after school? The &lt;strong&gt;Teens Cafe&lt;/strong&gt; is the perfect spot for secondary school students from S1 – S3. It&amp;rsquo;s an hour of non-stop fun and food with friends—an awesome way to kick off your week!&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/teens-cafe/featureteenscafe.JPG" />
     </item>
     
     <item>
       <title>International Conversation Café - New Time and Place - 12 noon at the Community Centre</title>
-      <link>https://charleston-church.com/posts/international-conversation-cafe/</link>
+      <link>http://localhost:1313/posts/international-conversation-cafe/</link>
       <pubDate>Mon, 22 Jul 2024 12:28:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/international-conversation-cafe/</guid>
-      <description>New Time and Place! In partnership with Charleston Community Centre, the International Conversation Cafe has a new time and place!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/international-conversation-cafe/featureicc.jpg" />
+      <guid>http://localhost:1313/posts/international-conversation-cafe/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;New Time and Place! 
+    &lt;div id=&#34;new-time-and-place&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;In partnership with Charleston Community Centre, the International Conversation Cafe has a new time and place! It now meets at the community centre at 12:00 on Mondays! The International Conversation Café welcomes newcomers to the area and anyone seeking to engage with the vibrant community. Whether you&amp;rsquo;re a recent arrival, international student, or local resident eager to make new friends, this café offers a warm and diverse environment for everyone.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/international-conversation-cafe/featureicc.jpg" />
     </item>
     
     <item>
       <title>Jungle Explorers Holiday Club</title>
-      <link>https://charleston-church.com/posts/holiday-club-2024/</link>
+      <link>http://localhost:1313/posts/holiday-club-2024/</link>
       <pubDate>Thu, 06 Jun 2024 11:25:05 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/holiday-club-2024/</guid>
-      <description>Join Us for an Unforgettable Adventure at the Jungle Explorers Holiday Club!
-Attention all Explorers:
-Get ready to embark on an epic adventure this summer!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/holiday-club-2024/featurehc-2024-bg.jpg" />
+      <guid>http://localhost:1313/posts/holiday-club-2024/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Join Us for an Unforgettable Adventure at the Jungle Explorers Holiday Club!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Attention all Explorers:&lt;/p&gt;
+&lt;p&gt;Get ready to embark on an epic adventure this summer! Charleston Community Church is thrilled to invite all primary school children (Primary 1 to 7) to our Jungle Explorers Holiday Club.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/holiday-club-2024/featurehc-2024-bg.jpg" />
     </item>
     
     <item>
       <title>Why is it called &#39;Good Friday&#39;?</title>
-      <link>https://charleston-church.com/posts/good-friday/</link>
+      <link>http://localhost:1313/posts/good-friday/</link>
       <pubDate>Fri, 22 Mar 2024 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/good-friday/</guid>
-      <description>Good Friday holds significant importance for Christians, marking the day Jesus Christ was crucified and died at Calvary. The name “Good Friday” might seem paradoxical because it commemorates the suffering and death of Jesus Christ.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/good-friday/featurecrosses.webp" />
+      <guid>http://localhost:1313/posts/good-friday/</guid>
+      <description>&lt;p&gt;Good Friday holds significant importance for Christians, marking the day Jesus Christ was crucified and died at Calvary. The name “Good Friday” might seem paradoxical because it commemorates the suffering and death of Jesus Christ.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/good-friday/featurecrosses.webp" />
     </item>
     
     <item>
       <title>Polish Potluck!</title>
-      <link>https://charleston-church.com/posts/polish-potluck/</link>
+      <link>http://localhost:1313/posts/polish-potluck/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/polish-potluck/</guid>
-      <description>Join Us for a Polish Potluck! We&#39;re excited to invite you to our &#34;Polish Potluck&#34; event at Charleston Community Church on Monday, March 25th.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/polish-potluck/featurepolishfood.webp" />
+      <guid>http://localhost:1313/posts/polish-potluck/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;Join Us for a Polish Potluck! 
+    &lt;div id=&#34;join-us-for-a-polish-potluck&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h2&gt;
+&lt;p&gt;We&#39;re excited to invite you to our &#34;Polish Potluck&#34; event at Charleston Community Church on Monday, March 25th. This evening is dedicated to celebrating the rich traditions of Polish culture, food, and music. It&#39;s a wonderful opportunity to enjoy some delicious traditional Polish dishes and get to know your neighbors in a warm, friendly environment.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/polish-potluck/featurepolishfood.webp" />
     </item>
     
     <item>
       <title>Hope Explored Course begins Tuesday</title>
-      <link>https://charleston-church.com/posts/hope-explored/</link>
+      <link>http://localhost:1313/posts/hope-explored/</link>
       <pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/hope-explored/</guid>
-      <description>Hope Explored is a three-session series focused on the life, death, and resurrection of Jesus Christ. It&amp;rsquo;s designed to present Jesus&amp;rsquo; extraordinary claims and showcase how he offers hope that is truly worth embracing.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/hope-explored/featurehope-explored.jpg" />
+      <guid>http://localhost:1313/posts/hope-explored/</guid>
+      <description>&lt;p&gt;Hope Explored is a three-session series focused on the life, death, and resurrection of Jesus Christ. It&amp;rsquo;s designed to present Jesus&amp;rsquo; extraordinary claims and showcase how he offers hope that is truly worth embracing. The course, through teachings from Rico Tice and studies from Luke’s Gospel, shows how Jesus is a true source of hope, peace, and purpose. The sessions include a short Bible study and a talk, allowing for interactive discussions and personal reflection on the themes presented.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/hope-explored/featurehope-explored.jpg" />
     </item>
     
     <item>
       <title>Curry and Quiz Night</title>
-      <link>https://charleston-church.com/posts/curry-quiz-night-2024/</link>
+      <link>http://localhost:1313/posts/curry-quiz-night-2024/</link>
       <pubDate>Mon, 19 Feb 2024 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/curry-quiz-night-2024/</guid>
-      <description>🎉 Join Us for a Curry and Quiz Night! 🎉
-We are absolutely thrilled to invite you all to a night of fantastic food and friendly competition at our upcoming Curry and Quiz Night!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/curry-quiz-night-2024/featurecurry.jpg" />
+      <guid>http://localhost:1313/posts/curry-quiz-night-2024/</guid>
+      <description>&lt;p&gt;🎉 Join Us for a Curry and Quiz Night! 🎉&lt;/p&gt;
+&lt;p&gt;We are absolutely thrilled to invite you all to a night of fantastic food and friendly competition at our upcoming Curry and Quiz Night! 🍛🤔 Get ready for an evening filled with tough questions, laughter, and a whole lot of fun. We&amp;rsquo;ll be gathering at the Charleston Community Centre for our second such event. Whether you come as a team or decide to join one on the spot you&amp;rsquo;re sure to have a good time.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/curry-quiz-night-2024/featurecurry.jpg" />
     </item>
     
     <item>
       <title>Christmas Carol Service 2023</title>
-      <link>https://charleston-church.com/posts/carol-service-2023/</link>
+      <link>http://localhost:1313/posts/carol-service-2023/</link>
       <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/carol-service-2023/</guid>
-      <description>You&#39;re Invited to the annual Christmas Carol Service on Thursday the 14th December 2023 at the Charleston Community CentreChristmas is a time to remember the birth of Jesus Christ, God&#39;s son, who showed us God&#39;s deep affection for humanity by becoming human himself.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/carol-service-2023/featurecarolservice2.jpg" />
+      <guid>http://localhost:1313/posts/carol-service-2023/</guid>
+      <description>&lt;h3&gt;You&#39;re Invited to the annual Christmas Carol Service on Thursday the 14th December 2023 at the Charleston Community Centre&lt;/h3&gt;
+
+&lt;figure&gt;
+        &lt;img
+          class=&#34;my-0 rounded-md&#34;
+          srcset=&#34;
+          /posts/carol-service-2023/carolserviceflyer23_hu_2741124899d29be8.png 330w,
+          /posts/carol-service-2023/carolserviceflyer23_hu_280ffb3106e37af6.png 660w,
+          /posts/carol-service-2023/carolserviceflyer23_hu_849bf3d0fc2e2122.png 1024w,
+          /posts/carol-service-2023/carolserviceflyer23_hu_c93ddd95c44660f6.png 2x&#34;
+          src=&#34;http://localhost:1313/posts/carol-service-2023/carolserviceflyer23_hu_280ffb3106e37af6.png&#34;
+          data-zoom-src=&#34;http://localhost:1313/posts/carol-service-2023/carolserviceflyer23_hu_c93ddd95c44660f6.png&#34;
+          alt=&#34;&#34;
+        /&gt;
+  
+  
+  &lt;/figure&gt;
+&lt;p&gt;Christmas is a time to remember the birth of Jesus Christ, God&#39;s son, who showed us God&#39;s deep affection for humanity by becoming human himself. The Carol Service reminds us powerfully of Jesus&#39; coming to earth as one of us, showcasing God&#39;s love by sharing in our challenges and eventually giving up his life for the sake of all humanity. Jesus&#39;s birth, life of love, miracles and teachings and eventual sacrifice is the reason the whole world celebrates at Christmas.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/carol-service-2023/featurecarolservice2.jpg" />
     </item>
     
     <item>
       <title>20schemes Weekender in Review</title>
-      <link>https://charleston-church.com/posts/20schemes-weekender-in-review/</link>
+      <link>http://localhost:1313/posts/20schemes-weekender-in-review/</link>
       <pubDate>Wed, 11 Oct 2023 12:28:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/20schemes-weekender-in-review/</guid>
-      <description>Catch up or review the Developing Biblical Relationships Conference Talks from 6th-7th October The theme of the latest 20schemes Weekender conference was &#34;</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/20schemes-weekender-in-review/feature20schemes.jpg" />
+      <guid>http://localhost:1313/posts/20schemes-weekender-in-review/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Catch up or review the Developing Biblical Relationships Conference Talks from 6th-7th October 
+    &lt;div id=&#34;catch-up-or-review-the-developing-biblical-relationships-conference-talks-from-6th-7th-october&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;The theme of the latest 20schemes Weekender conference was &#34;Developing Biblical Relationships.&#34; With a wealth of biblical knowledge shared at the conference we wanted to make the talks available in an easy to find manner. We&#39;ve put the videos from the conference below.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/20schemes-weekender-in-review/feature20schemes.jpg" />
     </item>
     
     <item>
       <title>Church Planting Vision</title>
-      <link>https://charleston-church.com/posts/church-planting-vision/</link>
+      <link>http://localhost:1313/posts/church-planting-vision/</link>
       <pubDate>Thu, 21 Sep 2023 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/church-planting-vision/</guid>
-      <description>The Free Church of Scotland Vision for a Healthy Gospel Church in Every Community in Scotland In the heart of Scotland&#39;s spiritual landscape, the Free Church envisions a profound transformation—a vision of cultivating a healthy gospel church in every community across the land.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/church-planting-vision/featurefcvision.png" />
+      <guid>http://localhost:1313/posts/church-planting-vision/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;The Free Church of Scotland Vision for a Healthy Gospel Church in Every Community in Scotland 
+    &lt;div id=&#34;the-free-church-of-scotland-vision-for-a-healthy-gospel-church-in-every-community-in-scotland&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;In the heart of Scotland&#39;s spiritual landscape, the Free Church envisions a profound transformation—a vision of cultivating a healthy gospel church in every community across the land. This vision is a call to faith, ministry, and mission for every believer to be a part of.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/church-planting-vision/featurefcvision.png" />
     </item>
     
     <item>
       <title>Home Group Bible Study to Begin</title>
-      <link>https://charleston-church.com/posts/home-group-bible-study-begins/</link>
+      <link>http://localhost:1313/posts/home-group-bible-study-begins/</link>
       <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/home-group-bible-study-begins/</guid>
-      <description>Begins 8th November 2023 place TBD Charleston Community Church is beginning a Home Group Bible Study in November 2023. These gatherings offer a chance for us to delve deeper into God&#39;s word, gaining a greater understanding of what it truly means to be a Christian and to better comprehend the essence of God&#39;s character.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/home-group-bible-study-begins/featurebible.jpg" />
+      <guid>http://localhost:1313/posts/home-group-bible-study-begins/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Begins 8th November 2023 place TBD 
+    &lt;div id=&#34;begins-8th-november-2023-place-tbd&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;Charleston Community Church is beginning a Home Group Bible Study in November 2023. These gatherings offer a chance for us to delve deeper into God&#39;s word, gaining a greater understanding of what it truly means to be a Christian and to better comprehend the essence of God&#39;s character.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/home-group-bible-study-begins/featurebible.jpg" />
     </item>
     
     <item>
       <title>Date of next Seniors&#39; Lunch: 6th September 2023</title>
-      <link>https://charleston-church.com/posts/seniors-lunch/</link>
+      <link>http://localhost:1313/posts/seniors-lunch/</link>
       <pubDate>Sun, 13 Aug 2023 11:14:48 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/seniors-lunch/</guid>
-      <description>You are warmly welcomed to the Seniors&#39; Lunch—a delightful event designed exclusively for individuals aged 60 and above!Join us for a heartwarming afternoon filled with good food, meaningful connections, and a vibrant sense of community.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/seniors-lunch/featureseniorslunchflyer.jpg" />
+      <guid>http://localhost:1313/posts/seniors-lunch/</guid>
+      <description>&lt;h3&gt; You are warmly welcomed to the Seniors&#39; Lunch—a delightful event designed exclusively for individuals aged 60 and above!&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/whats-on/seniorslunch&#34;&gt;
+&lt;figure&gt;
+        &lt;img
+          class=&#34;my-0 rounded-md&#34;
+          srcset=&#34;
+          /posts/seniors-lunch/seniorslunch_hu_8811055794a0c7e0.jpg 330w,
+          /posts/seniors-lunch/seniorslunch_hu_f6031e6aed5f6e29.jpg 660w,
+          /posts/seniors-lunch/seniorslunch_hu_9b278c9084037866.jpg 1024w,
+          /posts/seniors-lunch/seniorslunch_hu_d2b05fa0a9a2d279.jpg 2x&#34;
+          src=&#34;http://localhost:1313/posts/seniors-lunch/seniorslunch_hu_f6031e6aed5f6e29.jpg&#34;
+          data-zoom-src=&#34;http://localhost:1313/posts/seniors-lunch/seniorslunch_hu_d2b05fa0a9a2d279.jpg&#34;
+          alt=&#34;&#34;
+        /&gt;
+  
+  
+  &lt;/figure&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/seniors-lunch/featureseniorslunchflyer.jpg" />
     </item>
     
     <item>
       <title>Youth Camp Update</title>
-      <link>https://charleston-church.com/posts/kids-camp/</link>
+      <link>http://localhost:1313/posts/kids-camp/</link>
       <pubDate>Mon, 17 Jul 2023 19:27:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/kids-camp/</guid>
-      <description>Free Church Youth Camps are a great way for kids to learn more about Jesus and grow friendships with other young Christians This year, five kids from Charleston attended the Renfrew Free Church Kids Camp.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/kids-camp/featureRenKidsCamp.jpg" />
+      <guid>http://localhost:1313/posts/kids-camp/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Free Church Youth Camps are a great way for kids to learn more about Jesus and grow friendships with other young Christians 
+    &lt;div id=&#34;free-church-youth-camps-are-a-great-way-for-kids-to-learn-more-about-jesus-and-grow-friendships-with-other-young-christians&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;This year, five kids from Charleston attended the Renfrew Free Church Kids Camp. They described their experience with adjectives like &amp;ldquo;fun,&amp;rdquo; as they reveled in exciting and mysterious activities that kept them guessing each day as they were kept a surprise. The &amp;ldquo;tasty food&amp;rdquo; tantalized their taste buds, adding to the overall enjoyment of their adventure. Throughout the camp, they cherished every moment as an &amp;ldquo;experience&amp;rdquo; that left lasting memories. Engaging in &amp;ldquo;fun Bible activities&amp;rdquo; allowed them to explore their faith in an interactive and meaningful way, making the Renfrew camp a truly enriching and joyous experience for each young participant from Charleston.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/kids-camp/featureRenKidsCamp.jpg" />
     </item>
     
     <item>
       <title>Holiday Club</title>
-      <link>https://charleston-church.com/posts/holiday-club/</link>
+      <link>http://localhost:1313/posts/holiday-club/</link>
       <pubDate>Sat, 06 May 2023 11:25:05 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/holiday-club/</guid>
-      <description>Holiday Club for Primary Age Youths - 3rd to 6th July 2023 Calling all buckaroos and cowgirls! Get ready for an action-packed journey into the Wild West at our Church Holiday Club.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/holiday-club/featureholidayclub2023.jpeg" />
+      <guid>http://localhost:1313/posts/holiday-club/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Holiday Club for Primary Age Youths - 3rd to 6th July 2023 
+    &lt;div id=&#34;holiday-club-for-primary-age-youths---3rd-to-6th-july-2023&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;Calling all buckaroos and cowgirls! Get ready for an action-packed journey into the Wild West at our Church Holiday Club. This year, our theme is &amp;ldquo;Wanted: Redeemed by Jesus,&amp;rdquo; where we&amp;rsquo;ll discover that we may be &amp;lsquo;wanted&amp;rsquo; as criminals, but Jesus offers us redemption and a new life. Primary school-aged children are invited to join us for an exciting week filled with fun activities, games, crafts, stories, and so much more!&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/holiday-club/featureholidayclub2023.jpeg" />
     </item>
     
     <item>
       <title>New Church Website</title>
-      <link>https://charleston-church.com/posts/new-website/</link>
+      <link>http://localhost:1313/posts/new-website/</link>
       <pubDate>Fri, 05 May 2023 11:22:57 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/new-website/</guid>
-      <description>Welcome to the Charleston Community Church website We warmly extend our invitation to you to explore our brand new church website.</description>
+      <guid>http://localhost:1313/posts/new-website/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Welcome to the Charleston Community Church website 
+    &lt;div id=&#34;welcome-to-the-charleston-community-church-website&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;We warmly extend our invitation to you to explore our brand new church website. Nestled in the heart of Charleston (we meet in what used to be the Charleston Post Office, see below), our church welcomes everyone with open arms. On our website, you&amp;rsquo;ll find resources to help you connect with our diverse and loving community. Listen to our church sermons, gain insight into our beliefs, and stay up to date with the latest happenings and special events. Whether you&amp;rsquo;re seeking to learn more about Jesus and the church or simply looking for a warm, inclusive community, we are here for you. Come join us online or in person and experience all that we&amp;rsquo;re about - loving God and making Him known to others.&lt;/p&gt;</description>
       
     </item>
     
     <item>
       <title>Good Friday and Easter Sunday Services</title>
-      <link>https://charleston-church.com/posts/easter/</link>
+      <link>http://localhost:1313/posts/easter/</link>
       <pubDate>Sun, 12 Mar 2023 12:28:32 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/easter/</guid>
-      <description>Good Friday and Easter Sunday Services Good Friday and Easter Sunday carry deep significance for every follower of the Christian faith.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/easter/featureeaster.jpg" />
+      <guid>http://localhost:1313/posts/easter/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Good Friday and Easter Sunday Services 
+    &lt;div id=&#34;good-friday-and-easter-sunday-services&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;Good Friday and Easter Sunday carry deep significance for every follower of the Christian faith. On Good Friday, we commemorate Jesus Christ&amp;rsquo;s crucifixion at Calvary, a powerful demonstration of God&amp;rsquo;s ultimate love for humanity. Through Jesus&amp;rsquo; sacrifice, all sinners (every human) are offered the chance to be saved from judgment and separation from God. During our church&amp;rsquo;s Good Friday service, we create a prayerful atmosphere with hymns, Bible readings, preaching, and heartfelt prayers, encouraging everyone to reflect on and express gratitude for the immense price paid for our salvation.
+
+&lt;figure&gt;
+        &lt;img
+          class=&#34;my-0 rounded-md&#34;
+          srcset=&#34;
+          /posts/easter/featureeaster_hu_10b9b14b55f6bda3.jpg 330w,
+          /posts/easter/featureeaster_hu_3d8e4b235612d0d8.jpg 660w,
+          /posts/easter/featureeaster_hu_facbd8063db4b79.jpg 1024w,
+          /posts/easter/featureeaster_hu_65129d094dd90d3d.jpg 2x&#34;
+          src=&#34;http://localhost:1313/posts/easter/featureeaster_hu_3d8e4b235612d0d8.jpg&#34;
+          data-zoom-src=&#34;http://localhost:1313/posts/easter/featureeaster_hu_65129d094dd90d3d.jpg&#34;
+          alt=&#34;&#34;
+        /&gt;
+  
+  
+  &lt;/figure&gt;&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/easter/featureeaster.jpg" />
     </item>
     
     <item>
       <title>How do I Become a Christian?</title>
-      <link>https://charleston-church.com/posts/becoming-a-christian/</link>
+      <link>http://localhost:1313/posts/becoming-a-christian/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/becoming-a-christian/</guid>
-      <description>“Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/becoming-a-christian/feature.jpg" />
+      <guid>http://localhost:1313/posts/becoming-a-christian/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;“Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls. For my yoke is easy and my burden is light.” - Matthew 11:28-30 
+    &lt;div id=&#34;come-to-me-all-you-who-are-weary-and-burdened-and-i-will-give-you-rest-take-my-yoke-upon-you-and-learn-from-me-for-i-am-gentle-and-humble-in-heart-and-you-will-find-rest-for-your-souls-for-my-yoke-is-easy-and-my-burden-is-light---matthew-1128-30&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h3&gt;
+&lt;p&gt;Here are some practical ways to understand what it means to become a Christian:&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/becoming-a-christian/feature.jpg" />
     </item>
     
     <item>
       <title>Christmas Carol Service - 2022</title>
-      <link>https://charleston-church.com/posts/carol-service-2022/</link>
+      <link>http://localhost:1313/posts/carol-service-2022/</link>
       <pubDate>Wed, 23 Nov 2022 11:14:48 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/carol-service-2022/</guid>
-      <description>You&#39;re Invited to the annual Christmas Carol Service on Thursday the 15th December 2022 at the Charleston Community CentreChristmas is a time to remember the birth of Jesus Christ, God&#39;s son, who showed us God&#39;s deep affection for humanity by becoming human himself.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/carol-service-2022/featurecarolservice2.jpg" />
+      <guid>http://localhost:1313/posts/carol-service-2022/</guid>
+      <description>&lt;h3&gt;You&#39;re Invited to the annual Christmas Carol Service on Thursday the 15th December 2022 at the Charleston Community Centre&lt;/h3&gt;
+
+&lt;figure&gt;
+        &lt;img
+          class=&#34;my-0 rounded-md&#34;
+          srcset=&#34;
+          /posts/carol-service-2022/carolserviceflyer_hu_c81926e453de7369.JPG 330w,
+          /posts/carol-service-2022/carolserviceflyer_hu_9185109a5a192c5a.JPG 660w,
+          /posts/carol-service-2022/carolserviceflyer_hu_22a2f791bb013491.JPG 1024w,
+          /posts/carol-service-2022/carolserviceflyer_hu_9e881db75bd50223.JPG 2x&#34;
+          src=&#34;http://localhost:1313/posts/carol-service-2022/carolserviceflyer_hu_9185109a5a192c5a.JPG&#34;
+          data-zoom-src=&#34;http://localhost:1313/posts/carol-service-2022/carolserviceflyer_hu_9e881db75bd50223.JPG&#34;
+          alt=&#34;&#34;
+        /&gt;
+  
+  
+  &lt;/figure&gt;
+&lt;p&gt;Christmas is a time to remember the birth of Jesus Christ, God&#39;s son, who showed us God&#39;s deep affection for humanity by becoming human himself. The Carol Service reminds us powerfully of Jesus&#39; coming to earth as one of us, showcasing God&#39;s love by sharing in our challenges and eventually giving up his life for the sake of all humanity. Jesus&#39;s birth, life of love, miracles and teachings and eventual sacrifice is the reason the whole world celebrates at Christmas.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/carol-service-2022/featurecarolservice2.jpg" />
     </item>
     
     <item>
       <title>Curry and Quiz Night</title>
-      <link>https://charleston-church.com/posts/curry-quiz-night/</link>
+      <link>http://localhost:1313/posts/curry-quiz-night/</link>
       <pubDate>Thu, 02 Jun 2022 12:28:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/curry-quiz-night/</guid>
-      <description>🎉 Join Us for a Curry and Quiz Night! 🎉
-We are absolutely thrilled to invite you all to a night of fantastic food and friendly competition at our upcoming Curry and Quiz Night!</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/curry-quiz-night/featurecurryquiz.jpg" />
+      <guid>http://localhost:1313/posts/curry-quiz-night/</guid>
+      <description>&lt;p&gt;🎉 Join Us for a Curry and Quiz Night! 🎉&lt;/p&gt;
+&lt;p&gt;We are absolutely thrilled to invite you all to a night of fantastic food and friendly competition at our upcoming Curry and Quiz Night! 🍛🤔 Get ready for an evening filled with excitement, laughter, and a whole lot of fun. We&amp;rsquo;ll be gathering at the Charleston Community Centre for a delightful culinary experience with a variety of delicious curry dishes. Whether you come as a team or decide to join one on the spot you&amp;rsquo;re sure to have a good time.&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/curry-quiz-night/featurecurryquiz.jpg" />
     </item>
     
     <item>
       <title>Privacy Policy</title>
-      <link>https://charleston-church.com/posts/privacy-policy/</link>
+      <link>http://localhost:1313/posts/privacy-policy/</link>
       <pubDate>Mon, 02 May 2022 12:28:58 +0100</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>https://charleston-church.com/posts/privacy-policy/</guid>
-      <description>Privacy Notice for Charleston Community Church (CCC) Last Updated: 6th August 2023
-At Charleston Community Church (CCC), we are committed to protecting your privacy and ensuring the security of your personal information.</description>
+      <guid>http://localhost:1313/posts/privacy-policy/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Privacy Notice for Charleston Community Church (CCC) 
+    &lt;div id=&#34;privacy-notice-for-charleston-community-church-ccc&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Last Updated:&lt;/strong&gt; 6th August 2023&lt;/p&gt;
+&lt;p&gt;At Charleston Community Church (CCC), we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and safeguard or &amp;ldquo;process&amp;rdquo; your personal data in compliance with the General Data Protection Regulation (GDPR) and other relevant data protection laws. By using our services or providing your information to CCC, you consent to the practices described in this Privacy Policy.&lt;/p&gt;</description>
       
     </item>
     
