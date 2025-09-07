@@ -1,50 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Seniors on Charleston Community Church</title>
-    <link>http://localhost:1313/tags/seniors/</link>
-    <description>Recent content in Seniors on Charleston Community Church</description>
+    <title>seniors on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/seniors/</link>
+    <description>Recent content in seniors on Charleston Community Church</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
     <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
     <copyright>© 2025 Charleston Community Church</copyright>
-    <lastBuildDate>Sun, 13 Aug 2023 11:14:48 -0400</lastBuildDate><atom:link href="http://localhost:1313/tags/seniors/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Aug 2023 11:14:48 -0400</lastBuildDate><atom:link href="https://charleston-church.com/tags/seniors/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Date of next Seniors&#39; Lunch: 6th September 2023</title>
-      <link>http://localhost:1313/posts/seniors-lunch/</link>
+      <link>https://charleston-church.com/posts/seniors-lunch/</link>
       <pubDate>Sun, 13 Aug 2023 11:14:48 -0400</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>http://localhost:1313/posts/seniors-lunch/</guid>
-      <description>&lt;h3&gt; You are warmly welcomed to the Seniors&#39; Lunch—a delightful event designed exclusively for individuals aged 60 and above!&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/whats-on/seniorslunch&#34;&gt;
-&lt;figure&gt;
-        &lt;img
-          class=&#34;my-0 rounded-md&#34;
-          srcset=&#34;
-          /posts/seniors-lunch/seniorslunch_hu_8811055794a0c7e0.jpg 330w,
-          /posts/seniors-lunch/seniorslunch_hu_f6031e6aed5f6e29.jpg 660w,
-          /posts/seniors-lunch/seniorslunch_hu_9b278c9084037866.jpg 1024w,
-          /posts/seniors-lunch/seniorslunch_hu_d2b05fa0a9a2d279.jpg 2x&#34;
-          src=&#34;http://localhost:1313/posts/seniors-lunch/seniorslunch_hu_f6031e6aed5f6e29.jpg&#34;
-          data-zoom-src=&#34;http://localhost:1313/posts/seniors-lunch/seniorslunch_hu_d2b05fa0a9a2d279.jpg&#34;
-          alt=&#34;&#34;
-        /&gt;
-  
-  
-  &lt;/figure&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/seniors-lunch/featureseniorslunchflyer.jpg" />
+      <guid>https://charleston-church.com/posts/seniors-lunch/</guid>
+      <description>You are warmly welcomed to the Seniors&#39; Lunch—a delightful event designed exclusively for individuals aged 60 and above!Join us for a heartwarming afternoon filled with good food, meaningful connections, and a vibrant sense of community.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/posts/seniors-lunch/featureseniorslunchflyer.jpg" />
     </item>
     
     <item>
       <title>Seniors&#39; Lunch Club</title>
-      <link>http://localhost:1313/whats-on/seniors-lunch/</link>
+      <link>https://charleston-church.com/whats-on/seniors-lunch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>office@charleston-church.org (Charleston Community Church)</author>
-      <guid>http://localhost:1313/whats-on/seniors-lunch/</guid>
+      <guid>https://charleston-church.com/whats-on/seniors-lunch/</guid>
       <description>Come join in if you&amp;rsquo;re over 60. We meet the first Wednesday of every month.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/whats-on/seniors-lunch/featureseniorsbingo.JPG" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/seniors-lunch/featureseniorsbingo.JPG" />
     </item>
     
   </channel>
