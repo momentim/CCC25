@@ -9,7 +9,7 @@ featured_image: "charleston.jpg"
 
 ## Elders
 
-The Bible teaches that churches should be led by elders. Charleston Community Church has three elders who provide overall leadership and serve in different ways through the life of the church.  
+The Bible teaches that churches should be led by elders. Charleston Community Church has two elders who provide overall leadership and serve in different ways through the life of the church.  
 Andy Robertson, minister, is a teaching elder.
 
 The elders exercise leadership in the church in a number of different ways. They meet together monthly as a group to pray for and decide on church matters. The different ministries throughout the church are 'elder-led' with specific elders appointed in an oversight capacity to each ministry.
