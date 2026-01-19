@@ -90,7 +90,6 @@ Continue reading in the <a href="about">About Us</a> section.
 Read [today's daily bible passage](../about/daily-bible-reading). This collection of readings will help prepare you for Sunday's sermon and worship.
 
 <br>
-{{< youtube RbPMl5X5Bks >}}
 
 {{< gallery >}}
 <img src="gallery/craft-group.png" alt="Craft Group" />
@@ -122,6 +121,8 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/featureholidayclub2023.jpeg" alt="Holiday Club 2023" />
 <img src="gallery/rascals1.JPG" alt="Rascals" />
 {{< /gallery >}}
+
+{{< youtube RbPMl5X5Bks >}}
 
 <script>
   (function() {
