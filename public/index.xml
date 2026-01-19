@@ -174,20 +174,16 @@
 &lt;script&gt;
     (function() {
         const SHEET_ID = &#39;1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag&#39;;
-        const SHEET_GID = &#39;1378999367&#39;; 
+        const SHEET_GID = &#39;1378999367&#39;; // Shorts sheet GID
         const containerId = &#39;shortsShowcaseContainer-0&#39;;
         const MAX_SHORTS_PER_SECTION = 10;
-        
         let abortController = new AbortController();
-        
         async function fetchShorts() {
             const container = document.getElementById(containerId);
-            
             if (!container) {
                 console.log(&#39;Container not found, aborting fetch&#39;);
                 return;
             }
-            
             try {
                 const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&amp;gid=${SHEET_GID}`;
                 const response = await fetch(url, { 
@@ -208,26 +204,26 @@
                 
                 const shorts = [];
                 
-                
-                for (let i = 0; i &lt; json.table.rows.length; i++) {
+                // Parse rows from the sheet
+                for (let i = 0; i &amp;lt; json.table.rows.length; i++) {
                     const row = json.table.rows[i];
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    // Column mapping based on your updated sheet:
+                    // A (0) = Playlist
+                    // B (1) = Category
+                    // C (2) = Title
+                    // D (3) = Date Published
+                    // E (4) = Description (Cleaned)
+                    // F (5) = Video ID
+                    // G (6) = Full URL
+                    // H (7) = Image URL
+                    // I (8) = Views
+                    // J (9) = Likes
+                    // K (10) = Last Updated
                     
                     const title = row.c[2]?.v || &#39;&#39;;
                     
-                    
+                    // Skip empty rows
                     if (!title || title.trim() === &#39;&#39;) {
                         continue;
                     }
@@ -270,10 +266,10 @@
                 return;
             }
             
-            
+            // Get latest 10 shorts (already sorted by date in sheet, newest first)
             const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);
             
-            
+            // Get top 10 most viewed shorts (sorted by views descending)
             const mostViewedShorts = [...shorts]
                 .sort((a, b) =&gt; b.views - a.views)
                 .slice(0, MAX_SHORTS_PER_SECTION);

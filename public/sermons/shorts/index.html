@@ -92,7 +92,7 @@
     "name": "Short Form Videos",
     "headline": "Short Form Videos",
     "description": "Catch up on the latest short form videos here",
-    "abstract": "\u003cdiv class=\u0022shorts-showcase-container\u0022\u003e\r\n    \u003cdiv id=\u0022shortsShowcaseContainer-0\u0022\u003e\r\n        \u003cdiv class=\u0022loading\u0022\u003eLoading shorts...\u003c\/div\u003e\r\n    \u003c\/div\u003e\r\n\u003c\/div\u003e\r\n\r\n\u003cstyle\u003e\r\n    .shorts-showcase-container {\r\n        max-width: 1400px;\r\n        margin: 0 auto;\r\n        padding: 20px;\r\n    }\r\n\r\n    .shorts-showcase-container * {\r\n        box-sizing: border-box;\r\n    }\r\n\r\n    .shorts-section {\r\n        margin-bottom: 60px;\r\n    }\r\n\r\n    .shorts-section:last-child {\r\n        margin-bottom: 0;\r\n    }\r\n\r\n    .section-header {\r\n        margin-bottom: 30px;\r\n    }\r\n\r\n    .shorts-grid {\r\n        display: grid;\r\n        grid-template-columns: 1fr;\r\n        gap: 30px;\r\n    }\r\n\r\n    @media (min-width: 768px) {\r\n        .shorts-grid {\r\n            grid-template-columns: repeat(2, 1fr);\r\n        }\r\n    }\r\n\r\n    .short-card {\r\n        background: #fff;\r\n        border-radius: 12px;\r\n        overflow: hidden;\r\n        box-shadow: 0 2px 8px rgba(0,0,0,0.1);\r\n        transition: transform 0.2s, box-shadow 0.2s;\r\n        position: relative;\r\n    }\r\n\r\n    .short-card:hover {\r\n        transform: translateY(-4px);\r\n        box-shadow: 0 4px 16px rgba(0,0,0,0.15);\r\n    }\r\n\r\n    .short-rank {\r\n        position: absolute;\r\n        top: 10px;\r\n        left: 10px;\r\n        background: rgba(0, 0, 0, 0.8);\r\n        color: #fff;\r\n        width: 36px;\r\n        height: 36px;\r\n        border-radius: 50%;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n        font-weight: 700;\r\n        font-size: 16px;\r\n        z-index: 10;\r\n        box-shadow: 0 2px 8px rgba(0,0,0,0.3);\r\n    }\r\n\r\n    .short-player-container {\r\n        position: relative;\r\n        width: 100%;\r\n        padding-top: 177.78%;\r\n        overflow: hidden;\r\n        background: #000;\r\n    }\r\n\r\n    .short-player-container iframe {\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        border: none;\r\n    }\r\n\r\n    .short-info {\r\n        padding: 16px;\r\n    }\r\n\r\n    .short-stats {\r\n        display: flex;\r\n        gap: 16px;\r\n        margin-bottom: 12px;\r\n        flex-wrap: wrap;\r\n    }\r\n\r\n    .stat-item {\r\n        display: flex;\r\n        align-items: center;\r\n        gap: 6px;\r\n        font-size: 14px;\r\n        color: #606060;\r\n    }\r\n\r\n    .stat-icon {\r\n        font-size: 16px;\r\n    }\r\n\r\n    .stat-value {\r\n        font-weight: 600;\r\n        color: #0f0f0f;\r\n    }\r\n\r\n    .short-date {\r\n        font-size: 13px;\r\n        color: #606060;\r\n        margin-bottom: 10px;\r\n    }\r\n\r\n    .short-description {\r\n        font-size: 14px;\r\n        color: #404040;\r\n        line-height: 1.5;\r\n        margin: 0;\r\n        display: -webkit-box;\r\n        -webkit-line-clamp: 3;\r\n        -webkit-box-orient: vertical;\r\n        overflow: hidden;\r\n    }\r\n\r\n    .loading {\r\n        text-align: center;\r\n        padding: 40px;\r\n        color: #606060;\r\n        font-size: 16px;\r\n    }\r\n\r\n    .error {\r\n        text-align: center;\r\n        padding: 40px;\r\n        color: #d32f2f;\r\n        font-size: 16px;\r\n    }\r\n\r\n    .shorts-showcase-container .hidden {\r\n        display: none !important;\r\n    }\r\n\u003c\/style\u003e\r\n\r\n\u003cscript\u003e\r\n    (function() {\r\n        const SHEET_ID = \u00271Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag\u0027;\r\n        const SHEET_GID = \u00271378999367\u0027; \r\n        const containerId = \u0027shortsShowcaseContainer-0\u0027;\r\n        const MAX_SHORTS_PER_SECTION = 10;\r\n        \r\n        let abortController = new AbortController();\r\n        \r\n        async function fetchShorts() {\r\n            const container = document.getElementById(containerId);\r\n            \r\n            if (!container) {\r\n                console.log(\u0027Container not found, aborting fetch\u0027);\r\n                return;\r\n            }\r\n            \r\n            try {\r\n                const url = \u0060https:\/\/docs.google.com\/spreadsheets\/d\/${SHEET_ID}\/gviz\/tq?tqx=out:json\u0026gid=${SHEET_GID}\u0060;\r\n                const response = await fetch(url, { \r\n                    signal: abortController.signal,\r\n                    cache: \u0027default\u0027\r\n                });\r\n                \r\n                if (!response.ok) {\r\n                    throw new Error(\u0060HTTP error! status: ${response.status}\u0060);\r\n                }\r\n                \r\n                const text = await response.text();\r\n                const json = JSON.parse(text.substr(47).slice(0, -2));\r\n                \r\n                if (!document.getElementById(containerId)) {\r\n                    return;\r\n                }\r\n                \r\n                const shorts = [];\r\n                \r\n                \r\n                for (let i = 0; i \u003c json.table.rows.length; i\u002b\u002b) {\r\n                    const row = json.table.rows[i];\r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    const title = row.c[2]?.v || \u0027\u0027;\r\n                    \r\n                    \r\n                    if (!title || title.trim() === \u0027\u0027) {\r\n                        continue;\r\n                    }\r\n                    \r\n                    const views = row.c[8]?.v || 0;\r\n                    const likes = row.c[9]?.v || 0;\r\n                    \r\n                    shorts.push({\r\n                        title: title,\r\n                        description: row.c[4]?.v || \u0027\u0027,\r\n                        url: row.c[6]?.v || \u0027\u0027,\r\n                        uploadDate: row.c[3]?.v || \u0027\u0027,\r\n                        views: typeof views === \u0027number\u0027 ? views : parseInt(views) || 0,\r\n                        likes: typeof likes === \u0027number\u0027 ? likes : parseInt(likes) || 0\r\n                    });\r\n                }\r\n                \r\n                displayShortsShowcase(shorts);\r\n            } catch (error) {\r\n                if (error.name === \u0027AbortError\u0027) {\r\n                    console.log(\u0027Fetch aborted\u0027);\r\n                    return;\r\n                }\r\n                \r\n                const container = document.getElementById(containerId);\r\n                if (container) {\r\n                    container.innerHTML = \r\n                        \u0027\u003cdiv class=\u0022error\u0022\u003eFailed to load shorts. Please try again later.\u003c\/div\u003e\u0027;\r\n                }\r\n                console.error(\u0027Error fetching shorts:\u0027, error);\r\n            }\r\n        }\r\n        \r\n        function displayShortsShowcase(shorts) {\r\n            const container = document.getElementById(containerId);\r\n            if (!container) return;\r\n            \r\n            if (shorts.length === 0) {\r\n                container.innerHTML = \u0027\u003cdiv class=\u0022error\u0022\u003eNo shorts found.\u003c\/div\u003e\u0027;\r\n                return;\r\n            }\r\n            \r\n            \r\n            const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);\r\n            \r\n            \r\n            const mostViewedShorts = [...shorts]\r\n                .sort((a, b) =\u003e b.views - a.views)\r\n                .slice(0, MAX_SHORTS_PER_SECTION);\r\n            \r\n            container.innerHTML = \u0060\r\n                \u003cdiv class=\u0022shorts-section\u0022\u003e\r\n                    \u003cdiv class=\u0022section-header\u0022\u003e\r\n                        \u003ch2 class=\u0022section-title\u0022\u003eLatest Short Form Videos\u003c\/h2\u003e\r\n                    \u003c\/div\u003e\r\n                    \u003cdiv class=\u0022shorts-grid\u0022\u003e\r\n                        ${latestShorts.map(short =\u003e renderShortCard(short, false)).join(\u0027\u0027)}\r\n                    \u003c\/div\u003e\r\n                \u003c\/div\u003e\r\n                \r\n                \u003cdiv class=\u0022shorts-section\u0022\u003e\r\n                    \u003cdiv class=\u0022section-header\u0022\u003e\r\n                        \u003ch2 class=\u0022section-title\u0022\u003eMost Viewed Shorts\u003c\/h2\u003e\r\n                    \u003c\/div\u003e\r\n                    \u003cdiv class=\u0022shorts-grid\u0022\u003e\r\n                        ${mostViewedShorts.map((short, index) =\u003e renderShortCard(short, true, index \u002b 1)).join(\u0027\u0027)}\r\n                    \u003c\/div\u003e\r\n                \u003c\/div\u003e\r\n            \u0060;\r\n        }\r\n        \r\n        function renderShortCard(short, showRank = false, rank = null) {\r\n            const videoId = extractVideoId(short.url);\r\n            \r\n            return \u0060\r\n                \u003cdiv class=\u0022short-card\u0022\u003e\r\n                    ${showRank ? \u0060\u003cdiv class=\u0022short-rank\u0022\u003e${rank}\u003c\/div\u003e\u0060 : \u0027\u0027}\r\n                    \u003cdiv class=\u0022short-player-container\u0022\u003e\r\n                        \u003ciframe \r\n                            src=\u0022https:\/\/www.youtube.com\/embed\/${videoId}\u0022\r\n                            allow=\u0022accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\u0022\r\n                            allowfullscreen\r\n                            loading=\u0022lazy\u0022\u003e\r\n                        \u003c\/iframe\u003e\r\n                    \u003c\/div\u003e\r\n                    \u003cdiv class=\u0022short-info\u0022\u003e\r\n                        \u003cdiv class=\u0022short-stats\u0022\u003e\r\n                            \u003cdiv class=\u0022stat-item\u0022\u003e\r\n                                \u003cspan class=\u0022stat-icon\u0022\u003e👁️\u003c\/span\u003e\r\n                                \u003cspan class=\u0022stat-value\u0022\u003e${formatNumber(short.views)}\u003c\/span\u003e\r\n                                \u003cspan\u003eviews\u003c\/span\u003e\r\n                            \u003c\/div\u003e\r\n                            \u003cdiv class=\u0022stat-item\u0022\u003e\r\n                                \u003cspan class=\u0022stat-icon\u0022\u003e👍\u003c\/span\u003e\r\n                                \u003cspan class=\u0022stat-value\u0022\u003e${formatNumber(short.likes)}\u003c\/span\u003e\r\n                                \u003cspan\u003elikes\u003c\/span\u003e\r\n                            \u003c\/div\u003e\r\n                        \u003c\/div\u003e\r\n                        \u003cdiv class=\u0022short-date\u0022\u003e\r\n                            📅 ${formatDate(short.uploadDate)}\r\n                        \u003c\/div\u003e\r\n                        ${short.description ? \u0060\u003cp class=\u0022short-description\u0022\u003e${escapeHtml(short.description)}\u003c\/p\u003e",
+    "abstract": "\u003cdiv class=\u0022shorts-showcase-container\u0022\u003e\r\n    \u003cdiv id=\u0022shortsShowcaseContainer-0\u0022\u003e\r\n        \u003cdiv class=\u0022loading\u0022\u003eLoading shorts...\u003c\/div\u003e\r\n    \u003c\/div\u003e\r\n\u003c\/div\u003e\r\n\r\n\u003cstyle\u003e\r\n    .shorts-showcase-container {\r\n        max-width: 1400px;\r\n        margin: 0 auto;\r\n        padding: 20px;\r\n    }\r\n\r\n    .shorts-showcase-container * {\r\n        box-sizing: border-box;\r\n    }\r\n\r\n    .shorts-section {\r\n        margin-bottom: 60px;\r\n    }\r\n\r\n    .shorts-section:last-child {\r\n        margin-bottom: 0;\r\n    }\r\n\r\n    .section-header {\r\n        margin-bottom: 30px;\r\n    }\r\n\r\n    .shorts-grid {\r\n        display: grid;\r\n        grid-template-columns: 1fr;\r\n        gap: 30px;\r\n    }\r\n\r\n    @media (min-width: 768px) {\r\n        .shorts-grid {\r\n            grid-template-columns: repeat(2, 1fr);\r\n        }\r\n    }\r\n\r\n    .short-card {\r\n        background: #fff;\r\n        border-radius: 12px;\r\n        overflow: hidden;\r\n        box-shadow: 0 2px 8px rgba(0,0,0,0.1);\r\n        transition: transform 0.2s, box-shadow 0.2s;\r\n        position: relative;\r\n    }\r\n\r\n    .short-card:hover {\r\n        transform: translateY(-4px);\r\n        box-shadow: 0 4px 16px rgba(0,0,0,0.15);\r\n    }\r\n\r\n    .short-rank {\r\n        position: absolute;\r\n        top: 10px;\r\n        left: 10px;\r\n        background: rgba(0, 0, 0, 0.8);\r\n        color: #fff;\r\n        width: 36px;\r\n        height: 36px;\r\n        border-radius: 50%;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n        font-weight: 700;\r\n        font-size: 16px;\r\n        z-index: 10;\r\n        box-shadow: 0 2px 8px rgba(0,0,0,0.3);\r\n    }\r\n\r\n    .short-player-container {\r\n        position: relative;\r\n        width: 100%;\r\n        padding-top: 177.78%;\r\n        overflow: hidden;\r\n        background: #000;\r\n    }\r\n\r\n    .short-player-container iframe {\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        border: none;\r\n    }\r\n\r\n    .short-info {\r\n        padding: 16px;\r\n    }\r\n\r\n    .short-stats {\r\n        display: flex;\r\n        gap: 16px;\r\n        margin-bottom: 12px;\r\n        flex-wrap: wrap;\r\n    }\r\n\r\n    .stat-item {\r\n        display: flex;\r\n        align-items: center;\r\n        gap: 6px;\r\n        font-size: 14px;\r\n        color: #606060;\r\n    }\r\n\r\n    .stat-icon {\r\n        font-size: 16px;\r\n    }\r\n\r\n    .stat-value {\r\n        font-weight: 600;\r\n        color: #0f0f0f;\r\n    }\r\n\r\n    .short-date {\r\n        font-size: 13px;\r\n        color: #606060;\r\n        margin-bottom: 10px;\r\n    }\r\n\r\n    .short-description {\r\n        font-size: 14px;\r\n        color: #404040;\r\n        line-height: 1.5;\r\n        margin: 0;\r\n        display: -webkit-box;\r\n        -webkit-line-clamp: 3;\r\n        -webkit-box-orient: vertical;\r\n        overflow: hidden;\r\n    }\r\n\r\n    .loading {\r\n        text-align: center;\r\n        padding: 40px;\r\n        color: #606060;\r\n        font-size: 16px;\r\n    }\r\n\r\n    .error {\r\n        text-align: center;\r\n        padding: 40px;\r\n        color: #d32f2f;\r\n        font-size: 16px;\r\n    }\r\n\r\n    .shorts-showcase-container .hidden {\r\n        display: none !important;\r\n    }\r\n\u003c\/style\u003e\r\n\r\n\u003cscript\u003e\r\n    (function() {\r\n        const SHEET_ID = \u00271Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag\u0027;\r\n        const SHEET_GID = \u00271378999367\u0027; \/\/ Shorts sheet GID\r\n        const containerId = \u0027shortsShowcaseContainer-0\u0027;\r\n        const MAX_SHORTS_PER_SECTION = 10;\r\n        let abortController = new AbortController();\r\n        async function fetchShorts() {\r\n            const container = document.getElementById(containerId);\r\n            if (!container) {\r\n                console.log(\u0027Container not found, aborting fetch\u0027);\r\n                return;\r\n            }\r\n            try {\r\n                const url = \u0060https:\/\/docs.google.com\/spreadsheets\/d\/${SHEET_ID}\/gviz\/tq?tqx=out:json\u0026gid=${SHEET_GID}\u0060;\r\n                const response = await fetch(url, { \r\n                    signal: abortController.signal,\r\n                    cache: \u0027default\u0027\r\n                });\r\n                \r\n                if (!response.ok) {\r\n                    throw new Error(\u0060HTTP error! status: ${response.status}\u0060);\r\n                }\r\n                \r\n                const text = await response.text();\r\n                const json = JSON.parse(text.substr(47).slice(0, -2));\r\n                \r\n                if (!document.getElementById(containerId)) {\r\n                    return;\r\n                }\r\n                \r\n                const shorts = [];\r\n                \r\n                \/\/ Parse rows from the sheet\r\n                for (let i = 0; i \u0026lt; json.table.rows.length; i\u002b\u002b) {\r\n                    const row = json.table.rows[i];\r\n                    \r\n                    \/\/ Column mapping based on your updated sheet:\r\n                    \/\/ A (0) = Playlist\r\n                    \/\/ B (1) = Category\r\n                    \/\/ C (2) = Title\r\n                    \/\/ D (3) = Date Published\r\n                    \/\/ E (4) = Description (Cleaned)\r\n                    \/\/ F (5) = Video ID\r\n                    \/\/ G (6) = Full URL\r\n                    \/\/ H (7) = Image URL\r\n                    \/\/ I (8) = Views\r\n                    \/\/ J (9) = Likes\r\n                    \/\/ K (10) = Last Updated\r\n                    \r\n                    const title = row.c[2]?.v || \u0027\u0027;\r\n                    \r\n                    \/\/ Skip empty rows\r\n                    if (!title || title.trim() === \u0027\u0027) {\r\n                        continue;\r\n                    }\r\n                    \r\n                    const views = row.c[8]?.v || 0;\r\n                    const likes = row.c[9]?.v || 0;\r\n                    \r\n                    shorts.push({\r\n                        title: title,\r\n                        description: row.c[4]?.v || \u0027\u0027,\r\n                        url: row.c[6]?.v || \u0027\u0027,\r\n                        uploadDate: row.c[3]?.v || \u0027\u0027,\r\n                        views: typeof views === \u0027number\u0027 ? views : parseInt(views) || 0,\r\n                        likes: typeof likes === \u0027number\u0027 ? likes : parseInt(likes) || 0\r\n                    });\r\n                }\r\n                \r\n                displayShortsShowcase(shorts);\r\n            } catch (error) {\r\n                if (error.name === \u0027AbortError\u0027) {\r\n                    console.log(\u0027Fetch aborted\u0027);\r\n                    return;\r\n                }\r\n                \r\n                const container = document.getElementById(containerId);\r\n                if (container) {\r\n                    container.innerHTML = \r\n                        \u0027\u003cdiv class=\u0022error\u0022\u003eFailed to load shorts. Please try again later.\u003c\/div\u003e\u0027;\r\n                }\r\n                console.error(\u0027Error fetching shorts:\u0027, error);\r\n            }\r\n        }\r\n        \r\n        function displayShortsShowcase(shorts) {\r\n            const container = document.getElementById(containerId);\r\n            if (!container) return;\r\n            \r\n            if (shorts.length === 0) {\r\n                container.innerHTML = \u0027\u003cdiv class=\u0022error\u0022\u003eNo shorts found.\u003c\/div\u003e\u0027;\r\n                return;\r\n            }\r\n            \r\n            \/\/ Get latest 10 shorts (already sorted by date in sheet, newest first)\r\n            const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);\r\n            \r\n            \/\/ Get top 10 most viewed shorts (sorted by views descending)\r\n            const mostViewedShorts = [...shorts]\r\n                .sort((a, b) =\u003e b.views - a.views)\r\n                .slice(0, MAX_SHORTS_PER_SECTION);\r\n            \r\n            container.innerHTML = \u0060\r\n                \u003cdiv class=\u0022shorts-section\u0022\u003e\r\n                    \u003cdiv class=\u0022section-header\u0022\u003e\r\n                        \u003ch2 class=\u0022section-title\u0022\u003eLatest Short Form Videos\u003c\/h2\u003e\r\n                    \u003c\/div\u003e\r\n                    \u003cdiv class=\u0022shorts-grid\u0022\u003e\r\n                        ${latestShorts.map(short =\u003e renderShortCard(short, false)).join(\u0027\u0027)}\r\n                    \u003c\/div\u003e\r\n                \u003c\/div\u003e\r\n                \r\n                \u003cdiv class=\u0022shorts-section\u0022\u003e\r\n                    \u003cdiv class=\u0022section-header\u0022\u003e\r\n                        \u003ch2 class=\u0022section-title\u0022\u003eMost Viewed Shorts\u003c\/h2\u003e\r\n                    \u003c\/div\u003e\r\n                    \u003cdiv class=\u0022shorts-grid\u0022\u003e\r\n                        ${mostViewedShorts.map((short, index) =\u003e renderShortCard(short, true, index \u002b 1)).join(\u0027\u0027)}\r\n                    \u003c\/div\u003e\r\n                \u003c\/div\u003e\r\n            \u0060;\r\n        }\r\n        \r\n        function renderShortCard(short, showRank = false, rank = null) {\r\n            const videoId = extractVideoId(short.url);\r\n            \r\n            return \u0060\r\n                \u003cdiv class=\u0022short-card\u0022\u003e\r\n                    ${showRank ? \u0060\u003cdiv class=\u0022short-rank\u0022\u003e${rank}\u003c\/div\u003e\u0060 : \u0027\u0027}\r\n                    \u003cdiv class=\u0022short-player-container\u0022\u003e\r\n                        \u003ciframe \r\n                            src=\u0022https:\/\/www.youtube.com\/embed\/${videoId}\u0022\r\n                            allow=\u0022accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\u0022\r\n                            allowfullscreen\r\n                            loading=\u0022lazy\u0022\u003e\r\n                        \u003c\/iframe\u003e\r\n                    \u003c\/div\u003e\r\n                    \u003cdiv class=\u0022short-info\u0022\u003e\r\n                        \u003cdiv class=\u0022short-stats\u0022\u003e\r\n                            \u003cdiv class=\u0022stat-item\u0022\u003e\r\n                                \u003cspan class=\u0022stat-icon\u0022\u003e👁️\u003c\/span\u003e\r\n                                \u003cspan class=\u0022stat-value\u0022\u003e${formatNumber(short.views)}\u003c\/span\u003e\r\n                                \u003cspan\u003eviews\u003c\/span\u003e\r\n                            \u003c\/div\u003e\r\n                            \u003cdiv class=\u0022stat-item\u0022\u003e\r\n                                \u003cspan class=\u0022stat-icon\u0022\u003e👍\u003c\/span\u003e\r\n                                \u003cspan class=\u0022stat-value\u0022\u003e${formatNumber(short.likes)}\u003c\/span\u003e\r\n                                \u003cspan\u003elikes\u003c\/span\u003e\r\n                            \u003c\/div\u003e\r\n                        \u003c\/div\u003e\r\n                        \u003cdiv class=\u0022short-date\u0022\u003e\r\n                            📅 ${formatDate(short.uploadDate)}\r\n                        \u003c\/div\u003e\r\n                        ${short.description ? \u0060\u003cp class=\u0022short-description\u0022\u003e${escapeHtml(short.description)}\u003c\/p\u003e",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/sermons\/shorts\/",
     "author" : {
@@ -939,7 +939,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -955,6 +959,8 @@
 
 <div class="flex flex-row flex-wrap items-center">
   
+  
+  <span>18 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1160,20 +1166,16 @@
 <script>
     (function() {
         const SHEET_ID = '1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag';
-        const SHEET_GID = '1378999367'; 
+        const SHEET_GID = '1378999367'; // Shorts sheet GID
         const containerId = 'shortsShowcaseContainer-0';
         const MAX_SHORTS_PER_SECTION = 10;
-        
         let abortController = new AbortController();
-        
         async function fetchShorts() {
             const container = document.getElementById(containerId);
-            
             if (!container) {
                 console.log('Container not found, aborting fetch');
                 return;
             }
-            
             try {
                 const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
                 const response = await fetch(url, { 
@@ -1194,26 +1196,26 @@
                 
                 const shorts = [];
                 
-                
-                for (let i = 0; i < json.table.rows.length; i++) {
+                // Parse rows from the sheet
+                for (let i = 0; i &lt; json.table.rows.length; i++) {
                     const row = json.table.rows[i];
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    // Column mapping based on your updated sheet:
+                    // A (0) = Playlist
+                    // B (1) = Category
+                    // C (2) = Title
+                    // D (3) = Date Published
+                    // E (4) = Description (Cleaned)
+                    // F (5) = Video ID
+                    // G (6) = Full URL
+                    // H (7) = Image URL
+                    // I (8) = Views
+                    // J (9) = Likes
+                    // K (10) = Last Updated
                     
                     const title = row.c[2]?.v || '';
                     
-                    
+                    // Skip empty rows
                     if (!title || title.trim() === '') {
                         continue;
                     }
@@ -1256,10 +1258,10 @@
                 return;
             }
             
-            
+            // Get latest 10 shorts (already sorted by date in sheet, newest first)
             const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);
             
-            
+            // Get top 10 most viewed shorts (sorted by views descending)
             const mostViewedShorts = [...shorts]
                 .sort((a, b) => b.views - a.views)
                 .slice(0, MAX_SHORTS_PER_SECTION);
@@ -1323,7 +1325,7 @@
         
         function extractVideoId(url) {
             if (!url) return '';
-            
+            // Handle both youtube.com/watch?v= and youtu.be/ formats
             let match = url.match(/[?&]v=([^&]+)/);
             if (!match) {
                 match = url.match(/youtu\.be\/([^?]+)/);
@@ -1352,17 +1354,17 @@
             try {
                 let date;
                 
-                
+                // Check if it's in DD/MM/YYYY format (your sheet format)
                 if (typeof dateStr === 'string' && dateStr.includes('/')) {
                     const parts = dateStr.split('/');
                     if (parts.length === 3) {
                         const day = parseInt(parts[0]);
-                        const month = parseInt(parts[1]) - 1; 
+                        const month = parseInt(parts[1]) - 1; // JS months are 0-indexed
                         const year = parseInt(parts[2]);
                         date = new Date(year, month, day);
                     }
                 } else if (typeof dateStr === 'string' && dateStr.startsWith('Date(')) {
-                    
+                    // Handle Google Sheets Date() format
                     const match = dateStr.match(/Date\((\d+),(\d+),(\d+)/);
                     if (match) {
                         const year = parseInt(match[1]);
@@ -1371,7 +1373,7 @@
                         date = new Date(year, month, day);
                     }
                 } else {
-                    
+                    // Try parsing as regular date string
                     date = new Date(dateStr);
                 }
                 
@@ -1381,9 +1383,9 @@
                 const month = date.toLocaleString('en-US', { month: 'short' });
                 const year = date.getFullYear().toString().slice(-2);
                 
-                
+                // Add ordinal suffix (1st, 2nd, 3rd, 4th, etc.)
                 const suffix = (day) => {
-                    if (day > 3 && day < 21) return 'th';
+                    if (day > 3 && day &lt; 21) return 'th';
                     switch (day % 10) {
                         case 1: return 'st';
                         case 2: return 'nd';
@@ -1398,14 +1400,14 @@
             }
         }
         
-        
+        // Only fetch if we're in a browser environment and DOM is ready
         if (typeof window !== 'undefined' && document.readyState !== 'loading') {
             fetchShorts();
         } else if (typeof window !== 'undefined') {
             document.addEventListener('DOMContentLoaded', fetchShorts);
         }
         
-        
+        // Clean up on page unload
         window.addEventListener('beforeunload', function() {
             abortController.abort();
         });
@@ -1526,6 +1528,8 @@
   <footer class="pt-8 max-w-prose print:hidden">
 
     
+  
+
 
     
   </footer>
