@@ -171,28 +171,36 @@
     }
 &lt;/style&gt;
 
+
+
+
+
 &lt;script&gt;
     (function() {
         const SHEET_ID = &#39;1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag&#39;;
-        const SHEET_GID = &#39;1378999367&#39;; // Shorts sheet GID
+        const SHEET_GID = &#39;1378999367&#39;;
         const containerId = &#39;shortsShowcaseContainer-0&#39;;
         const MAX_SHORTS_PER_SECTION = 10;
+        
         let abortController = new AbortController();
+        
         async function fetchShorts() {
             const container = document.getElementById(containerId);
+            
             if (!container) {
                 console.log(&#39;Container not found, aborting fetch&#39;);
                 return;
             }
+            
             try {
-                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&amp;gid=${SHEET_GID}`;
+                const url = &#39;https://docs.google.com/spreadsheets/d/&#39; + SHEET_ID + &#39;/gviz/tq?tqx=out:json&amp;gid=&#39; + SHEET_GID;
                 const response = await fetch(url, { 
                     signal: abortController.signal,
                     cache: &#39;default&#39;
                 });
                 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(&#39;HTTP error! status: &#39; + response.status);
                 }
                 
                 const text = await response.text();
@@ -203,39 +211,25 @@
                 }
                 
                 const shorts = [];
+                const rows = json.table.rows;
+                const rowCount = rows.length;
                 
-                // Parse rows from the sheet
-                for (let i = 0; i &amp;lt; json.table.rows.length; i++) {
-                    const row = json.table.rows[i];
+                for (let i = 0; i &lt; rowCount; i++) {
+                    const row = rows[i];
+                    const title = row.c[2] ? row.c[2].v : &#39;&#39;;
                     
-                    // Column mapping based on your updated sheet:
-                    // A (0) = Playlist
-                    // B (1) = Category
-                    // C (2) = Title
-                    // D (3) = Date Published
-                    // E (4) = Description (Cleaned)
-                    // F (5) = Video ID
-                    // G (6) = Full URL
-                    // H (7) = Image URL
-                    // I (8) = Views
-                    // J (9) = Likes
-                    // K (10) = Last Updated
-                    
-                    const title = row.c[2]?.v || &#39;&#39;;
-                    
-                    // Skip empty rows
                     if (!title || title.trim() === &#39;&#39;) {
                         continue;
                     }
                     
-                    const views = row.c[8]?.v || 0;
-                    const likes = row.c[9]?.v || 0;
+                    const views = row.c[8] ? row.c[8].v : 0;
+                    const likes = row.c[9] ? row.c[9].v : 0;
                     
                     shorts.push({
                         title: title,
-                        description: row.c[4]?.v || &#39;&#39;,
-                        url: row.c[6]?.v || &#39;&#39;,
-                        uploadDate: row.c[3]?.v || &#39;&#39;,
+                        description: row.c[4] ? row.c[4].v : &#39;&#39;,
+                        url: row.c[6] ? row.c[6].v : &#39;&#39;,
+                        uploadDate: row.c[3] ? row.c[3].v : &#39;&#39;,
                         views: typeof views === &#39;number&#39; ? views : parseInt(views) || 0,
                         likes: typeof likes === &#39;number&#39; ? likes : parseInt(likes) || 0
                     });
@@ -250,8 +244,7 @@
                 
                 const container = document.getElementById(containerId);
                 if (container) {
-                    container.innerHTML = 
-                        &#39;&lt;div class=&#34;error&#34;&gt;Failed to load shorts. Please try again later.&lt;/div&gt;&#39;;
+                    container.innerHTML = &#39;&lt;div class=&#34;error&#34;&gt;Failed to load shorts. Please try again later.&lt;/div&gt;&#39;;
                 }
                 console.error(&#39;Error fetching shorts:&#39;, error);
             }
@@ -266,66 +259,29 @@
                 return;
             }
             
-            // Get latest 10 shorts (already sorted by date in sheet, newest first)
             const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);
+            const mostViewedShorts = shorts.slice().sort(function(a, b) { return b.views - a.views; }).slice(0, MAX_SHORTS_PER_SECTION);
             
-            // Get top 10 most viewed shorts (sorted by views descending)
-            const mostViewedShorts = [...shorts]
-                .sort((a, b) =&gt; b.views - a.views)
-                .slice(0, MAX_SHORTS_PER_SECTION);
+            let html = &#39;&lt;div class=&#34;shorts-section&#34;&gt;&lt;div class=&#34;section-header&#34;&gt;&lt;h2 class=&#34;section-title&#34;&gt;Latest Short Form Videos&lt;/h2&gt;&lt;/div&gt;&lt;div class=&#34;shorts-grid&#34;&gt;&#39;;
             
-            container.innerHTML = `
-                &lt;div class=&#34;shorts-section&#34;&gt;
-                    &lt;div class=&#34;section-header&#34;&gt;
-                        &lt;h2 class=&#34;section-title&#34;&gt;Latest Short Form Videos&lt;/h2&gt;
-                    &lt;/div&gt;
-                    &lt;div class=&#34;shorts-grid&#34;&gt;
-                        ${latestShorts.map(short =&gt; renderShortCard(short, false)).join(&#39;&#39;)}
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                
-                &lt;div class=&#34;shorts-section&#34;&gt;
-                    &lt;div class=&#34;section-header&#34;&gt;
-                        &lt;h2 class=&#34;section-title&#34;&gt;Most Viewed Shorts&lt;/h2&gt;
-                    &lt;/div&gt;
-                    &lt;div class=&#34;shorts-grid&#34;&gt;
-                        ${mostViewedShorts.map((short, index) =&gt; renderShortCard(short, true, index + 1)).join(&#39;&#39;)}
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            `;
+            for (let i = 0; i &lt; latestShorts.length; i++) {
+                html += renderShortCard(latestShorts[i], false, 0);
+            }
+            
+            html += &#39;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;shorts-section&#34;&gt;&lt;div class=&#34;section-header&#34;&gt;&lt;h2 class=&#34;section-title&#34;&gt;Most Viewed Shorts&lt;/h2&gt;&lt;/div&gt;&lt;div class=&#34;shorts-grid&#34;&gt;&#39;;
+            
+            for (let i = 0; i &lt; mostViewedShorts.length; i++) {
+                html += renderShortCard(mostViewedShorts[i], true, i + 1);
+            }
+            
+            html += &#39;&lt;/div&gt;&lt;/div&gt;&#39;;
+            container.innerHTML = html;
         }
         
-        function renderShortCard(short, showRank = false, rank = null) {
+        function renderShortCard(short, showRank, rank) {
             const videoId = extractVideoId(short.url);
-            
-            return `
-                &lt;div class=&#34;short-card&#34;&gt;
-                    ${showRank ? `&lt;div class=&#34;short-rank&#34;&gt;${rank}&lt;/div&gt;` : &#39;&#39;}
-                    &lt;div class=&#34;short-player-container&#34;&gt;
-                        &lt;iframe 
-                            src=&#34;https://www.youtube.com/embed/${videoId}&#34;
-                            allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&#34;
-                            allowfullscreen
-                            loading=&#34;lazy&#34;&gt;
-                        &lt;/iframe&gt;
-                    &lt;/div&gt;
-                    &lt;div class=&#34;short-info&#34;&gt;
-                        &lt;div class=&#34;short-stats&#34;&gt;
-                            &lt;div class=&#34;stat-item&#34;&gt;
-                                &lt;span class=&#34;stat-icon&#34;&gt;👁️&lt;/span&gt;
-                                &lt;span class=&#34;stat-value&#34;&gt;${formatNumber(short.views)}&lt;/span&gt;
-                                &lt;span&gt;views&lt;/span&gt;
-                            &lt;/div&gt;
-                            &lt;div class=&#34;stat-item&#34;&gt;
-                                &lt;span class=&#34;stat-icon&#34;&gt;👍&lt;/span&gt;
-                                &lt;span class=&#34;stat-value&#34;&gt;${formatNumber(short.likes)}&lt;/span&gt;
-                                &lt;span&gt;likes&lt;/span&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div class=&#34;short-date&#34;&gt;
-                            📅 ${formatDate(short.uploadDate)}
-                        &lt;/div&gt;
-                        ${short.description ? `&lt;p class=&#34;short-description&#34;&gt;${escapeHtml(short.description)}&lt;/p&gt;</description>
+            const rankBadge = showRank ? &#39;&lt;div class=&#34;short-rank&#34;&gt;&#39; + rank + &#39;&lt;/div&gt;&#39; : &#39;&#39;;
+            const desc = short.description ? &#39;&lt;p class=&#34;short-description&#34;&gt;&#39; + escapeHtml(short.description) + &#39;&lt;/p&gt;</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/sermons/shorts/featureccc.webp" />
     </item>
     

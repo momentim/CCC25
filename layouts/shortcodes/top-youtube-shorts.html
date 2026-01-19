@@ -152,28 +152,33 @@
     }
 </style>
 
-{{ `<script>` | safeHTML }}
+{{ $script := `
+<script>
     (function() {
         const SHEET_ID = '1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag';
-        const SHEET_GID = '1378999367'; // Shorts sheet GID
-        const containerId = 'shortsShowcaseContainer-{{ .Ordinal }}';
+        const SHEET_GID = '1378999367';
+        const containerId = 'shortsShowcaseContainer-ORDINAL_PLACEHOLDER';
         const MAX_SHORTS_PER_SECTION = 10;
+        
         let abortController = new AbortController();
+        
         async function fetchShorts() {
             const container = document.getElementById(containerId);
+            
             if (!container) {
                 console.log('Container not found, aborting fetch');
                 return;
             }
+            
             try {
-                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+                const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&gid=' + SHEET_GID;
                 const response = await fetch(url, { 
                     signal: abortController.signal,
                     cache: 'default'
                 });
                 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error('HTTP error! status: ' + response.status);
                 }
                 
                 const text = await response.text();
@@ -184,39 +189,25 @@
                 }
                 
                 const shorts = [];
+                const rows = json.table.rows;
+                const rowCount = rows.length;
                 
-                // Parse rows from the sheet
-                for (let i = 0; i < json.table.rows.length; i++) {
-                    const row = json.table.rows[i];
+                for (let i = 0; i < rowCount; i++) {
+                    const row = rows[i];
+                    const title = row.c[2] ? row.c[2].v : '';
                     
-                    // Column mapping based on your updated sheet:
-                    // A (0) = Playlist
-                    // B (1) = Category
-                    // C (2) = Title
-                    // D (3) = Date Published
-                    // E (4) = Description (Cleaned)
-                    // F (5) = Video ID
-                    // G (6) = Full URL
-                    // H (7) = Image URL
-                    // I (8) = Views
-                    // J (9) = Likes
-                    // K (10) = Last Updated
-                    
-                    const title = row.c[2]?.v || '';
-                    
-                    // Skip empty rows
                     if (!title || title.trim() === '') {
                         continue;
                     }
                     
-                    const views = row.c[8]?.v || 0;
-                    const likes = row.c[9]?.v || 0;
+                    const views = row.c[8] ? row.c[8].v : 0;
+                    const likes = row.c[9] ? row.c[9].v : 0;
                     
                     shorts.push({
                         title: title,
-                        description: row.c[4]?.v || '',
-                        url: row.c[6]?.v || '',
-                        uploadDate: row.c[3]?.v || '',
+                        description: row.c[4] ? row.c[4].v : '',
+                        url: row.c[6] ? row.c[6].v : '',
+                        uploadDate: row.c[3] ? row.c[3].v : '',
                         views: typeof views === 'number' ? views : parseInt(views) || 0,
                         likes: typeof likes === 'number' ? likes : parseInt(likes) || 0
                     });
@@ -231,8 +222,7 @@
                 
                 const container = document.getElementById(containerId);
                 if (container) {
-                    container.innerHTML = 
-                        '<div class="error">Failed to load shorts. Please try again later.</div>';
+                    container.innerHTML = '<div class="error">Failed to load shorts. Please try again later.</div>';
                 }
                 console.error('Error fetching shorts:', error);
             }
@@ -247,74 +237,35 @@
                 return;
             }
             
-            // Get latest 10 shorts (already sorted by date in sheet, newest first)
             const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);
+            const mostViewedShorts = shorts.slice().sort(function(a, b) { return b.views - a.views; }).slice(0, MAX_SHORTS_PER_SECTION);
             
-            // Get top 10 most viewed shorts (sorted by views descending)
-            const mostViewedShorts = [...shorts]
-                .sort((a, b) => b.views - a.views)
-                .slice(0, MAX_SHORTS_PER_SECTION);
+            let html = '<div class="shorts-section"><div class="section-header"><h2 class="section-title">Latest Short Form Videos</h2></div><div class="shorts-grid">';
             
-            container.innerHTML = `
-                <div class="shorts-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Latest Short Form Videos</h2>
-                    </div>
-                    <div class="shorts-grid">
-                        ${latestShorts.map(short => renderShortCard(short, false)).join('')}
-                    </div>
-                </div>
-                
-                <div class="shorts-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Most Viewed Shorts</h2>
-                    </div>
-                    <div class="shorts-grid">
-                        ${mostViewedShorts.map((short, index) => renderShortCard(short, true, index + 1)).join('')}
-                    </div>
-                </div>
-            `;
+            for (let i = 0; i < latestShorts.length; i++) {
+                html += renderShortCard(latestShorts[i], false, 0);
+            }
+            
+            html += '</div></div><div class="shorts-section"><div class="section-header"><h2 class="section-title">Most Viewed Shorts</h2></div><div class="shorts-grid">';
+            
+            for (let i = 0; i < mostViewedShorts.length; i++) {
+                html += renderShortCard(mostViewedShorts[i], true, i + 1);
+            }
+            
+            html += '</div></div>';
+            container.innerHTML = html;
         }
         
-        function renderShortCard(short, showRank = false, rank = null) {
+        function renderShortCard(short, showRank, rank) {
             const videoId = extractVideoId(short.url);
+            const rankBadge = showRank ? '<div class="short-rank">' + rank + '</div>' : '';
+            const desc = short.description ? '<p class="short-description">' + escapeHtml(short.description) + '</p>' : '';
             
-            return `
-                <div class="short-card">
-                    ${showRank ? `<div class="short-rank">${rank}</div>` : ''}
-                    <div class="short-player-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/${videoId}"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            loading="lazy">
-                        </iframe>
-                    </div>
-                    <div class="short-info">
-                        <div class="short-stats">
-                            <div class="stat-item">
-                                <span class="stat-icon">👁️</span>
-                                <span class="stat-value">${formatNumber(short.views)}</span>
-                                <span>views</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon">👍</span>
-                                <span class="stat-value">${formatNumber(short.likes)}</span>
-                                <span>likes</span>
-                            </div>
-                        </div>
-                        <div class="short-date">
-                            📅 ${formatDate(short.uploadDate)}
-                        </div>
-                        ${short.description ? `<p class="short-description">${escapeHtml(short.description)}</p>` : ''}
-                    </div>
-                </div>
-            `;
+            return '<div class="short-card">' + rankBadge + '<div class="short-player-container"><iframe src="https://www.youtube.com/embed/' + videoId + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="short-info"><div class="short-stats"><div class="stat-item"><span class="stat-icon">👁️</span><span class="stat-value">' + formatNumber(short.views) + '</span><span>views</span></div><div class="stat-item"><span class="stat-icon">👍</span><span class="stat-value">' + formatNumber(short.likes) + '</span><span>likes</span></div></div><div class="short-date">📅 ' + formatDate(short.uploadDate) + '</div>' + desc + '</div></div>';
         }
         
         function extractVideoId(url) {
             if (!url) return '';
-            // Handle both youtube.com/watch?v= and youtu.be/ formats
             let match = url.match(/[?&]v=([^&]+)/);
             if (!match) {
                 match = url.match(/youtu\.be\/([^?]+)/);
@@ -343,17 +294,15 @@
             try {
                 let date;
                 
-                // Check if it's in DD/MM/YYYY format (your sheet format)
-                if (typeof dateStr === 'string' && dateStr.includes('/')) {
+                if (typeof dateStr === 'string' && dateStr.indexOf('/') > -1) {
                     const parts = dateStr.split('/');
                     if (parts.length === 3) {
                         const day = parseInt(parts[0]);
-                        const month = parseInt(parts[1]) - 1; // JS months are 0-indexed
+                        const month = parseInt(parts[1]) - 1;
                         const year = parseInt(parts[2]);
                         date = new Date(year, month, day);
                     }
-                } else if (typeof dateStr === 'string' && dateStr.startsWith('Date(')) {
-                    // Handle Google Sheets Date() format
+                } else if (typeof dateStr === 'string' && dateStr.indexOf('Date(') === 0) {
                     const match = dateStr.match(/Date\((\d+),(\d+),(\d+)/);
                     if (match) {
                         const year = parseInt(match[1]);
@@ -362,7 +311,6 @@
                         date = new Date(year, month, day);
                     }
                 } else {
-                    // Try parsing as regular date string
                     date = new Date(dateStr);
                 }
                 
@@ -372,10 +320,9 @@
                 const month = date.toLocaleString('en-US', { month: 'short' });
                 const year = date.getFullYear().toString().slice(-2);
                 
-                // Add ordinal suffix (1st, 2nd, 3rd, 4th, etc.)
-                const suffix = (day) => {
-                    if (day > 3 && day < 21) return 'th';
-                    switch (day % 10) {
+                const suffix = function(d) {
+                    if (d > 3 && d < 21) return 'th';
+                    switch (d % 10) {
                         case 1: return 'st';
                         case 2: return 'nd';
                         case 3: return 'rd';
@@ -383,22 +330,24 @@
                     }
                 };
                 
-                return `${day}${suffix(day)} ${month} '${year}`;
+                return day + suffix(day) + ' ' + month + " '" + year;
             } catch (e) {
                 return dateStr;
             }
         }
         
-        // Only fetch if we're in a browser environment and DOM is ready
         if (typeof window !== 'undefined' && document.readyState !== 'loading') {
             fetchShorts();
         } else if (typeof window !== 'undefined') {
             document.addEventListener('DOMContentLoaded', fetchShorts);
         }
         
-        // Clean up on page unload
         window.addEventListener('beforeunload', function() {
             abortController.abort();
         });
     })();
-{{ `</script>` | safeHTML }}
+</script>
+` }}
+
+{{ $script = replace $script "ORDINAL_PLACEHOLDER" .Ordinal }}
+{{ $script | safeHTML }}
