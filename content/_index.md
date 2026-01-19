@@ -87,6 +87,8 @@ Continue reading in the <a href="about">About Us</a> section.
 
 <br>
 
+{{< youtube RbPMl5X5Bks >}}
+
 Read [today's daily bible passage](../about/daily-bible-reading). This collection of readings will help prepare you for Sunday's sermon and worship.
 
 <br>
@@ -122,7 +124,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/rascals1.JPG" alt="Rascals" />
 {{< /gallery >}}
 
-{{< youtube RbPMl5X5Bks >}}
+
 
 <script>
   (function() {
