@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s On on Charleston Community Church</title>
+    <link>https://charleston-church.com/whats-on/</link>
+    <description>Recent content in What&#39;s On on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Mon, 19 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://charleston-church.com/whats-on/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Charleston Community Book Club</title>
+      <link>https://charleston-church.com/whats-on/book-club/</link>
+      <pubDate>Mon, 15 May 2023 11:14:48 -0400</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/book-club/</guid>
+      <description>The Charleston Community Book Club is a monthly gathering open to everyone in the local area. Whether you&amp;rsquo;re an avid reader or just looking for a friendly space to connect with others and some new books, this book club is for you!</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/book-club/featurebook-club.png" />
+    </item>
+    
+    <item>
+      <title>Craft and Cuppa</title>
+      <link>https://charleston-church.com/whats-on/craft-and-cuppa/</link>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/craft-and-cuppa/</guid>
+      <description>Welcome to Craft and Cuppa, where creativity meets community! We invite you to join us every Monday for a delightful crafting experience in a warm and friendly atmosphere.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/craft-and-cuppa/feature-craft-and-cuppa.png" />
+    </item>
+    
+    <item>
+      <title>Celebrate Recovery</title>
+      <link>https://charleston-church.com/whats-on/celebrate-recovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/celebrate-recovery/</guid>
+      <description>Hope and healing for those facing addiction, trauma, and personal battles. We meet every Sunday at 4:30 pm.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/celebrate-recovery/featureCR.png" />
+    </item>
+    
+    <item>
+      <title>Seniors&#39; Lunch Club</title>
+      <link>https://charleston-church.com/whats-on/seniors-lunch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/seniors-lunch/</guid>
+      <description>Come join in if you&amp;rsquo;re over 60. We meet the first Wednesday of every month.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/seniors-lunch/featureseniorsbingo.JPG" />
+    </item>
+    
+    <item>
+      <title>Sunday Church Services</title>
+      <link>https://charleston-church.com/whats-on/sunday-services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/sunday-services/</guid>
+      <description>I rejoiced with those who said to me, &amp;lsquo;Let us go to the house of the Lord.&amp;rsquo; – Psalm 122:1</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/sunday-services/featurePreaching.jpeg" />
+    </item>
+    
+  </channel>
+</rss>

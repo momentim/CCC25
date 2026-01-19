@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About Us on Charleston Community Church</title>
+    <link>https://charleston-church.com/about/</link>
+    <description>Recent content in About Us on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Sun, 04 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://charleston-church.com/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Daily Bible Reading</title>
+      <link>https://charleston-church.com/about/daily-bible-reading/</link>
+      <pubDate>Sun, 04 May 2025 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/about/daily-bible-reading/</guid>
+      <description>Stay in the word by following along with our daily bible readings.  This collection of readings help you prepare your heart for each Sunday&amp;rsquo;s sermon and worship.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/about/daily-bible-reading/featurebible.jpg" />
+    </item>
+    
+    <item>
+      <title>Meet the Church Team</title>
+      <link>https://charleston-church.com/about/our-people/</link>
+      <pubDate>Fri, 02 May 2025 19:27:58 +0100</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/about/our-people/</guid>
+      <description>Elders The Bible teaches that churches should be led by elders. Charleston Community Church has three elders who provide overall leadership and serve in different ways through the life of the church.</description>
+      
+    </item>
+    
+    <item>
+      <title>Support Us</title>
+      <link>https://charleston-church.com/about/support-us/</link>
+      <pubDate>Fri, 02 May 2025 12:28:32 +0100</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/about/support-us/</guid>
+      <description>Prayerful and Practical Support and Financial Giving are some great ways to give to God&amp;rsquo;s work in Charleston</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/about/support-us/featureseniors3.jpg" />
+    </item>
+    
+  </channel>
+</rss>

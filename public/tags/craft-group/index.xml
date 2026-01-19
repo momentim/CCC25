@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>craft group on Charleston Community Church</title>
+    <link>https://charleston-church.com/tags/craft-group/</link>
+    <description>Recent content in craft group on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2025 Charleston Community Church</copyright>
+    <lastBuildDate>Tue, 10 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://charleston-church.com/tags/craft-group/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Craft and Cuppa</title>
+      <link>https://charleston-church.com/whats-on/craft-and-cuppa/</link>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>https://charleston-church.com/whats-on/craft-and-cuppa/</guid>
+      <description>Welcome to Craft and Cuppa, where creativity meets community! We invite you to join us every Monday for a delightful crafting experience in a warm and friendly atmosphere.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://charleston-church.com/whats-on/craft-and-cuppa/feature-craft-and-cuppa.png" />
+    </item>
+    
+  </channel>
+</rss>
