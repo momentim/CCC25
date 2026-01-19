@@ -1,0 +1,408 @@
+<div class="shorts-showcase-container">
+    <div id="shortsShowcaseContainer-{{ .Ordinal }}">
+        <div class="loading">Loading shorts...</div>
+    </div>
+</div>
+
+<style>
+    .shorts-showcase-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .shorts-showcase-container * {
+        box-sizing: border-box;
+    }
+
+    .shorts-section {
+        margin-bottom: 60px;
+    }
+
+    .shorts-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .section-header {
+        margin-bottom: 30px;
+    }
+
+    .shorts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .shorts-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .short-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+    }
+
+    .short-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .short-rank {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .short-player-container {
+        position: relative;
+        width: 100%;
+        padding-top: 177.78%;
+        overflow: hidden;
+        background: #000;
+    }
+
+    .short-player-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .short-info {
+        padding: 16px;
+    }
+
+    .short-stats {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #606060;
+    }
+
+    .stat-icon {
+        font-size: 16px;
+    }
+
+    .stat-value {
+        font-weight: 600;
+        color: #0f0f0f;
+    }
+
+    .short-date {
+        font-size: 13px;
+        color: #606060;
+        margin-bottom: 10px;
+    }
+
+    .short-description {
+        font-size: 14px;
+        color: #404040;
+        line-height: 1.5;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 40px;
+        color: #606060;
+        font-size: 16px;
+    }
+
+    .error {
+        text-align: center;
+        padding: 40px;
+        color: #d32f2f;
+        font-size: 16px;
+    }
+
+    .shorts-showcase-container .hidden {
+        display: none !important;
+    }
+</style>
+
+<script>
+    (function() {
+        const SHEET_ID = '1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag';
+        const SHEET_GID = '1378999367'; // Shorts sheet GID
+        const containerId = 'shortsShowcaseContainer-{{ .Ordinal }}';
+        const MAX_SHORTS_PER_SECTION = 10;
+        
+        let abortController = new AbortController();
+        
+        async function fetchShorts() {
+            const container = document.getElementById(containerId);
+            
+            if (!container) {
+                console.log('Container not found, aborting fetch');
+                return;
+            }
+            
+            try {
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+                const response = await fetch(url, { 
+                    signal: abortController.signal,
+                    cache: 'default'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                const json = JSON.parse(text.substr(47).slice(0, -2));
+                
+                if (!document.getElementById(containerId)) {
+                    return;
+                }
+                
+                const shorts = [];
+                
+                // Parse rows from the sheet
+                for (let i = 0; i < json.table.rows.length; i++) {
+                    const row = json.table.rows[i];
+                    
+                    // Column mapping based on your updated sheet:
+                    // A (0) = Playlist
+                    // B (1) = Category
+                    // C (2) = Title
+                    // D (3) = Date Published
+                    // E (4) = Description (Cleaned)
+                    // F (5) = Video ID
+                    // G (6) = Full URL
+                    // H (7) = Image URL
+                    // I (8) = Views
+                    // J (9) = Likes
+                    // K (10) = Last Updated
+                    
+                    const title = row.c[2]?.v || '';
+                    
+                    // Skip empty rows
+                    if (!title || title.trim() === '') {
+                        continue;
+                    }
+                    
+                    const views = row.c[8]?.v || 0;
+                    const likes = row.c[9]?.v || 0;
+                    
+                    shorts.push({
+                        title: title,
+                        description: row.c[4]?.v || '',
+                        url: row.c[6]?.v || '',
+                        uploadDate: row.c[3]?.v || '',
+                        views: typeof views === 'number' ? views : parseInt(views) || 0,
+                        likes: typeof likes === 'number' ? likes : parseInt(likes) || 0
+                    });
+                }
+                
+                displayShortsShowcase(shorts);
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    console.log('Fetch aborted');
+                    return;
+                }
+                
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = 
+                        '<div class="error">Failed to load shorts. Please try again later.</div>';
+                }
+                console.error('Error fetching shorts:', error);
+            }
+        }
+        
+        function displayShortsShowcase(shorts) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            if (shorts.length === 0) {
+                container.innerHTML = '<div class="error">No shorts found.</div>';
+                return;
+            }
+            
+            // Get latest 10 shorts (already sorted by date in sheet, newest first)
+            const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);
+            
+            // Get top 10 most viewed shorts (sorted by views descending)
+            const mostViewedShorts = [...shorts]
+                .sort((a, b) => b.views - a.views)
+                .slice(0, MAX_SHORTS_PER_SECTION);
+            
+            container.innerHTML = `
+                <div class="shorts-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Latest Short Form Videos</h2>
+                    </div>
+                    <div class="shorts-grid">
+                        ${latestShorts.map(short => renderShortCard(short, false)).join('')}
+                    </div>
+                </div>
+                
+                <div class="shorts-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Most Viewed Shorts</h2>
+                    </div>
+                    <div class="shorts-grid">
+                        ${mostViewedShorts.map((short, index) => renderShortCard(short, true, index + 1)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderShortCard(short, showRank = false, rank = null) {
+            const videoId = extractVideoId(short.url);
+            
+            return `
+                <div class="short-card">
+                    ${showRank ? `<div class="short-rank">${rank}</div>` : ''}
+                    <div class="short-player-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/${videoId}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="short-info">
+                        <div class="short-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">👁️</span>
+                                <span class="stat-value">${formatNumber(short.views)}</span>
+                                <span>views</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">👍</span>
+                                <span class="stat-value">${formatNumber(short.likes)}</span>
+                                <span>likes</span>
+                            </div>
+                        </div>
+                        <div class="short-date">
+                            📅 ${formatDate(short.uploadDate)}
+                        </div>
+                        ${short.description ? `<p class="short-description">${escapeHtml(short.description)}</p>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function extractVideoId(url) {
+            if (!url) return '';
+            // Handle both youtube.com/watch?v= and youtu.be/ formats
+            let match = url.match(/[?&]v=([^&]+)/);
+            if (!match) {
+                match = url.match(/youtu\.be\/([^?]+)/);
+            }
+            return match ? match[1] : '';
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toString();
+        }
+        
+        function formatDate(dateStr) {
+            if (!dateStr) return 'N/A';
+            
+            try {
+                let date;
+                
+                // Check if it's in DD/MM/YYYY format (your sheet format)
+                if (typeof dateStr === 'string' && dateStr.includes('/')) {
+                    const parts = dateStr.split('/');
+                    if (parts.length === 3) {
+                        const day = parseInt(parts[0]);
+                        const month = parseInt(parts[1]) - 1; // JS months are 0-indexed
+                        const year = parseInt(parts[2]);
+                        date = new Date(year, month, day);
+                    }
+                } else if (typeof dateStr === 'string' && dateStr.startsWith('Date(')) {
+                    // Handle Google Sheets Date() format
+                    const match = dateStr.match(/Date\((\d+),(\d+),(\d+)/);
+                    if (match) {
+                        const year = parseInt(match[1]);
+                        const month = parseInt(match[2]);
+                        const day = parseInt(match[3]);
+                        date = new Date(year, month, day);
+                    }
+                } else {
+                    // Try parsing as regular date string
+                    date = new Date(dateStr);
+                }
+                
+                if (!date || isNaN(date.getTime())) return dateStr;
+                
+                const day = date.getDate();
+                const month = date.toLocaleString('en-US', { month: 'short' });
+                const year = date.getFullYear().toString().slice(-2);
+                
+                // Add ordinal suffix (1st, 2nd, 3rd, 4th, etc.)
+                const suffix = (day) => {
+                    if (day > 3 && day < 21) return 'th';
+                    switch (day % 10) {
+                        case 1: return 'st';
+                        case 2: return 'nd';
+                        case 3: return 'rd';
+                        default: return 'th';
+                    }
+                };
+                
+                return `${day}${suffix(day)} ${month} '${year}`;
+            } catch (e) {
+                return dateStr;
+            }
+        }
+        
+        // Only fetch if we're in a browser environment and DOM is ready
+        if (typeof window !== 'undefined' && document.readyState !== 'loading') {
+            fetchShorts();
+        } else if (typeof window !== 'undefined') {
+            document.addEventListener('DOMContentLoaded', fetchShorts);
+        }
+        
+        // Clean up on page unload
+        window.addEventListener('beforeunload', function() {
+            abortController.abort();
+        });
+    })();
+</script>
