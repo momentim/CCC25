@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sermons on Charleston Community Church</title>
+    <link>http://localhost:1313/sermons/</link>
+    <description>Recent content in Sermons on Charleston Community Church</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
+    <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
+    <copyright>© 2026 Charleston Community Church</copyright>
+    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sermons/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Short Form Videos</title>
+      <link>http://localhost:1313/sermons/shorts/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>http://localhost:1313/sermons/shorts/</guid>
+      <description>&lt;div class=&#34;shorts-showcase-container&#34;&gt;
+    &lt;div id=&#34;shortsShowcaseContainer-0&#34;&gt;
+        &lt;div class=&#34;loading&#34;&gt;Loading shorts...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .shorts-showcase-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .shorts-showcase-container * {
+        box-sizing: border-box;
+    }
+
+    .shorts-section {
+        margin-bottom: 60px;
+    }
+
+    .shorts-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .section-header {
+        margin-bottom: 30px;
+    }
+
+    .shorts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .shorts-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .short-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+    }
+
+    .short-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .short-rank {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .short-player-container {
+        position: relative;
+        width: 100%;
+        padding-top: 177.78%;
+        overflow: hidden;
+        background: #000;
+    }
+
+    .short-player-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .short-info {
+        padding: 16px;
+    }
+
+    .short-stats {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #606060;
+    }
+
+    .stat-icon {
+        font-size: 16px;
+    }
+
+    .stat-value {
+        font-weight: 600;
+        color: #0f0f0f;
+    }
+
+    .short-date {
+        font-size: 13px;
+        color: #606060;
+        margin-bottom: 10px;
+    }
+
+    .short-description {
+        font-size: 14px;
+        color: #404040;
+        line-height: 1.5;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 40px;
+        color: #606060;
+        font-size: 16px;
+    }
+
+    .error {
+        text-align: center;
+        padding: 40px;
+        color: #d32f2f;
+        font-size: 16px;
+    }
+
+    .shorts-showcase-container .hidden {
+        display: none !important;
+    }
+&lt;/style&gt;
+
+&lt;script&gt;
+    (function() {
+        const SHEET_ID = &#39;1Jagf0pqu8oGj19jFgdhXVXMyPY482GTQNq1cqKZJQag&#39;;
+        const SHEET_GID = &#39;1378999367&#39;; 
+        const containerId = &#39;shortsShowcaseContainer-0&#39;;
+        const MAX_SHORTS_PER_SECTION = 10;
+        
+        let abortController = new AbortController();
+        
+        async function fetchShorts() {
+            const container = document.getElementById(containerId);
+            
+            if (!container) {
+                console.log(&#39;Container not found, aborting fetch&#39;);
+                return;
+            }
+            
+            try {
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&amp;gid=${SHEET_GID}`;
+                const response = await fetch(url, { 
+                    signal: abortController.signal,
+                    cache: &#39;default&#39;
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                const json = JSON.parse(text.substr(47).slice(0, -2));
+                
+                if (!document.getElementById(containerId)) {
+                    return;
+                }
+                
+                const shorts = [];
+                
+                
+                for (let i = 0; i &lt; json.table.rows.length; i++) {
+                    const row = json.table.rows[i];
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    const title = row.c[2]?.v || &#39;&#39;;
+                    
+                    
+                    if (!title || title.trim() === &#39;&#39;) {
+                        continue;
+                    }
+                    
+                    const views = row.c[8]?.v || 0;
+                    const likes = row.c[9]?.v || 0;
+                    
+                    shorts.push({
+                        title: title,
+                        description: row.c[4]?.v || &#39;&#39;,
+                        url: row.c[6]?.v || &#39;&#39;,
+                        uploadDate: row.c[3]?.v || &#39;&#39;,
+                        views: typeof views === &#39;number&#39; ? views : parseInt(views) || 0,
+                        likes: typeof likes === &#39;number&#39; ? likes : parseInt(likes) || 0
+                    });
+                }
+                
+                displayShortsShowcase(shorts);
+            } catch (error) {
+                if (error.name === &#39;AbortError&#39;) {
+                    console.log(&#39;Fetch aborted&#39;);
+                    return;
+                }
+                
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = 
+                        &#39;&lt;div class=&#34;error&#34;&gt;Failed to load shorts. Please try again later.&lt;/div&gt;&#39;;
+                }
+                console.error(&#39;Error fetching shorts:&#39;, error);
+            }
+        }
+        
+        function displayShortsShowcase(shorts) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            if (shorts.length === 0) {
+                container.innerHTML = &#39;&lt;div class=&#34;error&#34;&gt;No shorts found.&lt;/div&gt;&#39;;
+                return;
+            }
+            
+            
+            const latestShorts = shorts.slice(0, MAX_SHORTS_PER_SECTION);
+            
+            
+            const mostViewedShorts = [...shorts]
+                .sort((a, b) =&gt; b.views - a.views)
+                .slice(0, MAX_SHORTS_PER_SECTION);
+            
+            container.innerHTML = `
+                &lt;div class=&#34;shorts-section&#34;&gt;
+                    &lt;div class=&#34;section-header&#34;&gt;
+                        &lt;h2 class=&#34;section-title&#34;&gt;Latest Short Form Videos&lt;/h2&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;shorts-grid&#34;&gt;
+                        ${latestShorts.map(short =&gt; renderShortCard(short, false)).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;shorts-section&#34;&gt;
+                    &lt;div class=&#34;section-header&#34;&gt;
+                        &lt;h2 class=&#34;section-title&#34;&gt;Most Viewed Shorts&lt;/h2&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;shorts-grid&#34;&gt;
+                        ${mostViewedShorts.map((short, index) =&gt; renderShortCard(short, true, index + 1)).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+        
+        function renderShortCard(short, showRank = false, rank = null) {
+            const videoId = extractVideoId(short.url);
+            
+            return `
+                &lt;div class=&#34;short-card&#34;&gt;
+                    ${showRank ? `&lt;div class=&#34;short-rank&#34;&gt;${rank}&lt;/div&gt;` : &#39;&#39;}
+                    &lt;div class=&#34;short-player-container&#34;&gt;
+                        &lt;iframe 
+                            src=&#34;https://www.youtube.com/embed/${videoId}&#34;
+                            allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&#34;
+                            allowfullscreen
+                            loading=&#34;lazy&#34;&gt;
+                        &lt;/iframe&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;short-info&#34;&gt;
+                        &lt;div class=&#34;short-stats&#34;&gt;
+                            &lt;div class=&#34;stat-item&#34;&gt;
+                                &lt;span class=&#34;stat-icon&#34;&gt;👁️&lt;/span&gt;
+                                &lt;span class=&#34;stat-value&#34;&gt;${formatNumber(short.views)}&lt;/span&gt;
+                                &lt;span&gt;views&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;stat-item&#34;&gt;
+                                &lt;span class=&#34;stat-icon&#34;&gt;👍&lt;/span&gt;
+                                &lt;span class=&#34;stat-value&#34;&gt;${formatNumber(short.likes)}&lt;/span&gt;
+                                &lt;span&gt;likes&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;short-date&#34;&gt;
+                            📅 ${formatDate(short.uploadDate)}
+                        &lt;/div&gt;
+                        ${short.description ? `&lt;p class=&#34;short-description&#34;&gt;${escapeHtml(short.description)}&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/sermons/shorts/featureccc.webp" />
+    </item>
+    
+  </channel>
+</rss>
