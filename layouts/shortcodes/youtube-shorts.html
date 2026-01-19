@@ -20,9 +20,17 @@
         margin-top: 20px;
     }
 
+    /* Show 2 shorts side by side on desktop/landscape */
     @media (min-width: 768px) {
         .shorts-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Hide second short on mobile/portrait */
+    @media (max-width: 767px) {
+        .shorts-grid .short-card:nth-child(2) {
+            display: none;
         }
     }
 
