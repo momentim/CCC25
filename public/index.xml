@@ -9,7 +9,34 @@
     <managingEditor>office@charleston-church.org (Charleston Community Church)</managingEditor>
     <webMaster>office@charleston-church.org (Charleston Community Church)</webMaster>
     <copyright>© 2026 Charleston Community Church</copyright>
-    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Charlston Music Group</title>
+      <link>http://localhost:1313/posts/music-group/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <author>office@charleston-church.org (Charleston Community Church)</author>
+      <guid>http://localhost:1313/posts/music-group/</guid>
+      <description>&lt;p&gt;We’re starting a &lt;strong&gt;new community music group&lt;/strong&gt; at Charleston Community Church, and everyone is invited.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Charleston Music Group&lt;/strong&gt; is a relaxed and friendly space for people who enjoy singing or playing instruments to come together and make music. There are no auditions and no pressure — just encouragement, community, and the joy of making music with others.
+
+&lt;figure&gt;
+        &lt;img
+          class=&#34;my-0 rounded-md&#34;
+          srcset=&#34;
+          /posts/music-group/cmg_hu_ed19e3e163053e8c.png 330w,
+          /posts/music-group/cmg_hu_6c3563e94ac75486.png 660w,
+          /posts/music-group/cmg_hu_2880eaa41830cf5d.png 1024w,
+          /posts/music-group/cmg_hu_e36acf94f5dca20d.png 2x&#34;
+          src=&#34;http://localhost:1313/posts/music-group/cmg_hu_6c3563e94ac75486.png&#34;
+          data-zoom-src=&#34;http://localhost:1313/posts/music-group/cmg_hu_e36acf94f5dca20d.png&#34;
+          alt=&#34;&#34;
+        /&gt;
+  
+  
+  &lt;/figure&gt;&lt;/p&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music-group/featurecmg.png" />
+    </item>
     
     <item>
       <title>Short Form Videos</title>
