@@ -17,7 +17,7 @@ We gather for [worship services](/whats-on/sunday-services/) every **Sunday at 1
 
 ## Charleston Community Church Vision
 
-Our vision is to be a vibrant and transformative church, deeply rooted in the Word of God, passionately committed to honoring God, and centered on the person and work of Jesus Christ. We aspire to be a beacon of light, love, and hope in our community and beyond, impacting lives with the life-changing message of the Gospel.
+Our vision is to be a vibrant and transformative church, deeply rooted in the Word of God, passionately committed to honoring God, and centered on the person and work of Jesus Christ. We aspire to shine forth light, love, and hope in our community and beyond, impacting lives with the life-changing message of the Gospel.
 
 Charleston Community Church is a family of Christian believers, united by our belief in Jesus Christ, the Son of God, who lived, died, and rose again, so that we, and anyone else who believes in him, can be reunited with our Heavenly Father.
 
