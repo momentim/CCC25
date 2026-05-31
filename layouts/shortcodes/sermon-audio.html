@@ -34,6 +34,16 @@
       <option value="">All years</option>
     </select>
 
+    <!-- Show N most recent -->
+    <select id="sa-limit"
+      class="px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+      <option value="5"  selected>Show 5</option>
+      <option value="10">Show 10</option>
+      <option value="15">Show 15</option>
+      <option value="20">Show 20</option>
+      <option value="0">Show all</option>
+    </select>
+
     <!-- Clear button (hidden until a filter is active) -->
     <button id="sa-clear"
       onclick="saClear()"
@@ -143,10 +153,11 @@
       </div>`;
   }
 
-  function renderList(sermons) {
+  function renderList(sermons, totalMatching) {
     const list  = document.getElementById("sa-list");
     const empty = document.getElementById("sa-empty");
     const count = document.getElementById("sa-count");
+    const total = totalMatching !== undefined ? totalMatching : allSermons.length;
 
     if (!sermons.length) {
       list.innerHTML = "";
@@ -158,9 +169,11 @@
     list.innerHTML = sermons.map(renderCard).join("");
 
     const showing = sermons.length;
-    const total   = allSermons.length;
     if (showing < total) {
-      count.textContent = `Showing ${showing} of ${total} sermons`;
+      count.textContent = `Showing ${showing} most recent of ${total} sermon${total !== 1 ? "s" : ""}`;
+      count.classList.remove("hidden");
+    } else if (showing < allSermons.length) {
+      count.textContent = `Showing ${showing} of ${allSermons.length} sermons`;
       count.classList.remove("hidden");
     } else {
       count.classList.add("hidden");
@@ -173,22 +186,26 @@
       minister: document.getElementById("sa-minister").value,
       book:     document.getElementById("sa-book").value,
       year:     document.getElementById("sa-year").value,
+      limit:    parseInt(document.getElementById("sa-limit").value, 10),
     };
   }
 
   function applyFilters() {
-    const { q, minister, book, year } = getFilters();
+    const { q, minister, book, year, limit } = getFilters();
     const anyActive = q || minister || book || year;
     document.getElementById("sa-clear").classList.toggle("hidden", !anyActive);
 
-    const filtered = allSermons.filter(s => {
+    let filtered = allSermons.filter(s => {
       if (q        && !s.passage.toLowerCase().includes(q) && !s.minister.toLowerCase().includes(q)) return false;
       if (minister && s.minister !== minister) return false;
       if (book     && extractBook(s.passage) !== book)      return false;
       if (year     && (!s.date || !s.date.startsWith(year))) return false;
       return true;
     });
-    renderList(filtered);
+
+    // Apply the most-recent limit (0 means show all)
+    const limitedTo = (limit > 0) ? filtered.slice(0, limit) : filtered;
+    renderList(limitedTo, filtered.length);
   }
 
   window.saPlay = function (card) {
@@ -208,6 +225,7 @@
     document.getElementById("sa-minister").value = "";
     document.getElementById("sa-book").value     = "";
     document.getElementById("sa-year").value     = "";
+    // Leave the limit as-is — clearing filters shouldn't reset how many they want to see
     applyFilters();
   };
 
@@ -250,8 +268,9 @@
     populateDropdown("sa-year",     years);
 
     document.getElementById("sa-search").addEventListener("input", applyFilters);
+    document.getElementById("sa-limit").addEventListener("change", applyFilters);
     document.getElementById("sa-loading").classList.add("hidden");
-    renderList(allSermons);
+    renderList(allSermons.slice(0, 5), allSermons.length);
   }
 
   init();
