@@ -1,0 +1,157 @@
+{{/* 
+  layouts/shortcodes/sermon-audio.html
+  Drop {{ sermon-audio }} into any page to render the audio archive.
+  Reads sermon data from /static/sermons.json at runtime.
+*/}}
+
+<!-- Search & Filter Controls -->
+<div class="flex flex-wrap gap-3 mb-6 mt-2">
+  <input
+    id="sermon-search"
+    type="search"
+    placeholder="Search passage or minister…"
+    class="flex-1 min-w-48 px-4 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+  />
+  <select
+    id="sermon-minister"
+    class="px-4 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+  >
+    <option value="">All ministers</option>
+  </select>
+</div>
+
+<!-- Now Playing Banner -->
+<div id="sermon-now-playing" class="hidden mb-6">
+  <div class="rounded-2xl bg-primary-600 dark:bg-primary-700 p-5 shadow-lg">
+    <p class="text-xs uppercase tracking-widest text-primary-200 mb-1">Now Playing</p>
+    <p id="sermon-np-passage" class="text-xl font-bold text-white mb-0.5"></p>
+    <p id="sermon-np-minister" class="text-sm text-primary-200 mb-4"></p>
+    <div id="sermon-np-player"></div>
+  </div>
+</div>
+
+<!-- Sermon Cards -->
+<div id="sermon-list" class="flex flex-col gap-3">
+  <div id="sermon-loading" class="text-center py-10 text-neutral-400 text-sm">
+    Loading sermon archive…
+  </div>
+</div>
+<div id="sermon-empty" class="hidden text-center py-10 text-neutral-400 text-sm">
+  No sermons match your search.
+</div>
+
+<script>
+(function () {
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let allSermons = [];
+  let activeId   = null;
+
+  function parseDate(s) {
+    if (!s) return null;
+    const [y, m, d] = s.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function renderCard(s) {
+    const d      = parseDate(s.date);
+    const day    = d ? d.getDate()          : "?";
+    const month  = d ? MONTHS[d.getMonth()] : "?";
+    const year   = d ? d.getFullYear()      : "";
+    const active = s.file_id === activeId;
+
+    const borderCls = active
+      ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20"
+      : "border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:border-primary-400";
+
+    const btnCls = active
+      ? "bg-primary-500 text-white"
+      : "bg-neutral-100 dark:bg-neutral-700 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white";
+
+    return `
+      <div class="flex items-center gap-4 rounded-xl border-2 ${borderCls} p-4 cursor-pointer transition-all duration-150 shadow-sm hover:shadow-md"
+           data-id="${s.file_id}" data-passage="${s.passage}" data-minister="${s.minister}"
+           onclick="sermonPlay(this)">
+        <div class="text-center min-w-[52px]">
+          <div class="text-2xl font-bold leading-none text-primary-600 dark:text-primary-400">${day}</div>
+          <div class="text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">${month}</div>
+          <div class="text-[10px] text-neutral-400">${year}</div>
+        </div>
+        <div class="self-stretch w-px bg-neutral-200 dark:bg-neutral-700"></div>
+        <div class="flex-1 min-w-0">
+          <div class="font-semibold text-neutral-800 dark:text-neutral-100 truncate">${s.passage}</div>
+          <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">${s.minister}</div>
+        </div>
+        <button class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-150 ${btnCls}"
+                title="Play ${s.passage}" onclick="sermonPlay(this.closest('[data-id]'))">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>`;
+  }
+
+  function renderList(sermons) {
+    const list    = document.getElementById("sermon-list");
+    const loading = document.getElementById("sermon-loading");
+    const empty   = document.getElementById("sermon-empty");
+    loading.classList.add("hidden");
+    if (!sermons.length) {
+      list.innerHTML = "";
+      empty.classList.remove("hidden");
+      return;
+    }
+    empty.classList.add("hidden");
+    list.innerHTML = sermons.map(renderCard).join("");
+  }
+
+  // Global so onclick= can reach it
+  window.sermonPlay = function (card) {
+    activeId = card.dataset.id;
+    document.getElementById("sermon-np-passage").textContent  = card.dataset.passage;
+    document.getElementById("sermon-np-minister").textContent = card.dataset.minister;
+    document.getElementById("sermon-now-playing").classList.remove("hidden");
+    document.getElementById("sermon-np-player").innerHTML =
+      `<iframe src="https://drive.google.com/file/d/${activeId}/preview"
+               width="100%" height="80" style="border:none;border-radius:8px;" allow="autoplay"></iframe>`;
+    document.getElementById("sermon-now-playing").scrollIntoView({ behavior:"smooth", block:"nearest" });
+    applyFilters();
+  };
+
+  function applyFilters() {
+    const q = document.getElementById("sermon-search").value.toLowerCase().trim();
+    const m = document.getElementById("sermon-minister").value;
+    renderList(allSermons.filter(s =>
+      (!q || s.passage.toLowerCase().includes(q) || s.minister.toLowerCase().includes(q)) &&
+      (!m || s.minister === m)
+    ));
+  }
+
+  async function init() {
+    try {
+      const resp = await fetch("/sermons.json");
+      if (!resp.ok) throw new Error();
+      allSermons = await resp.json();
+    } catch {
+      document.getElementById("sermon-loading").textContent =
+        "Could not load sermon data. Please ensure sermons.json is in your static/ folder.";
+      return;
+    }
+
+    allSermons.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+    const ministers = [...new Set(allSermons.map(s => s.minister))].sort();
+    const sel = document.getElementById("sermon-minister");
+    ministers.forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = opt.textContent = m;
+      sel.appendChild(opt);
+    });
+
+    document.getElementById("sermon-search").addEventListener("input", applyFilters);
+    sel.addEventListener("change", applyFilters);
+    renderList(allSermons);
+  }
+
+  init();
+})();
+</script>
