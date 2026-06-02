@@ -12,7 +12,7 @@
     <input
       id="sa-search"
       type="search"
-      placeholder="🔍  Search passage…"
+      placeholder="🔍  Search passage or title…"
       class="flex-1 min-w-40 px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
     />
 
@@ -62,7 +62,9 @@
   <div class="rounded-2xl bg-primary-600 dark:bg-primary-700 p-5 shadow-lg">
     <p class="text-xs uppercase tracking-widest text-primary-200 mb-1">Now Playing</p>
     <p id="sa-np-passage" class="text-xl font-bold text-white mb-0.5"></p>
-    <p id="sa-np-minister" class="text-sm text-primary-200 mb-4"></p>
+    <p id="sa-np-title" class="text-base font-medium text-primary-100 mb-0.5 hidden"></p>
+    <p id="sa-np-minister" class="text-sm text-primary-200 mb-1"></p>
+    <p id="sa-np-partial" class="hidden text-xs text-primary-300/70 italic mb-3">incomplete recording</p>
     <div id="sa-np-player"></div>
   </div>
 </div>
@@ -128,11 +130,25 @@
       : "bg-neutral-100 dark:bg-neutral-700 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white";
 
     // Escape for data attributes
-    const esc = v => v.replace(/"/g, "&quot;");
+    const esc = v => (v || "").replace(/"/g, "&quot;");
+
+    // Optional sermon title line
+    const titleHtml = s.title
+      ? `<div class="text-sm font-medium text-neutral-600 dark:text-neutral-300 mt-0.5 truncate">${s.title}</div>`
+      : "";
+
+    // Partial recording notice
+    const partialHtml = s.partial
+      ? `<div class="text-xs text-neutral-400/70 dark:text-neutral-500/70 italic mt-0.5">incomplete recording</div>`
+      : "";
 
     return `
       <div class="flex items-center gap-4 rounded-xl border-2 ${borderCls} p-4 cursor-pointer transition-all duration-150 shadow-sm hover:shadow-md"
-           data-id="${esc(s.file_id)}" data-passage="${esc(s.passage)}" data-minister="${esc(s.minister)}"
+           data-id="${esc(s.file_id)}"
+           data-passage="${esc(s.passage)}"
+           data-title="${esc(s.title || "")}"
+           data-minister="${esc(s.minister)}"
+           data-partial="${s.partial ? "true" : "false"}"
            onclick="saPlay(this)">
         <div class="text-center min-w-[52px]">
           <div class="text-2xl font-bold leading-none text-primary-600 dark:text-primary-400">${day}</div>
@@ -142,7 +158,9 @@
         <div class="self-stretch w-px bg-neutral-200 dark:bg-neutral-700"></div>
         <div class="flex-1 min-w-0">
           <div class="font-semibold text-neutral-800 dark:text-neutral-100 truncate">${s.passage}</div>
+          ${titleHtml}
           <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">${s.minister}</div>
+          ${partialHtml}
         </div>
         <button class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-150 ${btnCls}"
                 title="Play ${esc(s.passage)}">
@@ -196,7 +214,9 @@
     document.getElementById("sa-clear").classList.toggle("hidden", !anyActive);
 
     let filtered = allSermons.filter(s => {
-      if (q        && !s.passage.toLowerCase().includes(q) && !s.minister.toLowerCase().includes(q)) return false;
+      if (q        && !s.passage.toLowerCase().includes(q)
+                   && !(s.title || "").toLowerCase().includes(q)
+                   && !s.minister.toLowerCase().includes(q)) return false;
       if (minister && s.minister !== minister) return false;
       if (book     && extractBook(s.passage) !== book)      return false;
       if (year     && (!s.date || !s.date.startsWith(year))) return false;
@@ -210,8 +230,28 @@
 
   window.saPlay = function (card) {
     activeId = card.dataset.id;
+
     document.getElementById("sa-np-passage").textContent  = card.dataset.passage;
     document.getElementById("sa-np-minister").textContent = card.dataset.minister;
+
+    // Title line — show only if present
+    const npTitle = document.getElementById("sa-np-title");
+    if (card.dataset.title) {
+      npTitle.textContent = card.dataset.title;
+      npTitle.classList.remove("hidden");
+    } else {
+      npTitle.textContent = "";
+      npTitle.classList.add("hidden");
+    }
+
+    // Partial notice
+    const npPartial = document.getElementById("sa-np-partial");
+    if (card.dataset.partial === "true") {
+      npPartial.classList.remove("hidden");
+    } else {
+      npPartial.classList.add("hidden");
+    }
+
     document.getElementById("sa-now-playing").classList.remove("hidden");
     document.getElementById("sa-np-player").innerHTML =
       `<iframe src="https://drive.google.com/file/d/${activeId}/preview"
