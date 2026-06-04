@@ -18,17 +18,11 @@ showAuthor: false
 
 Calling all young explorers! This summer we're blasting off on an unforgettable **Space Mission** filled with fun, friendship, and discovery.
 
-As we journey through the wonders of space, we'll explore some of life's biggest questions:
-
-- Why are we here?
-- Is there anyone greater than the stars?
-- What is God's plan for our world?
-
-Through games, crafts, music, drama, Bible talks, and plenty of laughter, we'll discover the incredible story of the God who made the universe and who knows each one of us by name.
+Through games, crafts, music, drama, Bible talks, and lots of fun, we'll discover the incredible God of the universe and who knows each one of us by name.
 
 <img src="featurespacehc.jpeg" alt="Space Mission Holiday Club Poster" />
 
-Whether you're a future astronaut, scientist, engineer, or simply love adventure, there's a place for you on this mission.
+Whether you're a future astronaut, scientist, engineer, or simply love space adventure, there's a place for you on this mission.
 
 **Prepare for launch — it's going to be out of this world!** 🚀
 
