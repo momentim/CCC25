@@ -103,6 +103,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/adopted.jpg" alt="Women's Conference" />
 <img src="gallery/image0.jpeg" alt="Community Gathering" />
 <img src="gallery/ccclogopng.png" alt="CCC Logo" />
+<img src="gallery/featurespacehc.jpeg" alt="Space Mission Holiday Club" />
 <img src="gallery/pirates.jpg" alt="Holiday Club Pirates" />
 <img src="gallery/christmasdoor.JPG" alt="Christmas Door" />
 <img src="gallery/holidayclub23.JPG" alt="Holiday Club 2023" />
