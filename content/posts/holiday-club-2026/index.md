@@ -18,7 +18,9 @@ showAuthor: false
 
 Calling all young explorers! This summer we're blasting off on an unforgettable **Space Mission** filled with fun, friendship, and discovery.
 
-Through games, crafts, music, drama, Bible talks, and lots of fun, we'll discover the incredible God of the universe and who knows each one of us by name.
+Through games, crafts, music, drama, Bible talks, and lots of fun, we'll discover the incredible God of the universe who knows each one of us by name.
+
+As we journey through the stars, we'll discover the wonderful plans he has for all his astronauts that seek to find and know him.
 
 <img src="featurespacehc.jpeg" alt="Space Mission Holiday Club Poster" />
 
