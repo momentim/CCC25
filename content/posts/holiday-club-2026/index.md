@@ -1,7 +1,7 @@
 ---
 title: "Space Mission Holiday Club"
 date: 2026-06-04
-description: "Space Mission Holiday Club for Primary Age Children - Monday 27th July – Thursday 30th July"
+summary: "Space Mission Holiday Club for Primary Age Children - Monday 27th July – Thursday 30th July"
 tags: ["youth", "Holiday Club", "Space Mission"]
 disable_share: false
 showDate: false
@@ -26,9 +26,7 @@ As we journey through the wonders of space, we'll explore some of life's biggest
 
 Through games, crafts, music, drama, Bible talks, and plenty of laughter, we'll discover the incredible story of the God who made the universe and who knows each one of us by name.
 
-{{< gallery >}}
 <img src="featurespacehc.jpeg" alt="Space Mission Holiday Club Poster" />
-{{< /gallery >}}
 
 Whether you're a future astronaut, scientist, engineer, or simply love adventure, there's a place for you on this mission.
 
