@@ -1,6 +1,6 @@
 ---
 date: 2026-01-19
-title: "Charlston Music Group"
+title: "Charleston Music Group"
 description: "music"
 tags: [""]
 disable_share: false
