@@ -65,7 +65,7 @@ Whether you're a future astronaut, scientist, engineer, or simply love adventure
 
 ## 📍 Location
 
-**Charleston Community Church**
+**[Charleston Community Church](../../../contact/#charleston-community-church)**
 29 Craigowan Road
 Dundee, DD2 4NN
 
