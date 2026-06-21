@@ -917,6 +917,325 @@
     <div class="min-w-0 min-h-0 max-w-prose">
       <p>We invite you to join us in experiencing the life-transforming power of God&rsquo;s Word through our church sermons library! And you are always welcome to worship with us in person every Sunday at 10:30 in the <a href="../contact/#charleston-community-centre">Charleston Community Centre</a></p>
 
+<h2 class="relative group">Sermon Audio Archive 
+    <div id="sermon-audio-archive" class="anchor"></div>
+    
+</h2>
+
+
+
+<div class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 p-4 mb-6 mt-2">
+  <div class="flex flex-wrap gap-3">
+
+    
+    <input
+      id="sa-search"
+      type="search"
+      placeholder="🔍  Search passage or title…"
+      class="flex-1 min-w-40 px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+    />
+
+    
+    <select id="sa-minister"
+      class="px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+      <option value="">All ministers</option>
+    </select>
+
+    
+    <select id="sa-book"
+      class="px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+      <option value="">All books</option>
+    </select>
+
+    
+    <select id="sa-year"
+      class="px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+      <option value="">All years</option>
+    </select>
+
+    
+    <select id="sa-limit"
+      class="px-3 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+      <option value="5"  selected>Show 5</option>
+      <option value="10">Show 10</option>
+      <option value="15">Show 15</option>
+      <option value="20">Show 20</option>
+      <option value="0">Show all</option>
+    </select>
+
+    
+    <button id="sa-clear"
+      onclick="saClear()"
+      class="hidden px-3 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm transition-colors shadow-sm">
+      ✕ Clear
+    </button>
+
+  </div>
+
+  
+  <p id="sa-count" class="mt-2 text-xs text-neutral-400 hidden"></p>
+</div>
+
+
+<div id="sa-now-playing" class="hidden mb-6">
+  <div class="rounded-2xl bg-primary-600 dark:bg-primary-700 p-5 shadow-lg">
+    <p class="text-xs uppercase tracking-widest text-primary-200 mb-1">Now Playing</p>
+    <p id="sa-np-passage" class="text-xl font-bold text-white mb-0.5"></p>
+    <p id="sa-np-title" class="text-base font-medium text-primary-100 mb-0.5 hidden"></p>
+    <p id="sa-np-minister" class="text-sm text-primary-200 mb-1"></p>
+    <p id="sa-np-partial" class="hidden text-xs text-primary-300/70 italic mb-3">incomplete recording</p>
+    <div id="sa-np-player"></div>
+  </div>
+</div>
+
+
+<div id="sa-list" class="flex flex-col gap-3">
+  <div id="sa-loading" class="text-center py-10 text-neutral-400 text-sm">
+    Loading sermon archive…
+  </div>
+</div>
+<div id="sa-empty" class="hidden text-center py-10 text-neutral-400 text-sm">
+  No sermons match your filters.
+</div>
+
+<script>
+(function () {
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  
+  const BIBLE_BOOKS = [
+    "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth",
+    "1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra",
+    "Nehemiah","Esther","Job","Psalms","Psalm","Proverbs","Ecclesiastes","Song of Solomon",
+    "Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah",
+    "Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi",
+    "Matthew","Mark","Luke","John","Acts","Romans",
+    "1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians",
+    "1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon",
+    "Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"
+  ];
+
+  let allSermons = [];
+  let activeId   = null;
+
+  
+  function extractBook(passage) {
+    for (const book of BIBLE_BOOKS) {
+      if (passage.toLowerCase().startsWith(book.toLowerCase())) return book;
+    }
+    
+    const m = passage.match(/^((?:\d\s+)?\D+?)\s*\d/);
+    return m ? m[1].trim() : passage;
+  }
+
+  function parseDate(s) {
+    if (!s) return null;
+    const [y, mo, d] = s.split("-").map(Number);
+    return new Date(y, mo - 1, d);
+  }
+
+  function renderCard(s) {
+    const d      = parseDate(s.date);
+    const day    = d ? d.getDate()          : "?";
+    const month  = d ? MONTHS[d.getMonth()] : "?";
+    const year   = d ? d.getFullYear()      : "";
+    const active = s.file_id === activeId;
+
+    const borderCls = active
+      ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20"
+      : "border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:border-primary-400";
+    const btnCls = active
+      ? "bg-primary-500 text-white"
+      : "bg-neutral-100 dark:bg-neutral-700 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white";
+
+    
+    const esc = v => (v || "").replace(/"/g, "&quot;");
+
+    
+    const titleHtml = s.title
+      ? `<div class="text-sm font-medium text-neutral-600 dark:text-neutral-300 mt-0.5 truncate">${s.title}</div>`
+      : "";
+
+    
+    const partialHtml = s.partial
+      ? `<div class="text-xs text-neutral-400/70 dark:text-neutral-500/70 italic mt-0.5">incomplete recording</div>`
+      : "";
+
+    return `
+      <div class="flex items-center gap-4 rounded-xl border-2 ${borderCls} p-4 cursor-pointer transition-all duration-150 shadow-sm hover:shadow-md"
+           data-id="${esc(s.file_id)}"
+           data-passage="${esc(s.passage)}"
+           data-title="${esc(s.title || "")}"
+           data-minister="${esc(s.minister)}"
+           data-partial="${s.partial ? "true" : "false"}"
+           onclick="saPlay(this)">
+        <div class="text-center min-w-[52px]">
+          <div class="text-2xl font-bold leading-none text-primary-600 dark:text-primary-400">${day}</div>
+          <div class="text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">${month}</div>
+          <div class="text-[10px] text-neutral-400">${year}</div>
+        </div>
+        <div class="self-stretch w-px bg-neutral-200 dark:bg-neutral-700"></div>
+        <div class="flex-1 min-w-0">
+          <div class="font-semibold text-neutral-800 dark:text-neutral-100 truncate">${s.passage}</div>
+          ${titleHtml}
+          <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">${s.minister}</div>
+          ${partialHtml}
+        </div>
+        <button class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-150 ${btnCls}"
+                title="Play ${esc(s.passage)}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>`;
+  }
+
+  function renderList(sermons, totalMatching) {
+    const list  = document.getElementById("sa-list");
+    const empty = document.getElementById("sa-empty");
+    const count = document.getElementById("sa-count");
+    const total = totalMatching !== undefined ? totalMatching : allSermons.length;
+
+    if (!sermons.length) {
+      list.innerHTML = "";
+      empty.classList.remove("hidden");
+      count.classList.add("hidden");
+      return;
+    }
+    empty.classList.add("hidden");
+    list.innerHTML = sermons.map(renderCard).join("");
+
+    const showing = sermons.length;
+    if (showing < total) {
+      count.textContent = `Showing ${showing} most recent of ${total} sermon${total !== 1 ? "s" : ""}`;
+      count.classList.remove("hidden");
+    } else if (showing < allSermons.length) {
+      count.textContent = `Showing ${showing} of ${allSermons.length} sermons`;
+      count.classList.remove("hidden");
+    } else {
+      count.classList.add("hidden");
+    }
+  }
+
+  function getFilters() {
+    return {
+      q:        document.getElementById("sa-search").value.toLowerCase().trim(),
+      minister: document.getElementById("sa-minister").value,
+      book:     document.getElementById("sa-book").value,
+      year:     document.getElementById("sa-year").value,
+      limit:    parseInt(document.getElementById("sa-limit").value, 10),
+    };
+  }
+
+  function applyFilters() {
+    const { q, minister, book, year, limit } = getFilters();
+    const anyActive = q || minister || book || year;
+    document.getElementById("sa-clear").classList.toggle("hidden", !anyActive);
+
+    let filtered = allSermons.filter(s => {
+      if (q        && !s.passage.toLowerCase().includes(q)
+                   && !(s.title || "").toLowerCase().includes(q)
+                   && !s.minister.toLowerCase().includes(q)) return false;
+      if (minister && s.minister !== minister) return false;
+      if (book     && extractBook(s.passage) !== book)      return false;
+      if (year     && (!s.date || !s.date.startsWith(year))) return false;
+      return true;
+    });
+
+    
+    const limitedTo = (limit > 0) ? filtered.slice(0, limit) : filtered;
+    renderList(limitedTo, filtered.length);
+  }
+
+  window.saPlay = function (card) {
+    activeId = card.dataset.id;
+
+    document.getElementById("sa-np-passage").textContent  = card.dataset.passage;
+    document.getElementById("sa-np-minister").textContent = card.dataset.minister;
+
+    
+    const npTitle = document.getElementById("sa-np-title");
+    if (card.dataset.title) {
+      npTitle.textContent = card.dataset.title;
+      npTitle.classList.remove("hidden");
+    } else {
+      npTitle.textContent = "";
+      npTitle.classList.add("hidden");
+    }
+
+    
+    const npPartial = document.getElementById("sa-np-partial");
+    if (card.dataset.partial === "true") {
+      npPartial.classList.remove("hidden");
+    } else {
+      npPartial.classList.add("hidden");
+    }
+
+    document.getElementById("sa-now-playing").classList.remove("hidden");
+    document.getElementById("sa-np-player").innerHTML =
+      `<iframe src="https://drive.google.com/file/d/${activeId}/preview"
+               width="100%" height="80" style="border:none;border-radius:8px;" allow="autoplay"></iframe>`;
+    document.getElementById("sa-now-playing").scrollIntoView({ behavior:"smooth", block:"nearest" });
+    applyFilters(); 
+  };
+
+  window.saClear = function () {
+    document.getElementById("sa-search").value   = "";
+    document.getElementById("sa-minister").value = "";
+    document.getElementById("sa-book").value     = "";
+    document.getElementById("sa-year").value     = "";
+    
+    applyFilters();
+  };
+
+  function populateDropdown(id, values) {
+    const sel = document.getElementById(id);
+    values.forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = opt.textContent = v;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener("change", applyFilters);
+  }
+
+  async function init() {
+    try {
+      const resp = await fetch("/sermons.json");
+      if (!resp.ok) throw new Error();
+      allSermons = await resp.json();
+    } catch {
+      document.getElementById("sa-loading").textContent =
+        "Could not load sermon data. Please ensure sermons.json is in your static/ folder.";
+      return;
+    }
+
+    allSermons.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+    
+    const ministers = [...new Set(allSermons.map(s => s.minister))].sort();
+    const books     = [...new Set(allSermons.map(s => extractBook(s.passage)))];
+    
+    books.sort((a, b) => {
+      const ai = BIBLE_BOOKS.findIndex(b2 => b2.toLowerCase() === a.toLowerCase());
+      const bi = BIBLE_BOOKS.findIndex(b2 => b2.toLowerCase() === b.toLowerCase());
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+    });
+    const years = [...new Set(allSermons.map(s => s.date ? s.date.slice(0,4) : null).filter(Boolean))].sort().reverse();
+
+    populateDropdown("sa-minister", ministers);
+    populateDropdown("sa-book",     books);
+    populateDropdown("sa-year",     years);
+
+    document.getElementById("sa-search").addEventListener("input", applyFilters);
+    document.getElementById("sa-limit").addEventListener("change", applyFilters);
+    document.getElementById("sa-loading").classList.add("hidden");
+    renderList(allSermons.slice(0, 5), allSermons.length);
+  }
+
+  init();
+})();
+</script>
+
 <h2 class="relative group">Here is our entire sermon library from our YouTube channel 
     <div id="here-is-our-entire-sermon-library-from-our-youtube-channel" class="anchor"></div>
     

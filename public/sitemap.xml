@@ -4,13 +4,19 @@
 
   <url>
     <loc>https://charleston-church.com/</loc>
-    <lastmod>2026-01-19T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-04T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://charleston-church.com/posts/</loc>
-    <lastmod>2026-01-19T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-04T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://charleston-church.com/posts/holiday-club-2026/</loc>
+    <lastmod>2026-06-04T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
