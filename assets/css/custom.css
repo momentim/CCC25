@@ -1,3 +1,7 @@
 html {
     font-size: 14pt;
   }
+
+  .main-menu {
+  background-color: transparent !important;
+}
