@@ -44,7 +44,7 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
 
 [homepage]
   layout = "background" # valid options: page, profile, hero, card, background, custom
-  homepageImage = "img/charleston.jpg" # used in: hero, and card
+  homepageImage = "img/charleston.webp" # used in: hero, and card
   homepageVideo = "videos/charleston-bg.mp4"        # your compressed clip
   showRecent = true
   showRecentItems = 3
