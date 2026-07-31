@@ -1,13 +1,3 @@
 html {
     font-size: 14pt;
-    background-color: transparent !important;
   }
-
-.main-menu {
-  background-color: transparent !important;
-}
-
-/* in case it's a wrapping header container rather than .main-menu itself */
-header {
-  background-color: transparent !important;
-}
