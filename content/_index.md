@@ -124,7 +124,7 @@ Read [today's daily bible passage](../about/daily-bible-reading). This collectio
 <img src="gallery/rascals1.JPG" alt="Rascals" />
 {{< /gallery >}}
 
-
+Drone Footage: [@iangblack](https://www.iangblack.com/)
 
 <script>
   (function() {
