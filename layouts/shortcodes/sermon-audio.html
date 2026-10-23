@@ -253,10 +253,32 @@
     }
 
     document.getElementById("sa-now-playing").classList.remove("hidden");
-    document.getElementById("sa-np-player").innerHTML =
-      `<iframe src="https://drive.google.com/file/d/${activeId}/preview"
-               width="100%" height="80" style="border:none;border-radius:8px;" allow="autoplay"></iframe>`;
-    document.getElementById("sa-now-playing").scrollIntoView({ behavior:"smooth", block:"nearest" });
+
+    const playerBox = document.getElementById("sa-np-player");
+    const directUrl = `https://drive.usercontent.google.com/download?id=${activeId}&export=download`;
+    const previewUrl = `https://drive.google.com/file/d/${activeId}/preview`;
+    const driveUrl = `https://drive.google.com/file/d/${activeId}/view`;
+
+    // Native player (works in iOS Safari). Fallback to Drive iframe if it errors.
+    playerBox.innerHTML =
+      `<audio id="sa-audio" controls preload="metadata" playsinline
+              style="width:100%;display:block;" src="${directUrl}"></audio>
+       <p class="mt-2 text-xs text-primary-200">
+         Trouble playing? <a href="${driveUrl}" target="_blank" rel="noopener"
+         class="underline text-white">Open in Google Drive</a>
+       </p>`;
+
+    const audio = document.getElementById("sa-audio");
+    audio.addEventListener("error", function () {
+      playerBox.innerHTML =
+        `<iframe src="${previewUrl}" width="100%" height="160"
+                 style="border:none;border-radius:8px;" allow="autoplay"></iframe>`;
+    });
+    // Called inside the click handler, so iOS allows it
+    const p = audio.play();
+    if (p && p.catch) p.catch(() => {}); // if blocked, the user just taps play
+
+    document.getElementById("sa-now-playing").scrollIntoView({ behavior: "smooth", block: "nearest" });
     applyFilters(); // re-render to show active highlight
   };
 
